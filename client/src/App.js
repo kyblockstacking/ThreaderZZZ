@@ -1,20 +1,24 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-class App extends Component {
+import Jumbotron from "./components/jumbotron";
+import Navbar from "./components/navbar";
+import ForumCategory from "./components/forumCategory";
+
+class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <Router>
+        <div>
+          <Jumbotron />
+          <Navbar />
+          <Route exact path="/" component={ForumCategory} />
+          {/* <Route exact path="/forum/Javascript" component={JavascriptTreads} />
+          <Route exact path="/forum/PHP" component={PHPTreads} />
+          <Route exact path="/forum/Python" component={PythonTreads} /> */}
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+      </Router>
+    )
   }
 }
 
