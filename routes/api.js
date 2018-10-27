@@ -24,7 +24,6 @@ router.post('/api/signup', function(req, res) {
         userName: req.body.userName,
       },
     })
-
       .then((data) => {
         console.log('Kevin', data);
         console.log(req.body.userName);
