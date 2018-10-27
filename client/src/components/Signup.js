@@ -83,8 +83,9 @@ class Signup extends Component {
       axios
         .post('/api/signup', { firstName, lastName, userName, email, password })
         .then((response) => {
+          console.log('==============================', response.data);
           // this will need to change depending on how the data is structured. expecting status code
-          if (response.data.status === 200) {
+          if (response.data) {
             console.log('Account created');
           } else {
             console.log('There was a problem creating your account');
