@@ -11,7 +11,6 @@ router.get('/categories/:thread', function(req, res) {
 });
 
 router.post('/api/signup', function(req, res) {
-  //   console.log('kevin', req.body);
   if (
     req.body.firstName.match(/./) &&
     req.body.lastName.match(/./) &&
@@ -25,8 +24,6 @@ router.post('/api/signup', function(req, res) {
       },
     })
       .then((data) => {
-        console.log('Kevin', data);
-        console.log(req.body.userName);
         if (data === null) {
           //create login
           db.User.create(req.body)

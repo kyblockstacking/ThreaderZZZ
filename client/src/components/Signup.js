@@ -83,8 +83,6 @@ class Signup extends Component {
       axios
         .post('/api/signup', { firstName, lastName, userName, email, password })
         .then((response) => {
-          console.log('==============================', response.data);
-          // this will need to change depending on how the data is structured. expecting status code
           if (response.data) {
             console.log('Account created');
           } else {
@@ -114,7 +112,7 @@ class Signup extends Component {
     } = this.state;
 
     return (
-      <div className="container m-5">
+      <div className="container">
         <form>
           <div className="form-group">
             <input
@@ -159,10 +157,13 @@ class Signup extends Component {
               name="userName"
               value={userName}
               onChange={this.handleChange}
+              data-toggle="tooltip"
+              data-placement="left"
+              title="Username must be at least 4 characters in length"
             />
             <div style={styles.fixed}>
               {isUserNameValid === false ? (
-                <small style={styles.small}>Username must be at least 8 characters in length</small>
+                <small style={styles.small}>Username is invalid</small>
               ) : null}
             </div>
           </div>
@@ -192,10 +193,14 @@ class Signup extends Component {
               name="password"
               value={password}
               onChange={this.handleChange}
+              data-toggle="tooltip"
+              data-placement="left"
+              data-html="true"
+              title="Password must be at least 8 characters in length and include one each of the following: uppercase, lowercase, number, special character"
             />
             <div style={styles.fixed}>
               {isPasswordValid === false ? (
-                <small style={styles.small}>Password must be at least 8 characters in length</small>
+                <small style={styles.small}>Password is invalid</small>
               ) : null}
             </div>
           </div>
