@@ -19,6 +19,7 @@ class App extends React.Component {
           <Jumbotron />
           <Navbar />
           <Route exact path="/" component={ForumCategory} />
+          {/* <Route exact path="/forum/:category" component={JavascriptTreads} /> */}
           <Route exact path="/forum/Javascript" component={JavascriptTreads} />
           <Route exact path="/forum/Javascript/thread=:id" component={JsThreadContent} />
           <Route exact path="/forum/PHP" component={PHPTreads} />

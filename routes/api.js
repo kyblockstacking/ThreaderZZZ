@@ -10,6 +10,8 @@ router.get('/categories/:thread', function (req, res) {
   }
 });
 
+
+//signup route
 router.post('/api/signup', function (req, res) {
   if (
     req.body.firstName.match(/./) &&
@@ -63,6 +65,7 @@ router.post('/logout', function (req, res) {
   res.redirect('/');
 });
 
+//hardcoded for Javascript threads
 router.get("/api/threads", function (req, res) {
   db.Threads.findAll({
     // include: [db.Comments],
@@ -76,6 +79,7 @@ router.get("/api/threads", function (req, res) {
       });
 });
 
+//dynamically coded for javascript thread replies
 router.get("/api/threads/:id", function (req, res) {
   db.Comments.findAll({
     where: {
