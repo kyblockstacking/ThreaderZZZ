@@ -9,7 +9,15 @@ module.exports = function(sequelize, DataTypes) {
         downvote: DataTypes.INTEGER,
         email: DataTypes.STRING,
 
+    },
+    {
+        timestamps: false
     });
+
+    User.associate = function (models) {
+        User.hasMany(models.Threads);
+        User.hasMany(models.Comments);
+    }
 
     return User;
 

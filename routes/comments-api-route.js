@@ -29,16 +29,16 @@ module.exports = function(app){
         })
     });
 
-    app.get("api/threads/", function( req, res) {
-        var threadsID = getCookie("name", req)
-            db.Threads.findAll({
-                where : {
-                    threadsID: threadsID
-                }
-            }).then(function(dbThreads) {
-                res.json(dbThreads);
-            })
-    });
+    // app.get("api/threads/", function( req, res) {
+    //     var threadsID = getCookie("name", req)
+    //         db.Threads.findAll({
+    //             where : {
+    //                 threadsID: threadsID
+    //             }
+    //         }).then(function(dbThreads) {
+    //             res.json(dbThreads);
+    //         })
+    // });
 
     app.post("/api/comments/", function(req, res) {
         var comments = req.body;

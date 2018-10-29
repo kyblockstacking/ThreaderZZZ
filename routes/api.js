@@ -2,7 +2,7 @@ const router = require('express').Router();
 const db = require('../models');
 //remember "/" is being used by express.static
 
-router.get('/categories/:thread', function(req, res) {
+router.get('/categories/:thread', function (req, res) {
   if (req.session.user) {
     //you can post and vote
   } else {
@@ -10,7 +10,9 @@ router.get('/categories/:thread', function(req, res) {
   }
 });
 
-router.post('/api/signup', function(req, res) {
+
+//signup route
+router.post('/api/signup', function (req, res) {
   if (
     req.body.firstName.match(/./) &&
     req.body.lastName.match(/./) &&
@@ -41,7 +43,6 @@ router.post('/api/signup', function(req, res) {
               res.json(err);
             });
         } else {
-          //login exists
           return res.status(400).json({
             status: 'error',
           });
@@ -57,11 +58,38 @@ router.post('/api/signup', function(req, res) {
   }
 });
 
-router.post('/logout', function(req, res) {
+router.post('/logout', function (req, res) {
   res.clearCookie('token');
   req.session.destroy();
 
   res.redirect('/');
+});
+
+//hardcoded for Javascript threads
+router.get("/api/threads", function (req, res) {
+  db.Threads.findAll({
+    // include: [db.Comments],
+    where: {
+      CategoryId: 1,
+    }
+  })
+      .then(results => {
+          console.log(results);
+          res.json(results);
+      });
+});
+
+//dynamically coded for javascript thread replies
+router.get("/api/threads/:id", function (req, res) {
+  db.Comments.findAll({
+    where: {
+      ThreadId: req.params.id,
+    }
+  })
+      .then(results => {
+          console.log(results);
+          res.json(results);
+      });
 });
 
 module.exports = router;

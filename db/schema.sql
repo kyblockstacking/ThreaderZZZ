@@ -1,4 +1,4 @@
 CREATE DATABASE Project3;
 
-USE DATABASE Project3;
+USE Project3;
 
