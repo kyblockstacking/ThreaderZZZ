@@ -2,14 +2,15 @@ import Signup from './components/Signup';
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import Jumbotron from "./components/jumbotron";
-import Navbar from "./components/navbar";
-import ForumCategory from "./components/forumCategory";
-import JavascriptTreads from "./components/javascript_forum";
-import JsThreadContent from "./components/js_thread_content";
-import PHPTreads from "./components/php_forum";
-import PythonTreads from "./components/python_forum";
-import Footer from "./components/footer";
+import Jumbotron from "./components/Jumbotron";
+import Navbar from "./components/Navbar";
+import ForumCategory from "./components/ForumCategory";
+import JavascriptTreads from "./components/JavascriptForum.js";
+import JsThreadContent from "./components/JavascriptThreadContent";
+import PHPTreads from "./components/PHPForum";
+import PythonTreads from "./components/PythonForum";
+import Footer from "./components/Footer";
+import SignIn from "./components/SignIn";
 
 class App extends React.Component {
 
@@ -19,6 +20,7 @@ class App extends React.Component {
         <div>
           <Jumbotron />
           <Navbar />
+          <Route exact path="/" component={SignIn} />
           <Route exact path="/" component={ForumCategory} />
           {/* <Route exact path="/forum/:category" component={JavascriptTreads} /> */}
           <Route exact path="/forum/Javascript" component={JavascriptTreads} />

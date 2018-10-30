@@ -52,7 +52,7 @@ class footer extends React.Component {
 
                 <div style={style.footerBottom} className="footerBottom">
                     <div>
-                        This web application is made by Aiden, David, Kevin, Vernie
+                        ThreaderZZZ is made by Aiden, David, Kevin, Vernie
                 </div>
                     <div>
                         Contribute to this project's <a href="https://github.com/vedelacruz/project3x`">GitHub</a> <i class="fab fa-github"></i>
