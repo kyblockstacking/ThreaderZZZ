@@ -9,7 +9,7 @@ import JavascriptTreads from "./components/javascript_forum";
 import JsThreadContent from "./components/js_thread_content";
 import PHPTreads from "./components/php_forum";
 import PythonTreads from "./components/python_forum";
-// import Footer from "./components/footer";
+import Footer from "./components/footer";
 
 class App extends React.Component {
 
@@ -26,7 +26,7 @@ class App extends React.Component {
           <Route exact path="/forum/PHP" component={PHPTreads} />
           <Route exact path="/forum/Python" component={PythonTreads} />
           <Route exact path="/signup" component={Signup} />
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </Router>
     );

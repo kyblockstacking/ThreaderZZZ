@@ -15,7 +15,7 @@ class jumbotron extends React.Component {
     render() {
         return (
             <div style={jumbotronStyle} className="JUMBO">
-                <h1 className="display-4">Coding Forum Board</h1>
+                <h1 className="display-4"><i class="fas fa-terminal"></i>Threader</h1>
                 <hr className="my-4" />
                 <p style={jumbotronStyle.p}> A developmental environment for developers to develope their developing skills </p>
             </div>
