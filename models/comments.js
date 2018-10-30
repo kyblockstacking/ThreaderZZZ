@@ -8,6 +8,10 @@ module.exports = function(sequelize, DataTypes) {
     {
         timestamps: false
     });
+
+    Comments.associate = function (models) {
+        Comments.hasMany(models.VoteAlready);
+    }
     return Comments;
 
 };
