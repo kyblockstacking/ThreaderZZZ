@@ -10,6 +10,8 @@ import JsThreadContent from "./components/js_thread_content";
 import PHPTreads from "./components/php_forum";
 import PythonTreads from "./components/python_forum";
 import Footer from "./components/footer";
+import Editor from "./components/textbox";
+import userComment from "./components/tableLeComment"
 
 class App extends React.Component {
   render() {
@@ -25,6 +27,8 @@ class App extends React.Component {
           <Route exact path="/forum/PHP" component={PHPTreads} />
           <Route exact path="/forum/Python" component={PythonTreads} />
           <Route exact path="/signup" component={Signup} />
+          <Route exact path="/fuckingtable" component={Editor}/>
+          <Route exact path="/REE" component={userComment}/>
           <Footer />
         </div>
       </Router>

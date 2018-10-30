@@ -1,5 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     var Threads = sequelize.define("Threads", {
+        threadTitle: DataTypes.STRING,
         threadName: DataTypes.STRING,
         upvotes: DataTypes.INTEGER,
         downvotes: DataTypes.INTEGER,

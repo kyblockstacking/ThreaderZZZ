@@ -1,0 +1,6 @@
+.ql-snow .ql-editor pre.ql-syntax {
+    background-color: #eff0f1;
+    color: black;
+    overflow: visible;
+    font-family: "Liberation Mono"
+}   
