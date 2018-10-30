@@ -68,15 +68,25 @@ router.post('/logout', function (req, res) {
 //hardcoded for Javascript threads
 router.get("/api/threads", function (req, res) {
   db.Threads.findAll({
-    // include: [db.Comments],
+    include: [db.Comments],
     where: {
       CategoryId: 1,
     }
   })
-      .then(results => {
-          console.log(results);
-          res.json(results);
-      });
+    .then(results => {
+      console.log(results);
+      res.json(results);
+    });
+});
+
+router.get("/api/realthreads", function (req, res) {
+  db.Category.findAll({
+    include: [db.Threads]
+  })
+    .then(results => {
+      console.log(results);
+      res.json(results);
+    });
 });
 
 //dynamically coded for javascript thread replies
@@ -86,10 +96,10 @@ router.get("/api/threads/:id", function (req, res) {
       ThreadId: req.params.id,
     }
   })
-      .then(results => {
-          console.log(results);
-          res.json(results);
-      });
+    .then(results => {
+      console.log(results);
+      res.json(results);
+    });
 });
 
 module.exports = router;
