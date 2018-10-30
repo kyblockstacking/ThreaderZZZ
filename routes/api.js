@@ -65,6 +65,39 @@ router.post('/logout', function (req, res) {
   res.redirect('/');
 });
 
+
+//routes for buttons (e.g. voting)
+router.post("/api/upvote", function (req, res) {
+  console.log("hi", req.body);
+  db.Comments.update({
+    upvotes: req.body.newUpVoteCount
+  }, {
+    where: {
+      id: req.body.id
+    }
+  })
+    .then(results => {
+      console.log(results);
+      res.status(200).json(results);
+    })
+});
+
+router.post("/api/downvote", function (req, res) {
+  console.log("buh", req.body);
+  db.Comments.update({
+    downvotes: req.body.newDownVoteCount
+  }, {
+    where: {
+      id: req.body.id
+    }
+  })
+    .then(results => {
+      console.log(results);
+      return res.status(200).json(results);
+    })
+})
+
+
 //hardcoded for Javascript threads
 router.get("/api/threads", function (req, res) {
   db.Threads.findAll({
@@ -73,23 +106,42 @@ router.get("/api/threads", function (req, res) {
       CategoryId: 1,
     }
   })
-      .then(results => {
-          console.log(results);
-          res.json(results);
-      });
+    .then(results => {
+      console.log("kevin", results);
+      res.json(results);
+    });
 });
 
 //dynamically coded for javascript thread replies
 router.get("/api/threads/:id", function (req, res) {
-  db.Comments.findAll({
-    where: {
-      ThreadId: req.params.id,
-    }
-  })
+  req.session.user = {
+    username: "lookrumad",
+    password: "password",
+    notUser: false,
+    id: 1
+  };
+
+  if (req.session.user) {
+    db.Comments.findAll({
+      include: [{
+        model: db.VoteAlready,
+        where: {
+          UserId: req.session.user.id
+        },
+        required: false
+      }],
+      where: {
+        ThreadId: req.params.id
+      }
+    })
       .then(results => {
-          console.log(results);
-          res.json(results);
+        results.push({
+          notUser: req.session.user.notUser,
+          userId: req.session.user.id
+        })
+        res.json(results);
       });
+  }
 });
 
 module.exports = router;

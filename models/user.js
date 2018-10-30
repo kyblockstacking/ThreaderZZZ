@@ -3,10 +3,16 @@ module.exports = function(sequelize, DataTypes) {
         signupDate: DataTypes.DATEONLY,
         firstName: DataTypes.STRING,
         lastName: DataTypes.STRING,
-        password: DataTypes.STRING,
         userName: DataTypes.STRING,
-        upvote: DataTypes.INTEGER,
-        downvote: DataTypes.INTEGER,
+        password: DataTypes.STRING,
+        upvote: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
+        },
+        downvote: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
+        },
         email: DataTypes.STRING,
 
     },
@@ -17,6 +23,7 @@ module.exports = function(sequelize, DataTypes) {
     User.associate = function (models) {
         User.hasMany(models.Threads);
         User.hasMany(models.Comments);
+        User.hasMany(models.VoteAlready);
     }
 
     return User;
