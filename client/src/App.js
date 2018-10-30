@@ -11,6 +11,8 @@ import PHPTreads from "./components/PHPForum";
 import PythonTreads from "./components/PythonForum";
 import Footer from "./components/Footer";
 import SignIn from "./components/SignIn";
+import Editor from "./components/Textbox";
+import userComment from "./components/TableLeComment"
 
 class App extends React.Component {
 
@@ -28,6 +30,8 @@ class App extends React.Component {
           <Route exact path="/forum/PHP" component={PHPTreads} />
           <Route exact path="/forum/Python" component={PythonTreads} />
           <Route exact path="/signup" component={Signup} />
+          <Route exact path="/table" component={Editor}/>
+          <Route exact path="/REE" component={userComment}/>
           <Footer />
         </div>
       </Router>
