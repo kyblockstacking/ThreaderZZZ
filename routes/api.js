@@ -30,16 +30,24 @@ router.post('/api/signup', function(req, res) {
     })
       .then((data) => {
         if (data === null) {
+          const token = 't' + Math.random();
+          req.body['token'] = token;
+          res.cookie('token', token, {
+            expires: new Date(Date.now() + 999999999),
+          });
           //create login
           db.User.create(req.body)
             .then((data) => {
               //  *STILL NEEDED* redirect to where UI makes sense
 
               req.session.user = {
-                username: data.username,
-                password: data.password,
-                admin: data.admin,
+                firstName: user.firstName,
+                username: user.userName,
+                admin: user.admin,
+                user: user.user,
+                id: user.id,
               };
+
               res.json(data);
             })
             .catch((err) => {
@@ -105,24 +113,53 @@ router.post('/login', (req, res) => {
       req.session.user = {
         firstName: user.firstName,
         username: user.userName,
-        password: user.password,
         admin: user.admin,
         user: user.user,
         id: user.id,
       };
       const token = 't' + Math.random();
+      res.cookie('token', token, {
+        expires: new Date(Date.now() + 999999999),
+      });
       db.User.update({ token: token }, { where: { id: user.id } }).then(
         (data) => {
-          res.cookie('token', token, {
-            expires: new Date(Date.now() + 999999999),
-          });
-          res.redirect('/');
+          res.json(req.session.user);
         },
       );
     })
     .catch((err) => {
       res.send('username or password does not match');
     });
+});
+
+router.get('/auth', (req, res) => {
+  if (req.session.user) {
+    res.send(`welcome back, ${req.session.user.firstName}`);
+  } else if (req.headers.cookie.indexOf('token=') !== -1) {
+    const cookie = req.headers.cookie.match(/(?<=token=)[^ ;]*/)[0];
+    db.User.findOne({
+      where: {
+        token: cookie,
+      },
+    })
+      .then((user) => {
+        if (user !== null) {
+          req.session.user = {
+            firstName: user.firstName,
+            username: user.userName,
+            admin: user.admin,
+            user: user.user,
+            id: user.id,
+          };
+          res.json(user);
+        } else {
+          res.clearCookie('token');
+        }
+      })
+      .catch((err) => {
+        res.json(err);
+      });
+  }
 });
 
 module.exports = router;
