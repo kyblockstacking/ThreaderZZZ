@@ -26,7 +26,8 @@ let style = {
     },
     inputBox: {
         float: "right",
-        borderRadius: "5px"
+        borderRadius: "5px",
+        fontStyle: "italic"
     },
     forgotPassword: {
         float: "right",
