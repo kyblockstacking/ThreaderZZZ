@@ -7,6 +7,16 @@ let images = {
     python: "/images/python_logo.jpg"
 }
 
+let style = {
+    forumCategory: {
+        borderTopRightRadius: "10px",
+        borderTopLeftRadius: "10px",
+        padding: "15px",
+        background: "#2e849e",
+        color: "white"
+    }
+}
+
 class forumCategory extends React.Component {
 
     state = {
@@ -27,28 +37,31 @@ class forumCategory extends React.Component {
     render() {
         return (
             <div className="container">
-                <div>
-                    <img alt="logo" src={images.javascript} />
-                    <a href="/forum/javascript"> Enter Javascript Forum</a>
-                    <br></br>
-                    <span style={{marginLeft: "7.5%"}}><i className="fas fa-bed"></i> Threadcount: {this.state.Javascript_numberOfThreads}</span>
-                    <hr></hr>
-                </div>
+                <div className="hello" style={{width: "60%", background: "white", borderTopRightRadius: "10px", borderTopLeftRadius: "10px", borderBottomRightRadius: "10px", borderBottomLeftRadius: "10px"}}>
+                    <div style={style.forumCategory}>Forum Categories</div>
+                    <div style={{marginTop: "2%"}}>
+                        <img alt="logo" src={images.javascript} />
+                        <a href="/forum/javascript"> Enter Javascript Forum</a>
+                        <br></br>
+                        <span style={{ marginLeft: "11%" }}><i className="fas fa-bed"></i> Threadcount: {this.state.Javascript_numberOfThreads}</span>
+                        <hr></hr>
+                    </div>
 
-                <div>
-                    <img alt="logo" src={images.php} />
-                    <a href="/forum/PHP"> Enter PHP Forum</a>
-                    <br></br>
-                    <span style={{marginLeft: "7.5%"}}><i className="fas fa-bed"></i> Threadcount: {this.state.PHP_numberOfThreads}</span>
-                    <hr></hr>
-                </div>
+                    <div>
+                        <img alt="logo" src={images.php} />
+                        <a href="/forum/PHP"> Enter PHP Forum</a>
+                        <br></br>
+                        <span style={{ marginLeft: "11%" }}><i className="fas fa-bed"></i> Threadcount: {this.state.PHP_numberOfThreads}</span>
+                        <hr></hr>
+                    </div>
 
-                <div>
-                    <img alt="logo" src={images.python} />
-                    <a href="/forum/Python"> Enter Python Forum</a>
-                    <br></br>
-                    <span style={{marginLeft: "7.5%"}}><i className="fas fa-bed"></i> Threadcount: {this.state.Python_numberOfThreads}</span>
-                    <hr></hr>
+                    <div>
+                        <img alt="logo" src={images.python} />
+                        <a href="/forum/Python"> Enter Python Forum</a>
+                        <br></br>
+                        <span style={{ marginLeft: "11%" }}><i className="fas fa-bed"></i> Threadcount: {this.state.Python_numberOfThreads}</span>
+                    </div>
+                    <div style={{background: "#2e849e", padding: "15px", borderBottomRightRadius: "10px", borderBottomLeftRadius: "10px", marginBottom: "2%"}}></div>
                 </div>
             </div>
         )

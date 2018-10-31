@@ -127,7 +127,7 @@ router.get("/api/threads/:id", function (req, res) {
   req.session.user = {
     username: "lookrumad",
     password: "password",
-    notUser: false,
+    notUser: true,
     id: 1
   };
 
