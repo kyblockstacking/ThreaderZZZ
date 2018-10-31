@@ -32,7 +32,14 @@ class Signup extends Component {
   };
 
   handleValidation = () => {
-    const { firstName, lastName, userName, email, password, confirmPassword } = this.state;
+    const {
+      firstName,
+      lastName,
+      userName,
+      email,
+      password,
+      confirmPassword,
+    } = this.state;
 
     if (firstName.match(/./)) {
       this.setState({ isFirstNameValid: true });
@@ -49,12 +56,18 @@ class Signup extends Component {
     } else {
       this.setState({ isUserNameValid: false });
     }
-    if (email.match(/^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/)) {
+    if (
+      email.match(/^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/)
+    ) {
       this.setState({ isEmailValid: true });
     } else {
       this.setState({ isEmailValid: false });
     }
-    if (password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/)) {
+    if (
+      password.match(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
+      )
+    ) {
       this.setState({ isPasswordValid: true });
     } else {
       this.setState({ isPasswordValid: false });
@@ -67,7 +80,14 @@ class Signup extends Component {
   };
 
   handleSubmit = (event) => {
-    const { firstName, lastName, userName, email, password, confirmPassword } = this.state;
+    const {
+      firstName,
+      lastName,
+      userName,
+      email,
+      password,
+      confirmPassword,
+    } = this.state;
 
     event.preventDefault();
     this.handleValidation();
@@ -77,7 +97,9 @@ class Signup extends Component {
       lastName.match(/./) &&
       userName.match(/.{4,12}/) &&
       email.match(/^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/) &&
-      password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/) &&
+      password.match(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
+      ) &&
       confirmPassword === password
     ) {
       axios
@@ -180,7 +202,9 @@ class Signup extends Component {
               onChange={this.handleChange}
             />
             <div style={styles.fixed}>
-              {isEmailValid === false ? <small style={styles.small}>Email is invalid</small> : null}
+              {isEmailValid === false ? (
+                <small style={styles.small}>Email is invalid</small>
+              ) : null}
             </div>
           </div>
 
