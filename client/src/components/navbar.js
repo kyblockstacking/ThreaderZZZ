@@ -32,7 +32,7 @@ class Navbar extends React.Component {
                                 <Link className="dropdown-item" to={"/forum/Javascript"}>Javascript Forum</Link>
                                 <Link className="dropdown-item" to={"/forum/PHP"}>PHP Forum</Link>
                                 <Link className="dropdown-item" to={"/forum/Python"}>Python Forum</Link>
-                            </div>
+                            </div >
                         </li>
                     </ul>
                 </div>

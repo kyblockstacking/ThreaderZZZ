@@ -1,9 +1,13 @@
 const express = require('express');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+// var app2 = require('http').createServer()
+// var io = module.exports.io = require('socket.io')(app2);
 const path = require('path');
 const PORT = process.env.PORT || 3001;
 const app = express();
+// const SocketManager = require('./SocketManager');
+// io.on('connection', SocketManager); 
 
 const db = require('./models');
 
