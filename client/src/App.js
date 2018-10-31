@@ -15,6 +15,9 @@ import SignIn from './components/SignIn';
 import Logout from './components/Logout';
 import NotFound from './components/404';
 
+import Appointment from "./components/Appointment";
+import DeveloperLounge from "./components/DeveloperLounge";
+
 class App extends React.Component {
   state = {
     userData: {},
@@ -30,7 +33,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div>
+        <div style={{background: "#ededed"}}>
           <Jumbotron />
           <Navbar />
           <Route
@@ -38,6 +41,9 @@ class App extends React.Component {
             path="/"
             component={this.state.userData.user ? Logout : SignIn}
           />
+
+          <Route exact path="/test" component={Appointment} />
+          <Route exact path="/test" component={DeveloperLounge} />
 
           <Switch>
             <Route exact path="/" component={ForumCategory} />
@@ -54,7 +60,7 @@ class App extends React.Component {
             <Route exact path="/forum/PHP" component={PHPTreads} />
             <Route exact path="/forum/Python" component={PythonTreads} />
             <Route exact path="/signup" component={Signup} />
-            <Route component={NotFound} />
+            {/* <Route component={NotFound} /> */}
           </Switch>
 
           <Footer />

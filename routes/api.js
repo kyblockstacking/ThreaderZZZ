@@ -167,7 +167,15 @@ router.post('/login', (req, res) => {
     });
 });
 
-router.get('/auth', (req, res) => {
+//dynamically coded for javascript thread replies
+router.get("/api/threads/:id", function (req, res) {
+  req.session.user = {
+    username: "lookrumad",
+    password: "password",
+    notUser: true,
+    id: 1
+  };
+
   if (req.session.user) {
     res.send({
       firstName: req.session.user.firstName,
