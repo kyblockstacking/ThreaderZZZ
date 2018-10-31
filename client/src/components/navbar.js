@@ -3,14 +3,15 @@ import { Link } from "react-router-dom";
 
 let style = {
     navBar: {
-        backgroundColor: "#2e849e"
+        backgroundColor: "#262626",
+        border: "1px dashed #2e849e",
     },
     homeButton: {
         color: "gold"
     },
     list: {
         cursor: "pointer",
-        color: "#262626"
+        color: "#2e849e"
     }
 }
 
@@ -26,7 +27,7 @@ class Navbar extends React.Component {
                         <Link style={style.homeButton} className="homeButton" to={"/"}><i className="fas fa-home"></i></Link>
                         <li className="nav-item dropdown">
                             <div style={style.list} className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                List of Forums
+                                <span>Forums</span>
                             </div>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <Link className="dropdown-item" to={"/forum/Javascript"}>Javascript Forum</Link>

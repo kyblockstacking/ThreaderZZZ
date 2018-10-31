@@ -7,7 +7,8 @@ let style = {
         background: "url('/images/404.jpg') no-repeat center fixed",
         backgroundSize: "cover",
         width: "100%",
-        height: "400px"
+        height: "400px",
+        fontFamily: "Oswald"
     },
     h4: {
         marginBottom: "0"
@@ -15,7 +16,7 @@ let style = {
     white: {
         color: "white"
     }
-}
+};
 
 class NotFound extends React.Component {
     state = {};
