@@ -12,10 +12,6 @@ import PythonTreads from "./components/PythonForum";
 import Footer from "./components/Footer";
 import SignIn from "./components/SignIn";
 import NotFound from "./components/404";
-import Editor from "./components/Textbox";
-import userComment from "./components/TableLeComment"
-import Editor from "./components/Textbox";
-import userComment from "./components/TableLeComment"
 
 class App extends React.Component {
 

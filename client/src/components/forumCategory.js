@@ -31,7 +31,7 @@ class forumCategory extends React.Component {
                     <img alt="logo" src={images.javascript} />
                     <a href="/forum/javascript"> Enter Javascript Forum</a>
                     <br></br>
-                    <span><i className="fas fa-bed"></i> Threadcount: {this.state.Javascript_numberOfThreads}</span>
+                    <span style={{marginLeft: "7.5%"}}><i className="fas fa-bed"></i> Threadcount: {this.state.Javascript_numberOfThreads}</span>
                     <hr></hr>
                 </div>
 
@@ -39,7 +39,7 @@ class forumCategory extends React.Component {
                     <img alt="logo" src={images.php} />
                     <a href="/forum/PHP"> Enter PHP Forum</a>
                     <br></br>
-                    <span><i className="fas fa-bed"></i> Threadcount: {this.state.PHP_numberOfThreads}</span>
+                    <span style={{marginLeft: "7.5%"}}><i className="fas fa-bed"></i> Threadcount: {this.state.PHP_numberOfThreads}</span>
                     <hr></hr>
                 </div>
 
@@ -47,7 +47,7 @@ class forumCategory extends React.Component {
                     <img alt="logo" src={images.python} />
                     <a href="/forum/Python"> Enter Python Forum</a>
                     <br></br>
-                    <span><i className="fas fa-bed"></i> Threadcount: {this.state.Python_numberOfThreads}</span>
+                    <span style={{marginLeft: "7.5%"}}><i className="fas fa-bed"></i> Threadcount: {this.state.Python_numberOfThreads}</span>
                     <hr></hr>
                 </div>
             </div>
