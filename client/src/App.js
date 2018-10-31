@@ -11,7 +11,12 @@ import PHPTreads from "./components/PHPForum";
 import PythonTreads from "./components/PythonForum";
 import Footer from "./components/Footer";
 import SignIn from "./components/SignIn";
+<<<<<<< HEAD
 import NotFound from "./components/404";
+=======
+import Editor from "./components/Textbox";
+import userComment from "./components/TableLeComment"
+>>>>>>> a864ff847afc535495046ca5397f8595a8b1e390
 
 class App extends React.Component {
 
@@ -22,6 +27,7 @@ class App extends React.Component {
           <Jumbotron />
           <Navbar />
           <Route exact path="/" component={SignIn} />
+<<<<<<< HEAD
           <Switch>
             <Route exact path="/" component={ForumCategory} />
             <Route exact path="/forum/Javascript" component={JavascriptTreads} />
@@ -31,6 +37,17 @@ class App extends React.Component {
             <Route exact path="/signup" component={Signup} />
             <Route component={NotFound} />
           </Switch>
+=======
+          <Route exact path="/" component={ForumCategory} />
+          {/* <Route exact path="/forum/:category" component={JavascriptTreads} /> */}
+          <Route exact path="/forum/Javascript" component={JavascriptTreads} />
+          <Route exact path="/forum/Javascript/thread=:id" component={JsThreadContent} />
+          <Route exact path="/forum/PHP" component={PHPTreads} />
+          <Route exact path="/forum/Python" component={PythonTreads} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/table" component={Editor}/>
+          <Route exact path="/REE" component={userComment}/>
+>>>>>>> a864ff847afc535495046ca5397f8595a8b1e390
           <Footer />
         </div>
       </Router>
