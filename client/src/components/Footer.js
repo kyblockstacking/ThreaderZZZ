@@ -8,7 +8,7 @@ let style = {
     left: '0',
     bottom: '0',
     textAlign: 'center',
-    color: '#c6d6c5',
+    color: '#c6d6c5'
   },
   footerBottom: {
     backgroundColor: '#498040',
