@@ -15,7 +15,6 @@ import Logout from './components/Logout';
 import NotFound from './components/404';
 import Profile from './components/Profile';
 import Appointment from './components/Appointment';
-import DeveloperLounge from './components/DeveloperLounge';
 import Layout from "./components/Layout";
 import "./App.css";
 
