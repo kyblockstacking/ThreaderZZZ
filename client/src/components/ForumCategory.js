@@ -85,7 +85,7 @@ class forumCategory extends React.Component {
               padding: '15px',
               borderBottomRightRadius: '10px',
               borderBottomLeftRadius: '10px',
-              marginBottom: '2%',
+              marginBottom: "1em"
             }}
           />
         </div>
