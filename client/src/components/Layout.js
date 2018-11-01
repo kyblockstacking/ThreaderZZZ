@@ -6,54 +6,68 @@ import ChatContainer from './chats/ChatContainer';
 
 
 // if on local host, connect to local host 3001 || connect to myapp heroku
-const socketUrl = 'http://localhost:3000'
+const socketUrl = 'http://localhost:3001/'
 export default class Layout extends Component {
-    constructor(props) {
-        super(props);
+	
+	constructor(props) {
+	  super(props);
+	
+	  this.state = {
+	  	socket:null,
+	  	user:null
+	  };
+	}
 
-        this.state = {
-            socket: null,
-            user: null
-        };
-    }
-    
-    componentWillMount() {
-        this.initSocket();
-    }
+	componentWillMount() {
+		this.initSocket()
+	}
 
-    initSocket = () => {
-        const socket = io(socketUrl);
-        socket.on('connect', () => {
-            console.log("connected");
-        })
-        this.setState({socket});
-    }
+	/*
+	*	Connect to and initializes the socket.
+	*/
+	initSocket = ()=>{
+		const socket = io(socketUrl)
 
-    setUser = (user) => {
-        const {socket} = this.state;
-        socket.emit(USER_CONNECTED, user);
-        this.setState({user});
-    }
+		socket.on('connect', ()=>{
+			console.log("Connected");
+		})
+		
+		this.setState({socket})
+	}
 
-    logout = () => {
-        const { socket } = this.state;
-        socket.emit(LOGOUT);
-        this.setState({user:null});
-    }
+	/*
+	* 	Sets the user property in state 
+	*	@param user {id:number, name:string}
+	*/	
+	setUser = (user)=>{
+		const { socket } = this.state
+		socket.emit(USER_CONNECTED, user);
+		this.setState({user})
+	}
 
-    render () {
-        const { title } = this.props;
-        const { socket, user } = this.state;
-        return (
-            <div className="container">
-                {
-                    !user ?
-                    <LoginForm socket={socket} setUser={this.setUser} />
-                    :
-                    <ChatContainer socket={socket} user={user} logout={this.logout} />
-                }
-            </div>
-        )
-    }
+	/*
+	*	Sets the user property in state to null.
+	*/
+	logout = ()=>{
+		const { socket } = this.state
+		socket.emit(LOGOUT)
+		this.setState({user:null})
 
+	}
+
+
+	render() {
+		const { title } = this.props
+		const { socket, user } = this.state
+		return (
+			<div className="container">
+				{
+					!user ?	
+					<LoginForm socket={socket} setUser={this.setUser} />
+					:
+					<ChatContainer socket={socket} user={user} logout={this.logout}/>
+				}
+			</div>
+		);
+	}
 }

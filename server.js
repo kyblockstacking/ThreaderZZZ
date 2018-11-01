@@ -5,7 +5,8 @@ const path = require('path');
 const PORT = process.env.PORT || 3001;
 const app = express();
 var server = require('http').createServer(app)
-var io = module.exports.io = require('socket.io').listen(server);
+var io = module.exports.io = require('socket.io')(server);
+// var io = module.exports.io = require('socket.io').listen(server);
 // <-- include either the top or bottom -->
 // var io = require('socket.io').listen(server);
 users = [];

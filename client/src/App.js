@@ -27,7 +27,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={ForumCategory} />
             {/* <Layout exact path="/vern" title="Chat App BAby" /> */}
-            <Route exact path="/vern" component={Layout} />
+            <Route exact path="/mentors/chatrooms/:id" component={Layout} />
             <Route exact path="/forum/Javascript" component={JavascriptTreads} />
             <Route exact path="/forum/Javascript/thread=:id" component={JsThreadContent} />
             <Route exact path="/forum/PHP" component={PHPTreads} />
