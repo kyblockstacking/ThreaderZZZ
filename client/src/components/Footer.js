@@ -55,7 +55,7 @@ class footer extends React.Component {
                         ThreaderZZZ is made by Aiden, David, Kevin, Vernie
                 </div>
                     <div>
-                        Contribute to this project's <a href="https://github.com/vedelacruz/project3x`">GitHub</a> <i class="fab fa-github"></i>
+                        Contribute to this project's <a href="https://github.com/vedelacruz/project3x`">GitHub</a> <i className="fab fa-github"></i>
                     </div>
                 </div>
             </div>
