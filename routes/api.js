@@ -154,4 +154,23 @@ router.get("/api/threads/:id", function (req, res) {
   }
 });
 
+
+router.post("/threads/api/threads/", function(req, res) {
+  console.log("hit")
+  var threads = req.body;
+  db.Threads.create(threads).then(function(result) {
+      res.end();
+  })
+});
+
+
+router.post("/comments/api/comments/", function(req, res) {
+  var comments = req.body;
+  db.Comments.create(comments).then(function(result) {
+      res.end();
+  });
+});
+
+
+
 module.exports = router;

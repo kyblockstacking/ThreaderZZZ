@@ -32,8 +32,12 @@ if (process.env.NODE_ENV === 'production') {
 
 const routes = require('./routes/api.js');
 app.use(routes);
-const threadRoute = require("./routes/threads-api-route")
-app.use('/threads',threadRoute);
+
+
+// const threadRoute = require("./routes/threads-api-route")
+// app.use('/threads',threadRoute);
+// const commentsRoute = require("./routes/comments-api-route")
+// app.use('/comments',commentsRoute);
 
 // Send every other request to the React app
 // Define any API routes before this runs

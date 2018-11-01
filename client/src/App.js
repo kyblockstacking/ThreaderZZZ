@@ -11,8 +11,8 @@ import PHPTreads from "./components/PHPForum";
 import PythonTreads from "./components/PythonForum";
 import Footer from "./components/Footer";
 import SignIn from "./components/SignIn";
-import Editor from "./components/Textbox";
-import userComment from "./components/TableOne"
+import ReplyTextbox from "./components/ReplyTextbox";
+import CreateThread from "./components/CreateThread"
 
 class App extends React.Component {
 
@@ -22,6 +22,7 @@ class App extends React.Component {
         <div>
           <Jumbotron />
           <Navbar />
+          <Route exact path="/forum/javascript" component={CreateThread}/>
           <Route exact path="/" component={SignIn} />
           <Route exact path="/" component={ForumCategory} />
           {/* <Route exact path="/forum/:category" component={JavascriptTreads} /> */}
@@ -30,8 +31,7 @@ class App extends React.Component {
           <Route exact path="/forum/PHP" component={PHPTreads} />
           <Route exact path="/forum/Python" component={PythonTreads} />
           <Route exact path="/signup" component={Signup} />
-          <Route exact path="/table" component={Editor}/>
-          <Route exact path="/REE" component={userComment}/>
+          <Route exact path="/forum/Javascript/thread=1" component={ReplyTextbox}/>
           <Footer />
         </div>
       </Router>

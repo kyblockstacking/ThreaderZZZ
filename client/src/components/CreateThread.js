@@ -5,10 +5,7 @@ import "./codeBlock.css";
 import Modal from 'react-modal';
 import axios from "axios";
 
-let createThread = {
-    threadName: "a",
-    threadSummary: ".ql-editor p"
-}
+
 
 class Comment extends Component {
     constructor(props) {
@@ -18,7 +15,7 @@ class Comment extends Component {
             text: "",
             showModal: false
         }
-
+        this.handleChange = this.handleChange.bind(this)
         this.updateInput = this.updateInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -35,6 +32,10 @@ class Comment extends Component {
     updateInput(event) {
         this.setState({ title: event.target.value })
     }
+    handleChange(value) {
+        this.setState({ text: value })    
+        // this.props.onChange(this.state.text)
+      }
     modules = {
         toolbar: [
             [{ 'header': [1, 2, false] }],
@@ -49,17 +50,18 @@ class Comment extends Component {
         'list', 'bullet', 'indent', 'align',
         'link', 'image', 'video', 'code-block'
     ]
-    handleChange(value) {
-        this.setState({ text: value })    
-        // this.props.onChange(this.state.text)
-      }
-
 
     handleSubmit(e) {
         e.preventDefault();
         // On submit of the form, send a POST request with the data to the server.
-        console.log(createThread)
-        axios.post('/api/threads/', createThread)
+        let createThread = {
+            threadName:  this.state.title,
+            threadSummary: this.state.text.replace("<p>", "").replace("</p>", "")
+        }
+        console.log("yoyo", createThread)
+
+
+        axios.post('/threads/api/threads/', createThread)
             .then(function (response) {
                 return response
             }).then(function (body) {
