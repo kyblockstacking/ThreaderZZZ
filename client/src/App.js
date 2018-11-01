@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
-
 import Signup from './components/Signup';
 import Jumbotron from './components/Jumbotron';
 import Navbar from './components/Navbar';
@@ -15,9 +14,11 @@ import SignIn from './components/SignIn';
 import Logout from './components/Logout';
 import NotFound from './components/404';
 import Profile from './components/Profile';
-
 import Appointment from './components/Appointment';
 import DeveloperLounge from './components/DeveloperLounge';
+import Layout from "./components/Layout";
+import "./App.css";
+
 
 class App extends React.Component {
   state = {
@@ -48,16 +49,10 @@ class App extends React.Component {
 
           <Switch>
             <Route exact path="/" component={ForumCategory} />
-            <Route
-              exact
-              path="/forum/Javascript"
-              component={JavascriptTreads}
-            />
-            <Route
-              exact
-              path="/forum/Javascript/thread=:id"
-              component={JsThreadContent}
-            />
+            <Route exact path="/forum/Javascript" component={JavascriptTreads} />
+            <Route exact path="/forum/Javascript/thread=:id" component={JsThreadContent} />
+            {/* <Layout exact path="/vern" title="Chat App BAby" /> */}
+            <Route exact path="/mentors/chatrooms/:id" component={Layout} />
             <Route exact path="/forum/PHP" component={PHPTreads} />
             <Route exact path="/forum/Python" component={PythonTreads} />
             <Route exact path="/signup" component={Signup} />
