@@ -207,7 +207,7 @@ router.get('/auth', (req, res) => {
         }
       })
       .catch((err) => {
-        res.json(err);
+        res.json('hiiiiiiii', err);
       });
   }
 });

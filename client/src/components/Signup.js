@@ -106,6 +106,7 @@ class Signup extends Component {
         .post('/api/signup', { firstName, lastName, userName, email, password })
         .then((response) => {
           if (response.data) {
+            this.props.history.push('/');
             console.log('Account created');
           } else {
             console.log('There was a problem creating your account');
@@ -247,7 +248,7 @@ class Signup extends Component {
           </div>
 
           <button
-            type="button"
+            type="submit"
             value="Submit"
             className="btn btn-lg btn-primary"
             onClick={this.handleSubmit}
