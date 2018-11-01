@@ -4,15 +4,15 @@ var session = require('express-session');
 const path = require('path');
 const PORT = process.env.PORT || 3001;
 const app = express();
-var server = require('http').createServer(app)
-var io = module.exports.io = require('socket.io')(server);
+var server = require('http').createServer(app);
+var io = (module.exports.io = require('socket.io')(server));
 // var io = module.exports.io = require('socket.io').listen(server);
 // <-- include either the top or bottom -->
 // var io = require('socket.io').listen(server);
 users = [];
 connections = [];
 const SocketManager = require('./SocketManager.js');
-io.on('connection', SocketManager); 
+io.on('connection', SocketManager);
 
 const db = require('./models');
 
@@ -48,7 +48,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, './client/build/index.html'));
 });
 
-db.sequelize.sync({ force: true  }).then(function() {
+db.sequelize.sync({ force: false }).then(function() {
   server.listen(PORT, () => {
     console.log(`🌎 ==> Server now on port ${PORT}!`);
   });
