@@ -1,6 +1,17 @@
 import React from "react";
 import axios from "axios";
 
+let style = {
+    threadQuestions: {
+        borderTopRightRadius: "10px",
+        borderTopLeftRadius: "10px",
+        padding: "15px",
+        background: "#2e849e",
+        color: "white",
+        marginBottom: "1em"
+    }
+}
+
 class JsThreadContent extends React.Component {
     state = {
         content: []
@@ -12,9 +23,9 @@ class JsThreadContent extends React.Component {
 
     getContent = () => {
         axios.get(`/api/threads/${this.props.match.params.id}`).then(res => {
-            this.setState({ content: res.data
+            this.setState({
+                content: res.data
             });
-            console.log("kevkev", this.state.content);
         })
     }
 
@@ -36,7 +47,7 @@ class JsThreadContent extends React.Component {
         axios.post("/api/downvote", downVoteData).then(res => {
             this.getContent();
         })
-        
+
     }
 
     totalVotes = (item) => {
@@ -51,10 +62,9 @@ class JsThreadContent extends React.Component {
         let thread = filteredArr.map(item => {
             return (
                 <div key={item.id}>
-                    <h1>{item.replies}</h1>
-                    <button className="btn btn-primary" onClick={() => this.upVote(item)} disabled={content[content.length - 1].notUser}>upvote</button>
-                    <div>{this.totalVotes(item)}</div>
-                    <button className="btn btn-primary active" onClick={() => this.downVote(item)} disabled={content[content.length - 1].notUser}>downvote</button>
+                    <button className="btn btn-primary active" onClick={() => this.upVote(item)} disabled={content[content.length - 1].notUser}><i class="fas fa-chevron-up"></i></button>
+                    <div>{this.totalVotes(item)}&nbsp;&nbsp;{item.replies}</div>
+                    <button className="btn btn-primary active" onClick={() => this.downVote(item)} disabled={content[content.length - 1].notUser}><i class="fas fa-chevron-down"></i></button>
                     <br></br>
                     <hr></hr>
                 </div>
@@ -65,9 +75,13 @@ class JsThreadContent extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{ margin: "5%" }}>
+                <div style={style.threadQuestions}>Thread Questions</div>
                 {this.threadContent()}
-            </div>
+
+                <div style={{ background: "#2e849e", padding: "20px", borderBottomRightRadius: "10px", borderBottomLeftRadius: "10px", marginBottom: "2%" }}></div>
+
+            </div >
         );
     }
 }

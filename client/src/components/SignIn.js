@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 let style = {
     Component: {
@@ -68,7 +69,7 @@ class SignIn extends React.Component {
                 <br></br>
                 <br></br>
                 <a onClick={() => this.forgotPassword()} style={style.forgotPassword}>Forgot Password?</a>
-                <strong><a style={style.register}>Register</a></strong>
+                <Link to="/signup"><strong><a style={style.register}>Register</a></strong></Link>
                 <br></br>
                 <div style={style.button}>Login</div>
                 <br></br>
