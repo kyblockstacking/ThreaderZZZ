@@ -29,7 +29,7 @@ export default class ChatContainer extends Component {
         const {chats } = this.state;
 
         const newChats = reset ? [chat] : [...chats, chat];
-        this.setState({chats:newChats})
+        this.setState({chats:newChats, activeChat:reset ? chat : this.state.activeChat})
         const messageEvent = `${MESSAGE_RECEIVED}-${chat.id} `;
         const typingEvent = `${TYPING}-${chat.id} `;
 
@@ -64,7 +64,6 @@ export default class ChatContainer extends Component {
     }
     render() {
         const { user, logout } = this.props;
-        //from yt
         const { chats, activeChat } = this.state
 
         return (
