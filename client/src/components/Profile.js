@@ -27,24 +27,24 @@ class Profile extends Component {
 
     return (
       <div className="container">
-        <div className="card m-5">
+        <div className="card m-5 w-50">
           <div className="card-header">Profile</div>
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
               <strong>Name: </strong>
-              {`${firstName} ${lastName}`}
+              <div className="float-right">{`${firstName} ${lastName}`}</div>
             </li>
             <li className="list-group-item">
               <strong>Username: </strong>
-              {userName}
+              <div className="float-right">{userName}</div>
             </li>
             <li className="list-group-item">
               <strong>Email: </strong>
-              {email}
+              <div className="float-right">{email}</div>
             </li>
             <li className="list-group-item">
               <strong>Points: </strong>
-              {upvote - downvote}
+              <div className="float-right">{upvote - downvote}</div>
             </li>
           </ul>
         </div>
