@@ -14,20 +14,19 @@ import SignIn from "./components/SignIn";
 import NotFound from "./components/404";
 
 import Appointment from "./components/Appointment";
-import DeveloperLounge from "./components/DeveloperLounge";
 
 class App extends React.Component {
 
   render() {
     return (
       <Router>
-        <div style={{background: "#ededed"}}>
+        <div style={{ background: "#ededed" }}>
           <Jumbotron />
           <Navbar />
           <Route exact path="/" component={SignIn} />
 
+          {/* TESTING COMPONENTS ON localhost/port/test */}
           <Route exact path="/test" component={Appointment} />
-          <Route exact path="/test" component={DeveloperLounge} />
 
           <Switch>
             <Route exact path="/" component={ForumCategory} />

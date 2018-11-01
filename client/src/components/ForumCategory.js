@@ -37,7 +37,7 @@ class forumCategory extends React.Component {
     render() {
         return (
             <div className="container">
-                <div className="hello" style={{width: "60%", background: "white", borderTopRightRadius: "10px", borderTopLeftRadius: "10px", borderBottomRightRadius: "10px", borderBottomLeftRadius: "10px"}}>
+                <div className="hello" style={{width: "100%", background: "white", borderTopRightRadius: "10px", borderTopLeftRadius: "10px", borderBottomRightRadius: "10px", borderBottomLeftRadius: "10px"}}>
                     <div style={style.forumCategory}>Forum Categories</div>
                     <div style={{marginTop: "2%"}}>
                         <img alt="logo" src={images.javascript} />
@@ -61,7 +61,7 @@ class forumCategory extends React.Component {
                         <br></br>
                         <span style={{ marginLeft: "11%" }}><i className="fas fa-bed"></i> Threadcount: {this.state.Python_numberOfThreads}</span>
                     </div>
-                    <div style={{background: "#2e849e", padding: "15px", borderBottomRightRadius: "10px", borderBottomLeftRadius: "10px", marginBottom: "2%"}}></div>
+                    <div style={{background: "#2e849e", padding: "20px", borderBottomRightRadius: "10px", borderBottomLeftRadius: "10px", marginBottom: "2%"}}></div>
                 </div>
             </div>
         )
