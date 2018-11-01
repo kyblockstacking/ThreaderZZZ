@@ -1,7 +1,7 @@
 import Signup from './components/Signup';
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
+import Layout from "./components/Layout";
 import Jumbotron from "./components/Jumbotron";
 import Navbar from "./components/Navbar";
 import ForumCategory from "./components/ForumCategory";
@@ -12,6 +12,8 @@ import PythonTreads from "./components/PythonForum";
 import Footer from "./components/Footer";
 import SignIn from "./components/SignIn";
 import NotFound from "./components/404";
+import "./App.css";
+
 
 class App extends React.Component {
 
@@ -22,9 +24,10 @@ class App extends React.Component {
           <Jumbotron />
           <Navbar />
           <Route exact path="/" component={SignIn} />
-
           <Switch>
             <Route exact path="/" component={ForumCategory} />
+            {/* <Layout exact path="/vern" title="Chat App BAby" /> */}
+            <Route exact path="/vern" component={Layout} />
             <Route exact path="/forum/Javascript" component={JavascriptTreads} />
             <Route exact path="/forum/Javascript/thread=:id" component={JsThreadContent} />
             <Route exact path="/forum/PHP" component={PHPTreads} />
