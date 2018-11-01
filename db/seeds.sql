@@ -12,7 +12,7 @@ VALUES
 ("php"),
 ("python");
 
-INSERT INTO threads (CategoryId, threadName)
+INSERT INTO threads (CategoryId, threadName, threadSummary)
 VALUES 
 (1, "anonymous functions"),
 (1, "callback functions"),

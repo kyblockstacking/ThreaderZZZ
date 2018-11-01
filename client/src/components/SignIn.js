@@ -59,7 +59,7 @@ class SignIn extends React.Component {
     render() {
         return (
             <div style={style.Component} className="SignInContainer">
-            <img style={style.banner} src="/images/banner.jpg"></img>
+            <img style={style.banner} src="/images/banner.jpg" alt="banner"></img>
                 <div style={style.SignIn}>Username &nbsp;<input style={style.inputBox} placeholder=" Username"></input></div>
                 <br></br>
                 <br></br>

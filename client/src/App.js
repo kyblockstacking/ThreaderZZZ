@@ -12,7 +12,7 @@ import PythonTreads from "./components/PythonForum";
 import Footer from "./components/Footer";
 import SignIn from "./components/SignIn";
 import Editor from "./components/Textbox";
-import userComment from "./components/TableLeComment"
+import userComment from "./components/TableOne"
 
 class App extends React.Component {
 
