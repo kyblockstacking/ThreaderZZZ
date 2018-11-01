@@ -14,6 +14,7 @@ import Footer from './components/Footer';
 import SignIn from './components/SignIn';
 import Logout from './components/Logout';
 import NotFound from './components/404';
+import Profile from './components/Profile';
 
 class App extends React.Component {
   state = {
@@ -53,7 +54,7 @@ class App extends React.Component {
             />
             <Route exact path="/forum/PHP" component={PHPTreads} />
             <Route exact path="/forum/Python" component={PythonTreads} />
-            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/api/profile/:user" component={Profile} />
             <Route component={NotFound} />
           </Switch>
 

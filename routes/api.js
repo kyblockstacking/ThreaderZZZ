@@ -185,7 +185,6 @@ router.get('/auth', (req, res) => {
     })
       .then((user) => {
         if (user !== null) {
-          console.log('HERE IT IS WE HAVE A COOKIE');
           req.session.user = {
             firstName: user.firstName,
             username: user.userName,
@@ -195,8 +194,6 @@ router.get('/auth', (req, res) => {
           };
           res.json(user);
         } else {
-          console.log('NOPE, DONT GOT NO COOKIE');
-
           res.clearCookie('token');
         }
       })
@@ -204,6 +201,27 @@ router.get('/auth', (req, res) => {
         res.json(err);
       });
   }
+});
+
+router.get('/api/profile/:user', (req, res) => {
+  db.User.findOne({
+    where: {
+      userName: req.params.user,
+    },
+  })
+    .then((user) => {
+      res.json({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        userName: user.userName,
+        email: user.email,
+        upvote: user.upvote,
+        downvote: user.downvote,
+      });
+    })
+    .catch((error) => {
+      res.send(error);
+    });
 });
 
 module.exports = router;
