@@ -19,7 +19,6 @@ import DeveloperLounge from './components/DeveloperLounge';
 import Layout from "./components/Layout";
 import "./App.css";
 
-
 class App extends React.Component {
   state = {
     userData: {},
@@ -35,7 +34,9 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div style={{ background: '#ededed' }}>
+
+        <div style={{ background: "#ededed" }}>
+
           <Jumbotron />
           <Navbar />
           <Route
@@ -44,8 +45,8 @@ class App extends React.Component {
             component={this.state.userData.user ? Logout : SignIn}
           />
 
+          {/* TESTING COMPONENTS ON localhost/port/test */}
           <Route exact path="/test" component={Appointment} />
-          <Route exact path="/test" component={DeveloperLounge} />
 
           <Switch>
             <Route exact path="/" component={ForumCategory} />
