@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
+
 
 let style = {
   Component: {
@@ -59,9 +61,33 @@ class SignIn extends React.Component {
   constructor(props) {
     super(props);
 
+
     this.initialState = {
       userName: '',
       password: '',
+
+    forgotPassword = () => {
+        alert("haha, what a loser")
+    }
+
+    render() {
+        return (
+            <div style={style.Component} className="SignInContainer">
+            <img style={style.banner} src="/images/banner.jpg"></img>
+                <div style={style.SignIn}>Username &nbsp;<input style={style.inputBox} placeholder=" Username"></input></div>
+                <br></br>
+                <br></br>
+                <div style={style.SignIn}>Password &nbsp;<input type="password" style={style.inputBox} placeholder=" Password"></input></div>
+                <br></br>
+                <br></br>
+                <a onClick={() => this.forgotPassword()} style={style.forgotPassword}>Forgot Password?</a>
+                <Link to="/signup"><strong><a style={style.register}>Register</a></strong></Link>
+                <br></br>
+                <div style={style.button}>Login</div>
+                <br></br>
+            </div>
+        );
+
     };
     this.state = this.initialState;
   }

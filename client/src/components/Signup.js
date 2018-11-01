@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 const styles = {
   small: {
@@ -113,7 +114,7 @@ class Signup extends Component {
         })
         .catch((error) => {
           console.log(error);
-        });
+        })
     }
   };
 

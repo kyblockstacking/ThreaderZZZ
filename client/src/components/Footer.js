@@ -54,6 +54,7 @@ class footer extends React.Component {
           <h6 style={style.noMargin}>React</h6>
         </div>
 
+
         <div style={style.footerBottom} className="footerBottom">
           <div>ThreaderZZZ is made by Aidan, David, Kevin, Vernie</div>
           <div>

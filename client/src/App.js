@@ -16,7 +16,7 @@ import Logout from './components/Logout';
 import NotFound from './components/404';
 
 import Appointment from "./components/Appointment";
-import DeveloperLounge from "./components/DeveloperLounge";
+// import ReplyToThread from "./components/ReplyToThread";
 
 class App extends React.Component {
   state = {
@@ -33,7 +33,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div style={{background: "#ededed"}}>
+        <div style={{ background: "#ededed" }}>
           <Jumbotron />
           <Navbar />
           <Route
@@ -42,8 +42,9 @@ class App extends React.Component {
             component={this.state.userData.user ? Logout : SignIn}
           />
 
+          {/* TESTING COMPONENTS on localhost:port/test */}
           <Route exact path="/test" component={Appointment} />
-          <Route exact path="/test" component={DeveloperLounge} />
+          {/* <Route exact path="/test" component={ReplyToThread} /> */}
 
           <Switch>
             <Route exact path="/" component={ForumCategory} />
