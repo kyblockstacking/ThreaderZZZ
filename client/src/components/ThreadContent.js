@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-class JsThreadContent extends React.Component {
+class ThreadContent extends React.Component {
     state = {
         content: []
     };
@@ -14,7 +14,6 @@ class JsThreadContent extends React.Component {
         axios.get(`/api/threads/${this.props.match.params.id}`).then(res => {
             this.setState({ content: res.data
             });
-            console.log("kevkev", this.state.content);
         })
     }
 
@@ -72,4 +71,4 @@ class JsThreadContent extends React.Component {
     }
 }
 
-export default JsThreadContent;
+export default ThreadContent;

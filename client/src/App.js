@@ -4,11 +4,8 @@ import axios from 'axios';
 import Signup from './components/Signup';
 import Jumbotron from './components/Jumbotron';
 import Navbar from './components/Navbar';
-import ForumCategory from './components/ForumCategory';
-import JavascriptTreads from './components/JavascriptForum.js';
-import JsThreadContent from './components/JavascriptThreadContent';
-import PHPTreads from './components/PHPForum';
-import PythonTreads from './components/PythonForum';
+import Forum from './components/Forum';
+import ThreadContent from './components/ThreadContent';
 import Footer from './components/Footer';
 import SignIn from './components/SignIn';
 import Logout from './components/Logout';
@@ -18,8 +15,9 @@ import Appointment from './components/Appointment';
 import Layout from "./components/Layout";
 // import "./App.css";
 import ReplyTextbox from "./components/ReplyTextbox";
-import CreateThread from "./components/CreateThread";
+// import CreateThread from "./components/CreateThread";
 import AboutUs from "./components/AboutUs";
+import Topics from './components/Topics';
 
 class App extends React.Component {
   state = {
@@ -46,14 +44,12 @@ class App extends React.Component {
           <Route exact path="/test" component={Appointment} />
 
           <Switch>
-            <Route exact path="/" component={ForumCategory} />
-            <Route exact path="/forum/Javascript" component={JavascriptTreads} />
-            <Route exact path="/forum/Javascript/thread=:id" component={JsThreadContent} />
+            <Route exact path="/" component={Forum} />
+            <Route exact path="/forum/:category" component={Topics} />
             <Route exact path="/AboutUs" component={AboutUs} />
             {/* <Layout exact path="/vern" title="Chat App BAby" /> */}
             <Route exact path="/mentors/chatrooms/:id" component={Layout} />
-            <Route exact path="/forum/PHP" component={PHPTreads} />
-            <Route exact path="/forum/Python" component={PythonTreads} />
+            <Route exact path="/forum/category/thread=:id" component={ThreadContent} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/api/profile/:user" component={Profile} />
             <Route component={NotFound} />

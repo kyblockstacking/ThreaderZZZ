@@ -3,18 +3,16 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import CreateThread from "./CreateThread"
 
-class javascriptForum extends React.Component {
+class Topic extends React.Component {
     state = {
         threadsArray: []
     };
 
     componentDidMount() {
-        axios.get("/api/threads").then(res => {
-            console.log(res);
+        axios.get(`/api/${this.props.match.params.category}`).then(res => {
             this.setState({ threadsArray: res.data });
         })
     }
-
 
     render() {
         return (
@@ -36,7 +34,7 @@ class javascriptForum extends React.Component {
                             border: "2px solid #2e849e",
                             padding: "1em"
                         }} key={items.id}>
-                            <Link to={`/forum/Javascript/thread=${items.id}`}>
+                            <Link to={`/forum/category/thread=${items.id}`}>
                                 {items.threadName}
                                 <br></br>
                                 <span>{items.Comments.length} replies</span>
@@ -51,4 +49,4 @@ class javascriptForum extends React.Component {
     };
 };
 
-export default javascriptForum;
+export default Topic;

@@ -56,10 +56,9 @@ class Comment extends Component {
         // On submit of the form, send a POST request with the data to the server.
         let createThread = {
             threadName: this.state.title,
-            threadSummary: this.state.text.replace("<p>", "").replace("</p>", "")
+            threadSummary: this.state.text.replace("<p>", "").replace("</p>", ""),
+            CategoryId: 1
         }
-        console.log("yoyo", createThread)
-
 
         axios.post('/threads/api/threads/', createThread)
             .then(function (response) {

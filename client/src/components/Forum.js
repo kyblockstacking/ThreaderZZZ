@@ -9,7 +9,7 @@ let images = {
 };
 
 let style = {
-  forumCategory: {
+  forum: {
     borderTopRightRadius: '10px',
     borderTopLeftRadius: '10px',
     padding: '15px',
@@ -18,7 +18,7 @@ let style = {
   },
 };
 
-class forumCategory extends React.Component {
+class forum extends React.Component {
   state = {
     Javascript_numberOfThreads: '',
     PHP_numberOfThreads: '',
@@ -26,11 +26,10 @@ class forumCategory extends React.Component {
   };
 
   componentDidMount() {
-    axios.get(`/api/realthreads`).then((res) => {
-      console.log(res.data);
-      this.setState({ Javascript_numberOfThreads: res.data[0].Threads.length });
-      this.setState({ PHP_numberOfThreads: res.data[1].Threads.length });
-      this.setState({ Python_numberOfThreads: res.data[2].Threads.length });
+    axios.get("/threadCount").then((res) => {
+      this.setState(res.data[0] ? { Javascript_numberOfThreads: res.data[0].Threads.length } : {});
+      this.setState(res.data[1] ? { PHP_numberOfThreads: res.data[1].Threads.length } : {});
+      this.setState(res.data[2] ? { Python_numberOfThreads: res.data[2].Threads.length } : {});
     });
   }
 
@@ -48,10 +47,10 @@ class forumCategory extends React.Component {
             borderBottomLeftRadius: '10px',
           }}
         >
-          <div style={style.forumCategory}>Forum Categories</div>
+          <div style={style.forum}>Forum Categories</div>
           <div style={{ marginTop: '2%' }}>
             <img style={{ paddingLeft: "1em", paddingRight: "1em" }} alt="logo" src={images.javascript} />
-            <Link style={{ fontSize: "1.5em" }} to="/forum/javascript">Enter Javascript Forum</Link>
+            <Link style={{ fontSize: "1.5em" }} to="/forum/1">Enter Javascript Forum</Link>
             <br />
             <span style={{ marginLeft: '9%', color: "#65737e", cursor: "default" }}>
               <i className="fas fa-bed" /> Threadcount:{' '}
@@ -62,7 +61,7 @@ class forumCategory extends React.Component {
 
           <div>
             <img style={{ paddingLeft: "1em", paddingRight: "1em" }} alt="logo" src={images.php} />
-            <Link style={{ fontSize: "1.5em" }} to="/forum/PHP">Enter PHP Forum</Link>
+            <Link style={{ fontSize: "1.5em" }} to="/forum/2">Enter PHP Forum</Link>
             <br />
             <span style={{ marginLeft: '9%', color: "#65737e", cursor: "default" }}>
               <i className="fas fa-bed" /> Threadcount:{' '}
@@ -73,7 +72,7 @@ class forumCategory extends React.Component {
 
           <div>
             <img style={{ paddingLeft: "1em", paddingRight: "1em" }} alt="logo" src={images.python} />
-            <Link style={{ fontSize: "1.5em" }} to="/forum/Python">Enter Python Forum</Link>
+            <Link style={{ fontSize: "1.5em" }} to="/forum/3">Enter Python Forum</Link>
             <br />
             <span style={{ marginLeft: '9%', color: "#65737e", cursor: "default" }}>
               <i className="fas fa-bed" /> Threadcount:{' '}
@@ -95,4 +94,4 @@ class forumCategory extends React.Component {
   }
 }
 
-export default forumCategory;
+export default forum;
