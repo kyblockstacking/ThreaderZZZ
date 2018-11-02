@@ -18,7 +18,8 @@ import Appointment from './components/Appointment';
 import Layout from "./components/Layout";
 import "./App.css";
 import ReplyTextbox from "./components/ReplyTextbox";
-import CreateThread from "./components/CreateThread"
+import CreateThread from "./components/CreateThread";
+import AboutUs from "./components/AboutUs";
 
 class App extends React.Component {
   state = {
@@ -48,6 +49,7 @@ class App extends React.Component {
             <Route exact path="/" component={ForumCategory} />
             <Route exact path="/forum/Javascript" component={JavascriptTreads} />
             <Route exact path="/forum/Javascript/thread=:id" component={JsThreadContent} />
+            <Route exact path="/AboutUs" component={AboutUs} />
             {/* <Layout exact path="/vern" title="Chat App BAby" /> */}
             <Route exact path="/mentors/chatrooms/:id" component={Layout} />
             <Route exact path="/forum/PHP" component={PHPTreads} />
@@ -56,6 +58,9 @@ class App extends React.Component {
             <Route exact path="/api/profile/:user" component={Profile} />
             <Route component={NotFound} />
           </Switch>
+
+          <Route exact path="/forum/javascript" component={CreateThread} />
+
           <Route exact path="/forum/Javascript/thread=1" component={ReplyTextbox} />
           <Footer />
         </div>
