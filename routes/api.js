@@ -2,7 +2,7 @@ const router = require('express').Router();
 const db = require('../models');
 //remember "/" is being used by express.static
 
-router.get('/categories/:thread', function(req, res) {
+router.get('/categories/:thread', function (req, res) {
   if (req.session.user) {
     //you can post and vote
   } else {
@@ -70,7 +70,7 @@ router.post('/api/signup', (req, res) => {
   }
 });
 
-router.get('/logout', function(req, res) {
+router.get('/logout', function (req, res) {
   res.clearCookie('token');
   req.session.destroy();
 
@@ -78,7 +78,7 @@ router.get('/logout', function(req, res) {
 });
 
 //routes for buttons (e.g. voting)
-router.post('/api/upvote', function(req, res) {
+router.post('/api/upvote', function (req, res) {
   console.log('hi', req.body);
   db.Comments.update(
     {
@@ -95,7 +95,7 @@ router.post('/api/upvote', function(req, res) {
   });
 });
 
-router.post('/api/downvote', function(req, res) {
+router.post('/api/downvote', function (req, res) {
   console.log('buh', req.body);
   db.Comments.update(
     {
@@ -113,7 +113,7 @@ router.post('/api/downvote', function(req, res) {
 });
 
 //hardcoded for Javascript threads
-router.get('/api/threads', function(req, res) {
+router.get('/api/threads', function (req, res) {
   db.Threads.findAll({
     include: [db.Comments],
     where: {
@@ -125,7 +125,7 @@ router.get('/api/threads', function(req, res) {
   });
 });
 
-router.get('/api/realthreads', function(req, res) {
+router.get('/api/realthreads', function (req, res) {
   db.Category.findAll({
     include: [db.Threads],
   }).then((results) => {
@@ -135,11 +135,12 @@ router.get('/api/realthreads', function(req, res) {
 });
 
 //dynamically coded for javascript thread replies
-router.get('/api/threads/:id', function(req, res) {
+router.get('/api/threads/:id', function (req, res) {
   db.Comments.findAll({
     where: {
-      ThreadId: req.params.id,
+      ThreadId: req.params.id
     },
+    // include: [db.User]
   }).then((results) => {
     console.log(results);
     res.json(results);
@@ -234,19 +235,19 @@ router.get('/api/profile/:user', (req, res) => {
 });
 
 
-router.post("/threads/api/threads/", function(req, res) {
+router.post("/threads/api/threads/", function (req, res) {
   console.log("hit")
   var threads = req.body;
-  db.Threads.create(threads).then(function(result) {
-      res.end();
+  db.Threads.create(threads).then(function (result) {
+    res.end();
   })
 });
 
 
-router.post("/comments/api/comments/", function(req, res) {
+router.post("/comments/api/comments/", function (req, res) {
   var comments = req.body;
-  db.Comments.create(comments).then(function(result) {
-      res.end();
+  db.Comments.create(comments).then(function (result) {
+    res.end();
   });
 });
 

@@ -17,8 +17,6 @@ import Profile from './components/Profile';
 import Appointment from './components/Appointment';
 import Layout from "./components/Layout";
 // import "./App.css";
-import ReplyTextbox from "./components/ReplyTextbox";
-import CreateThread from "./components/CreateThread";
 import AboutUs from "./components/AboutUs";
 
 class App extends React.Component {
@@ -59,7 +57,7 @@ class App extends React.Component {
             <Route component={NotFound} />
           </Switch>
 
-          <Route exact path="/forum/Javascript/thread=1" component={ReplyTextbox} />
+          {/* <Route exact path="/forum/Javascript/thread=1" component={ReplyTextbox} /> */}
           <Footer />
         </div>
       </Router>
