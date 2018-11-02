@@ -36,7 +36,7 @@ class Topic extends React.Component {
                         }} key={items.id}>
                             <span style={{ fontSize: "0.75em", color: "lightgray" }}><i className="far fa-clipboard">&nbsp;</i>Posted By: 'USERNAME' at {items.submitDate}</span>
                             <br></br>
-                            <Link style={{ fontSize: "1.75em" }} to={`/forum/Javascript/thread=${items.id}`}>
+                            <Link style={{ fontSize: "1.75em" }} to={`/forum/category/thread=${items.id}`}>
                                 {items.threadName}
                             </Link>
                             <br></br>
