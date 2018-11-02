@@ -66,7 +66,7 @@ class Editor extends Component {
                         </ReactQuill>
                         <div className="container">
                             <div style={{ marginTop: "0.5em", float: "right" }}>
-                                <div style={{ color: "white", background: "teal", borderRadius: "10px", padding: "0.5em" }} onClick={this.handleSubmit}>Reply</div>
+                                <button type="submit" style={{ color: "white", background: "teal", borderRadius: "10px", padding: "0.5em" }} onClick={this.handleSubmit} disabled={!this.props.authenticated}>Reply</button>
                             </div>
                         </div>
                     </div>
