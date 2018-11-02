@@ -65,10 +65,9 @@ import axios from "axios";
                             </ReactQuill>
                             <div className="container">
                                 <div>
-                                    <input type="submit" onClick={this.handleSubmit} />
+                                    <button type="submit" onClick={this.handleSubmit} disabled={!this.props.authenticated}>Submit</button>
                                 </div>
                             </div>
-                            
                     </div>
                 </form>
             </div>

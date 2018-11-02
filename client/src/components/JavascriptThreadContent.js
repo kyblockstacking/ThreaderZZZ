@@ -48,13 +48,13 @@ class JsThreadContent extends React.Component {
         let filteredArr = this.state.content.filter(item => {
             return (item.id);
         })
-        let thread = filteredArr.map(item => {
+        let thread = filteredArr.map((item, i) => {
             return (
-                <div key={item.id}>
+                <div key={i}>
                     <h1>{item.replies}</h1>
-                    <button className="btn btn-primary" onClick={() => this.upVote(item)} disabled={content[content.length - 1].notUser}>upvote</button>
+                    <button className="btn btn-primary" onClick={() => this.upVote(item)} disabled={!this.props.authenticated}>upvote</button>
                     <div>{this.totalVotes(item)}</div>
-                    <button className="btn btn-primary active" onClick={() => this.downVote(item)} disabled={content[content.length - 1].notUser}>downvote</button>
+                    <button className="btn btn-primary active" onClick={() => this.downVote(item)} disabled={!this.props.authenticated}>downvote</button>
                     <br></br>
                     <hr></hr>
                 </div>

@@ -44,7 +44,6 @@ class App extends React.Component {
     });
   };
 
-
   render() {
     if (!this.state.loaded) {
       return null;
@@ -76,7 +75,8 @@ class App extends React.Component {
             <Route
               exact
               path="/forum/Javascript/thread=:id"
-              component={JsThreadContent}
+              render={(props) => <JsThreadContent {...props} 
+              authenticated={this.state.authenticated} />} />
             />
             {/* <Layout exact path="/vern" title="Chat App BAby" /> */}
             <Route exact path="/mentors/chatrooms/:id" component={Layout} />
@@ -91,7 +91,8 @@ class App extends React.Component {
           <Route
             exact
             path="/forum/Javascript/thread=1"
-            component={ReplyTextbox}
+            render={(props) => <ReplyTextbox {...props} 
+            authenticated={this.state.authenticated} />}
           />
           <Footer />
         </div>

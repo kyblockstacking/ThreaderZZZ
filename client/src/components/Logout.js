@@ -61,7 +61,7 @@ class SignIn extends React.Component {
         <img style={style.banner} src="/images/banner.jpg" alt="" />
         <form>
           <div style={style.SignIn}>
-            {`Welcome back ${this.state.userData.firstName}`}
+            {`Welcome ${this.state.userData.firstName}`}
           </div>
           <button
             type="submit"
