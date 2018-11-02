@@ -2,6 +2,9 @@ const router = require('express').Router();
 const db = require('../models');
 //remember "/" is being used by express.static
 
+let loggedIn = false;
+
+
 router.get('/categories/:thread', function(req, res) {
   if (req.session.user) {
     //you can post and vote
@@ -37,18 +40,18 @@ router.post('/api/signup', (req, res) => {
           });
           //create login
           db.User.create(req.body)
-            .then((data) => {
+            .then((user) => {
               //  *STILL NEEDED* redirect to where UI makes sense
-
+              loggedIn = true;
               req.session.user = {
                 firstName: user.firstName,
                 username: user.userName,
                 admin: user.admin,
                 user: user.user,
                 id: user.id,
+                loggedIn: loggedIn,
               };
-
-              res.json(data);
+              res.json(req.session.user);
             })
             .catch((err) => {
               res.json(err);
@@ -71,15 +74,14 @@ router.post('/api/signup', (req, res) => {
 });
 
 router.get('/logout', function(req, res) {
+  loggedIn = false;
   res.clearCookie('token');
   req.session.destroy();
-
-  res.redirect('/');
+  res.end();
 });
 
 //routes for buttons (e.g. voting)
 router.post('/api/upvote', function(req, res) {
-  console.log('hi', req.body);
   db.Comments.update(
     {
       upvotes: req.body.newUpVoteCount,
@@ -90,13 +92,11 @@ router.post('/api/upvote', function(req, res) {
       },
     },
   ).then((results) => {
-    console.log(results);
     res.status(200).json(results);
   });
 });
 
 router.post('/api/downvote', function(req, res) {
-  console.log('buh', req.body);
   db.Comments.update(
     {
       downvotes: req.body.newDownVoteCount,
@@ -107,7 +107,6 @@ router.post('/api/downvote', function(req, res) {
       },
     },
   ).then((results) => {
-    console.log(results);
     return res.status(200).json(results);
   });
 });
@@ -120,7 +119,6 @@ router.get('/api/threads', function(req, res) {
       CategoryId: 1,
     },
   }).then((results) => {
-    console.log(results);
     res.json(results);
   });
 });
@@ -129,7 +127,6 @@ router.get('/api/realthreads', function(req, res) {
   db.Category.findAll({
     include: [db.Threads],
   }).then((results) => {
-    console.log(results);
     res.json(results);
   });
 });
@@ -141,7 +138,6 @@ router.get('/api/threads/:id', function(req, res) {
       ThreadId: req.params.id,
     },
   }).then((results) => {
-    console.log(results);
     res.json(results);
   });
 });
@@ -154,20 +150,23 @@ router.post('/login', (req, res) => {
     },
   })
     .then((user) => {
+      loggedIn = true;
       req.session.user = {
         firstName: user.firstName,
         username: user.userName,
         admin: user.admin,
         user: user.user,
         id: user.id,
+        loggedIn: loggedIn,
       };
       const token = 't' + Math.random();
+      res.json(req.session.user);
       res.cookie('token', token, {
         expires: new Date(Date.now() + 999999999),
       });
+
       db.User.update({ token: token }, { where: { id: user.id } }).then(
         (data) => {
-          res.json(req.session.user);
         },
       );
     })
@@ -184,6 +183,7 @@ router.get('/auth', (req, res) => {
       admin: req.session.user.admin,
       user: req.session.user.user,
       id: req.session.user.id,
+      loggedIn: loggedIn,
     });
   } else if (req.headers.cookie.indexOf('token=') !== -1) {
     const cookie = req.headers.cookie.match(/(?<=token=)[^ ;]*/)[0];
@@ -200,15 +200,19 @@ router.get('/auth', (req, res) => {
             admin: user.admin,
             user: user.user,
             id: user.id,
+            loggedIn: loggedIn,
           };
-          res.json(user);
+          res.json(req.session.user);
         } else {
           res.clearCookie('token');
+          res.end();
         }
       })
       .catch((err) => {
-        res.json('hiiiiiiii', err);
+        res.json(err);
       });
+  } else {
+    res.end();
   }
 });
 
@@ -233,23 +237,18 @@ router.get('/api/profile/:user', (req, res) => {
     });
 });
 
-
-router.post("/threads/api/threads/", function(req, res) {
-  console.log("hit")
+router.post('/threads/api/threads/', function(req, res) {
   var threads = req.body;
   db.Threads.create(threads).then(function(result) {
-      res.end();
-  })
-});
-
-
-router.post("/comments/api/comments/", function(req, res) {
-  var comments = req.body;
-  db.Comments.create(comments).then(function(result) {
-      res.end();
+    res.end();
   });
 });
 
-
+router.post('/comments/api/comments/', function(req, res) {
+  var comments = req.body;
+  db.Comments.create(comments).then(function(result) {
+    res.end();
+  });
+});
 
 module.exports = router;

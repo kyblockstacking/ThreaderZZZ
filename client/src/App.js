@@ -15,35 +15,52 @@ import Logout from './components/Logout';
 import NotFound from './components/404';
 import Profile from './components/Profile';
 import Appointment from './components/Appointment';
-import Layout from "./components/Layout";
-import "./App.css";
-import ReplyTextbox from "./components/ReplyTextbox";
-import CreateThread from "./components/CreateThread"
+import Layout from './components/Layout';
+import './App.css';
+import ReplyTextbox from './components/ReplyTextbox';
+import CreateThread from './components/CreateThread';
 
 class App extends React.Component {
   state = {
     userData: {},
+    authenticated: false,
+    loaded: false,
   };
+
   componentDidMount() {
     axios.get('/auth').then((res) => {
       this.setState({
         userData: res.data,
+        loaded: true,
+        authenticated: res.data.loggedIn,
       });
     });
   }
 
+  setLogin = (user) => {
+    this.setState({
+      authenticated: true,
+      userData: user,
+    });
+  };
+
+
   render() {
+    if (!this.state.loaded) {
+      return null;
+    }
+
     return (
       <Router>
-
-        <div style={{ background: "#ededed" }}>
-
+        <div style={{ background: '#ededed' }}>
           <Jumbotron />
           <Navbar />
           <Route
             exact
             path="/"
-            component={this.state.userData.user ? Logout : SignIn}
+            render={this.state.userData.user ? 
+            (props) => <Logout {...props} setLogin={this.setLogin} /> : 
+            (props) => <SignIn {...props} setLogin={this.setLogin} error={this.state.userData} />}
           />
 
           {/* TESTING COMPONENTS ON localhost/port/test */}
@@ -51,18 +68,31 @@ class App extends React.Component {
 
           <Switch>
             <Route exact path="/" component={ForumCategory} />
-            <Route exact path="/forum/Javascript" component={JavascriptTreads} />
-            <Route exact path="/forum/Javascript/thread=:id" component={JsThreadContent} />
+            <Route
+              exact
+              path="/forum/Javascript"
+              component={JavascriptTreads}
+            />
+            <Route
+              exact
+              path="/forum/Javascript/thread=:id"
+              component={JsThreadContent}
+            />
             {/* <Layout exact path="/vern" title="Chat App BAby" /> */}
             <Route exact path="/mentors/chatrooms/:id" component={Layout} />
             <Route exact path="/forum/PHP" component={PHPTreads} />
             <Route exact path="/forum/Python" component={PythonTreads} />
-            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/signup" 
+              render={(props) => <Signup {...props} setLogin={this.setLogin} />} />
             <Route exact path="/api/profile/:user" component={Profile} />
             <Route component={NotFound} />
           </Switch>
-          <Route exact path="/forum/javascript" component={CreateThread}/>
-          <Route exact path="/forum/Javascript/thread=1" component={ReplyTextbox}/>
+          <Route exact path="/forum/javascript" component={CreateThread} />
+          <Route
+            exact
+            path="/forum/Javascript/thread=1"
+            component={ReplyTextbox}
+          />
           <Footer />
         </div>
       </Router>

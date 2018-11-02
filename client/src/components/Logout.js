@@ -43,11 +43,12 @@ class SignIn extends React.Component {
     });
   }
 
-  handleSubmit = () => {
+  handleSubmit = (event) => {
+    event.preventDefault();
     axios
       .get('/logout')
       .then((response) => {
-        console.log(response);
+        this.props.setLogin(response.data);
       })
       .catch((error) => {
         console.log(error);
