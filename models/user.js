@@ -32,6 +32,7 @@ module.exports = function(sequelize, DataTypes) {
     User.hasMany(models.Threads);
     User.hasMany(models.Comments);
     User.hasMany(models.VoteAlready);
+    User.hasMany(models.Email);
   };
 
   return User;
