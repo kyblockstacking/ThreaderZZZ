@@ -88,7 +88,7 @@ class SignIn extends React.Component {
       .catch((error) => {
         console.log(error);
       });
-    this.setState(this.initialState);
+    // this.setState(this.initialState);
   };
 
   render() {
