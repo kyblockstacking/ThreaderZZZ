@@ -34,13 +34,14 @@ class Topic extends React.Component {
                             border: "2px solid #2e849e",
                             padding: "1em"
                         }} key={items.id}>
-                            <Link to={`/forum/category/thread=${items.id}`}>
+                            <span style={{ fontSize: "0.75em", color: "lightgray" }}><i className="far fa-clipboard">&nbsp;</i>Posted By: 'USERNAME' at {items.submitDate}</span>
+                            <br></br>
+                            <Link style={{ fontSize: "1.75em" }} to={`/forum/Javascript/thread=${items.id}`}>
                                 {items.threadName}
-                                <br></br>
-                                <span>{items.Comments.length} replies</span>
-                                <br></br>
-                                <span>Posted on: {items.submitDate}</span>
                             </Link>
+                            <br></br>
+                            <span style={{ fontSize: "0.75em" }}><i className="far fa-comment-alt"></i>&nbsp;{items.Comments.length} replies</span>
+                            <br></br>
                         </div>
                     )
                 })}

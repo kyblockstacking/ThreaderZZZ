@@ -25,8 +25,9 @@ router.get('/api/:category', function(req, res) {
 router.get('/api/threads/:id', function(req, res) {
   db.Comments.findAll({
     where: {
-      ThreadId: req.params.id,
+      ThreadId: req.params.id
     },
+    // include: [db.User]
   }).then((results) => {
     console.log(results);
     res.json(results);
@@ -43,15 +44,15 @@ router.get('/categories/:thread', function(req, res) {
 
 router.post("/threads/api/threads/", function(req, res) {
   var threads = req.body;
-  db.Threads.create(threads).then(function(result) {
-      res.end();
+  db.Threads.create(threads).then(function (result) {
+    res.end();
   })
 });
 
 router.post("/comments/api/comments/", function(req, res) {
   var comments = req.body;
-  db.Comments.create(comments).then(function(result) {
-      res.end();
+  db.Comments.create(comments).then(function (result) {
+    res.end();
   });
 });
 

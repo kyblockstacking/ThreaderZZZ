@@ -4,7 +4,7 @@ import 'react-quill/dist/quill.snow.css'
 import "./codeBlock.css";
 import axios from "axios";
 
- class Editor extends Component {
+class Editor extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -16,19 +16,19 @@ import axios from "axios";
     }
 
     handleChange(value) {
-        this.setState({ text: value })    
+        this.setState({ text: value })
         // this.props.onChange(this.state.text)
-      }
+    }
 
-     modules = {
+    modules = {
         toolbar: [
             [{ 'header': [1, 2, false] }],
             ['bold', 'italic', 'underline', 'strike', 'blockquote'],
             [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }, { 'align': 'center' }],
             ['link', 'image', 'video', 'code-block'],
-         ],
+        ],
     }
-     formats = [
+    formats = [
         'header',
         'bold', 'italic', 'underline', 'strike', 'blockquote',
         'list', 'bullet', 'indent', 'align',
@@ -52,27 +52,27 @@ import axios from "axios";
             });
     }
 
-     render() {
+    render() {
         return (
             <div>
                 <form>
-                    <div className="text-editor">
-                            <br></br><br></br><br></br>
-                            <ReactQuill value ={this.state.text} theme="snow"
-                                modules={this.modules}
-                                formats={this.formats}
-                                onChange={this.handleChange}>
-                            </ReactQuill>
-                            <div className="container">
-                                <div>
-                                    <input type="submit" onClick={this.handleSubmit} />
-                                </div>
+                    <div className="text-editor" style={{ width: "80%", height: "200pt", margin: "0 auto" }}>
+                        <br></br><br></br><br></br>
+                        <ReactQuill value={this.state.text} theme="snow"
+                            modules={this.modules}
+                            style={{ width: "80%", height: "60%", margin: "0 auto" }}
+                            formats={this.formats}
+                            onChange={this.handleChange}>
+                        </ReactQuill>
+                        <div className="container">
+                            <div style={{ marginTop: "0.5em", float: "right" }}>
+                                <div style={{ color: "white", background: "teal", borderRadius: "10px", padding: "0.5em" }} onClick={this.handleSubmit}>Reply</div>
                             </div>
-                            
+                        </div>
                     </div>
                 </form>
             </div>
         );
     }
 }
- export default Editor;
+export default Editor;
