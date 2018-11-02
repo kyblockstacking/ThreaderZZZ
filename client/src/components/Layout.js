@@ -6,7 +6,14 @@ import ChatContainer from './chats/ChatContainer';
 
 
 // if on local host, connect to local host 3001 || connect to myapp heroku
-const socketUrl = 'http://localhost:3001/'
+
+let socketUrl = "";
+if (window.location.hostname === "localhost") {
+	socketUrl = 'http://localhost:3001/';
+}else{
+	socketUrl = window.location.hostname;
+}
+
 export default class Layout extends Component {
 	
 	constructor(props) {
