@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 let images = {
   javascript: '/images/javascript_logo.jpg',
@@ -39,7 +40,7 @@ class forumCategory extends React.Component {
         <div
           className="hello"
           style={{
-            width: '60%',
+            width: '100%',
             background: 'white',
             borderTopRightRadius: '10px',
             borderTopLeftRadius: '10px',
@@ -49,10 +50,10 @@ class forumCategory extends React.Component {
         >
           <div style={style.forumCategory}>Forum Categories</div>
           <div style={{ marginTop: '2%' }}>
-            <img alt="logo" src={images.javascript} />
-            <a href="/forum/javascript"> Enter Javascript Forum</a>
+            <img style={{ paddingLeft: "1em", paddingRight: "1em" }} alt="logo" src={images.javascript} />
+            <Link style={{ fontSize: "1.5em" }} to="/forum/javascript">Enter Javascript Forum</Link>
             <br />
-            <span style={{ marginLeft: '11%' }}>
+            <span style={{ marginLeft: '9%', color: "#65737e", cursor: "default" }}>
               <i className="fas fa-bed" /> Threadcount:{' '}
               {this.state.Javascript_numberOfThreads}
             </span>
@@ -60,10 +61,10 @@ class forumCategory extends React.Component {
           </div>
 
           <div>
-            <img alt="logo" src={images.php} />
-            <a href="/forum/PHP"> Enter PHP Forum</a>
+            <img style={{ paddingLeft: "1em", paddingRight: "1em" }} alt="logo" src={images.php} />
+            <Link style={{ fontSize: "1.5em" }} to="/forum/PHP">Enter PHP Forum</Link>
             <br />
-            <span style={{ marginLeft: '11%' }}>
+            <span style={{ marginLeft: '9%', color: "#65737e", cursor: "default" }}>
               <i className="fas fa-bed" /> Threadcount:{' '}
               {this.state.PHP_numberOfThreads}
             </span>
@@ -71,10 +72,10 @@ class forumCategory extends React.Component {
           </div>
 
           <div>
-            <img alt="logo" src={images.python} />
-            <a href="/forum/Python"> Enter Python Forum</a>
+            <img style={{ paddingLeft: "1em", paddingRight: "1em" }} alt="logo" src={images.python} />
+            <Link style={{ fontSize: "1.5em" }} to="/forum/Python">Enter Python Forum</Link>
             <br />
-            <span style={{ marginLeft: '11%' }}>
+            <span style={{ marginLeft: '9%', color: "#65737e", cursor: "default" }}>
               <i className="fas fa-bed" /> Threadcount:{' '}
               {this.state.Python_numberOfThreads}
             </span>
@@ -89,7 +90,7 @@ class forumCategory extends React.Component {
             }}
           />
         </div>
-      </div>
+      </div >
     );
   }
 }
