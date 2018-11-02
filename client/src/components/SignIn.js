@@ -4,7 +4,7 @@ import axios from 'axios';
 let style = {
   Component: {
     border: '2px solid #2e849e',
-    background: '#dedede',
+    background: '#c0c5ce',
     width: '90%',
     margin: 'auto',
     marginTop: '1em',

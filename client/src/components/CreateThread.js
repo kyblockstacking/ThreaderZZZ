@@ -33,9 +33,9 @@ class Comment extends Component {
         this.setState({ title: event.target.value })
     }
     handleChange(value) {
-        this.setState({ text: value })    
+        this.setState({ text: value })
         // this.props.onChange(this.state.text)
-      }
+    }
     modules = {
         toolbar: [
             [{ 'header': [1, 2, false] }],
@@ -55,7 +55,7 @@ class Comment extends Component {
         e.preventDefault();
         // On submit of the form, send a POST request with the data to the server.
         let createThread = {
-            threadName:  this.state.title,
+            threadName: this.state.title,
             threadSummary: this.state.text.replace("<p>", "").replace("</p>", "")
         }
         console.log("yoyo", createThread)
@@ -73,26 +73,32 @@ class Comment extends Component {
         return (
             <div>
                 <form>
-                    <div className="text-editor">
-                        <button onClick={this.handleOpenModal}>Trigger Modal</button>
+                    <div className="text-editor" style={{marginBottom:"1em", marginLeft: "43%"}}>
+                        <span style={{ background: "white", color: "#2e849e", padding: "6px 30px 6px 30px", borderRadius: "10px" }} onClick={this.handleOpenModal}>Create New Thread</span>
                         <Modal
                             isOpen={this.state.showModal}
                             contentLabel="Minimal Modal Example">
+                            <i style={{ color: "red", marginLeft: "80%", fontSize: "1.5em" }} onClick={this.handleCloseModal} className="fas fa-times-circle"></i>
+                            <div style={{ marginLeft: "33%", fontSize: "2em" }}>
+                                CREATE A NEW THREAD
+                            </div>
+                            <br></br>
                             <form>
-                                <input type="text" placeholder="title" onChange={this.updateInput}></input>
+                                <input style={{ width: "60%", marginLeft: "20%" }} type="text" placeholder=" Thread Title" onChange={this.updateInput}></input>
                             </form>
-                            <br></br><br></br><br></br>
-                            <ReactQuill value ={this.state.text} theme="snow"
+                            <br></br>
+                            <ReactQuill
+                                placeholder="Description Text (optional)"
+                                style={{ width: "60%", height: "60%", margin: "0 auto" }}
+                                value={this.state.text}
+                                theme="snow"
                                 modules={this.modules}
                                 formats={this.formats}
                                 onChange={this.handleChange}>
                             </ReactQuill>
-                            <div className="container">
-                                <div>
-                                    <input type="submit" onClick={this.handleSubmit} />
-                                </div>
+                            <div>
+                                <input style={{ background: "teal", color: "white", borderRadius: "10px", width: "60%", marginLeft: "20%", marginTop: "5%" }} type="submit" onClick={this.handleSubmit} />
                             </div>
-                            <button onClick={this.handleCloseModal}>Close</button>
                         </Modal>
                     </div>
                 </form>
@@ -102,4 +108,3 @@ class Comment extends Component {
 }
 
 export default Comment;
-

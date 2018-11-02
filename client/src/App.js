@@ -41,12 +41,7 @@ class App extends React.Component {
 
           <Jumbotron />
           <Navbar />
-          <Route
-            exact
-            path="/"
-            component={this.state.userData.user ? Logout : SignIn}
-          />
-
+          <Route exact path="/" component={this.state.userData.user ? Logout : SignIn} />
           {/* TESTING COMPONENTS ON localhost/port/test */}
           <Route exact path="/test" component={Appointment} />
 
@@ -63,7 +58,9 @@ class App extends React.Component {
             <Route exact path="/api/profile/:user" component={Profile} />
             <Route component={NotFound} />
           </Switch>
+
           <Route exact path="/forum/javascript" component={CreateThread} />
+
           <Route exact path="/forum/Javascript/thread=1" component={ReplyTextbox} />
           <Footer />
         </div>
