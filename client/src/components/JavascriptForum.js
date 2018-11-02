@@ -23,27 +23,27 @@ class javascriptForum extends React.Component {
                 <CreateThread />
                 {this.state.threadsArray.map(items => {
                     return (
-                        <Link to={`/forum/Javascript/thread=${items.id}`}>
-                            <div style={{
-                                width: '60%',
-                                background: 'white',
-                                borderTopRightRadius: '10px',
-                                borderTopLeftRadius: '10px',
-                                borderBottomRightRadius: '10px',
-                                borderBottomLeftRadius: '10px',
-                                marginBottom: "1em",
-                                marginLeft: "auto",
-                                marginRight: "auto",
-                                border: "2px solid #2e849e",
-                                padding: "1em"
-                            }} key={items.id}>
+                        <div style={{
+                            width: '60%',
+                            background: 'white',
+                            borderTopRightRadius: '10px',
+                            borderTopLeftRadius: '10px',
+                            borderBottomRightRadius: '10px',
+                            borderBottomLeftRadius: '10px',
+                            marginBottom: "1em",
+                            marginLeft: "auto",
+                            marginRight: "auto",
+                            border: "2px solid #2e849e",
+                            padding: "1em"
+                        }} key={items.id}>
+                            <Link to={`/forum/Javascript/thread=${items.id}`}>
                                 {items.threadName}
                                 <br></br>
                                 <span>{items.Comments.length} replies</span>
                                 <br></br>
                                 <span>Posted on: {items.submitDate}</span>
-                            </div>
-                        </Link>
+                            </Link>
+                        </div>
                     )
                 })}
             </div>
