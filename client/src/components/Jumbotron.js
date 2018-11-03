@@ -29,7 +29,7 @@ class jumbotron extends React.Component {
     render() {
         return (
             <div style={jumbotronStyle} className="JUMBO">
-                <h1 style={jumbotron.brand} className="display-4"><blinker style={{ fontSize: "25pt", color: "gray" }} className="fas fa-terminal"></blinker>Threader <sup style={jumbotronStyle.zzz}> z<sup> z<sup> z</sup></sup></sup></h1>
+                <h1 style={jumbotron.brand} className="display-4"><blinker style={{ fontSize: "25pt", color: "gray" }} className="fas fa-terminal"></blinker><span style={{ cursor: "default" }}>Threader&nbsp;</span><sup style={jumbotronStyle.zzz}>&nbsp;z<sup>&nbsp;z<sup>&nbsp;z</sup></sup></sup></h1>
                 <p style={jumbotronStyle.slogan}> A developmental environment for developers to develop their developing skills </p>
             </div >
         )

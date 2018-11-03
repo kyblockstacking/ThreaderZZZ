@@ -11,7 +11,7 @@ import SignIn from './components/SignIn';
 import Logout from './components/Logout';
 import NotFound from './components/404';
 import Profile from './components/Profile';
-import Appointment from './components/Appointment';
+import CreateAppointment from './components/CreateAppointment';
 import Layout from "./components/Layout";
 // import "./App.css";
 // import ReplyTextbox from "./components/ReplyTextbox";
@@ -40,13 +40,12 @@ class App extends React.Component {
           <Jumbotron />
           <Navbar />
           <Route exact path="/" component={this.state.userData.user ? Logout : SignIn} />
-          {/* TESTING COMPONENTS ON localhost/port/test */}
-          <Route exact path="/test" component={Appointment} />
 
           <Switch>
             <Route exact path="/" component={Forum} />
             <Route exact path="/forum/:category" component={Topics} />
             <Route exact path="/AboutUs" component={AboutUs} />
+            <Route exact path="/DeveloperLounge" component={CreateAppointment} />
             {/* <Layout exact path="/vern" title="Chat App BAby" /> */}
             <Route exact path="/mentors/chatrooms/:id" component={Layout} />
             <Route exact path="/forum/category/thread=:id" component={ThreadContent} />

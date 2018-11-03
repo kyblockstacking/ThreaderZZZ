@@ -3,7 +3,6 @@ const db = require('../models');
 //remember "/" is being used by express.static
 
 router.get('/threadCount', function(req, res) {
-  console.log("KEVINKEVIN")
   db.Category.findAll({
     include: [db.Threads],
   }).then((results) => {
