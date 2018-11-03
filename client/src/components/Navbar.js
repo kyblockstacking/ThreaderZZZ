@@ -23,6 +23,10 @@ class NavBar extends React.Component {
                 <div style={box}><Link style={{ color: "white" }} to="/DeveloperLounge"><i class="fas fa-chalkboard-teacher">&nbsp;&nbsp;</i>Class</Link></div>
                 <div style={box}><Link onClick={() => this.scroll()} style={{ color: "white" }} to="/" onUpdate={() => this.scroll()}><i className="far fa-comments">&nbsp;&nbsp;</i>Forums</Link></div>
                 <div style={box}><Link style={{ color: "white", cursor: "help" }} to="/AboutUs"><i className="fas fa-info-circle">&nbsp;&nbsp;</i>About Us</Link></div>
+
+                {/* TESTING HERE */}
+                <div style={box}><Link style={{ color: "white" }} to="/email/inbox"><i className="fas fa-inbox">&nbsp;</i>Inbox</Link></div>
+                <div style={box}><Link style={{ color: "white" }} to="/email/outbox"><i className="far fa-share-square">&nbsp;</i>Outbox</Link></div>
             </div>
         )
     }
