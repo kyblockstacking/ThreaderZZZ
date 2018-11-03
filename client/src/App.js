@@ -19,6 +19,7 @@ import "./App.css";
 import AboutUs from "./components/AboutUs";
 import Topics from './components/Topics';
 import AdminCategoryForm from './components/AdminCategoryForm';
+import EmailMessage from './components/EmailMessage';
 
 class App extends React.Component {
   state = {
@@ -53,6 +54,7 @@ class App extends React.Component {
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/api/profile/:user" component={Profile} />
             <Route exact path="/admin/categoryform" component={AdminCategoryForm} />
+            <Route exact path="/kappa" component={EmailMessage} />
             <Route component={NotFound} />
           </Switch>
 

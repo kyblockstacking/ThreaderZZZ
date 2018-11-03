@@ -45,6 +45,8 @@ const loginSystem = require('./routes/loginSystem.js');
 app.use(loginSystem);
 const votingSystem = require('./routes/votingSystem.js');
 app.use(votingSystem);
+const emailSystem = require('./routes/emailSystem.js');
+app.use(emailSystem);
 
 // Send every other request to the React app
 // Define any API routes before this runs
