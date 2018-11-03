@@ -87,19 +87,19 @@ router.post('/login', (req, res) => {
         loggedIn: loggedIn,
       };
       const token = 't' + Math.random();
-      res.json(req.session.user);
       res.cookie('token', token, {
         expires: new Date(Date.now() + 999999999),
       });
+      res.json(req.session.user);
 
       db.User.update({ token: token }, { where: { id: user.id } }).then(
         (data) => {
-          res.send(data);
+          console.log(data);
         },
       );
     })
     .catch((err) => {
-      res.send(err);
+      res.json(err);
     });
 });
 

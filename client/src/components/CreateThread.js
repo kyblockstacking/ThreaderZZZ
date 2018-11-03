@@ -57,7 +57,7 @@ class Comment extends Component {
         let createThread = {
             threadName: this.state.title,
             threadSummary: this.state.text.replace("<p>", "").replace("</p>", ""),
-            CategoryId: 1
+            CategoryId: this.props.categoryId
         }
 
         axios.post('/threads/api/threads/', createThread)
