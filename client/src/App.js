@@ -19,7 +19,12 @@ import "./App.css";
 import AboutUs from "./components/AboutUs";
 import Topics from './components/Topics';
 import AdminCategoryForm from './components/AdminCategoryForm';
-import EmailMessage from './components/EmailMessage';
+
+
+// TEST COMPONENTS
+import Appointment from "./components/Appointment";
+import Inbox from "./components/Inbox";
+import Outbox from "./components/Outbox";
 
 class App extends React.Component {
   state = {
@@ -48,6 +53,14 @@ class App extends React.Component {
             <Route exact path="/forum/:category" component={Topics} />
             <Route exact path="/AboutUs" component={AboutUs} />
             <Route exact path="/DeveloperLounge" component={CreateAppointment} />
+
+            {/* TEST HERE */}
+            <Route exact path="/Test" component={Appointment} />
+            <Route exact path="/email/inbox" component={Inbox} />
+            <Route exact path="/email/outbox" component={Outbox} />
+            {/* END TEST */}
+
+            
             {/* <Layout exact path="/vern" title="Chat App BAby" /> */}
             <Route exact path="/mentors/chatrooms/:id" component={Layout} />
             <Route exact path="/forum/category/thread=:id" component={ThreadContent} />
