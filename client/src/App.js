@@ -43,6 +43,13 @@ class App extends React.Component {
     });
   };
 
+  setLogout = () => {
+    this.setState({
+      authenticated: false,
+      userData: '',
+    });
+  };
+  
   render() {
     if (!this.state.loaded) {
       return null;
@@ -57,7 +64,7 @@ class App extends React.Component {
             exact
             path="/"
             render={this.state.userData.user ? 
-            (props) => <Logout {...props} setLogin={this.setLogin} /> : 
+            (props) => <Logout {...props} setLogout={this.setLogout} /> : 
             (props) => <SignIn {...props} setLogin={this.setLogin} error={this.state.userData} />}
           />
 

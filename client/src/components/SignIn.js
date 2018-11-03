@@ -55,6 +55,7 @@ class SignIn extends React.Component {
   state = {
     userName: '',
     password: '',
+    error: null,
   };
 
   constructor(props) {
@@ -82,13 +83,17 @@ class SignIn extends React.Component {
     axios
       .post('/login', { userName, password })
       .then((response) => {
-        this.props.setLogin(response.data);
-        // this.setState({response: response.data})
+        if (response.data.loggedIn === true) {
+          this.props.setLogin(response.data);
+        } else {
+          this.setState({
+            error: "Username or password did not match",
+          })
+        }
       })
       .catch((error) => {
         console.log(error);
       });
-    // this.setState(this.initialState);
   };
 
   render() {
@@ -120,7 +125,7 @@ class SignIn extends React.Component {
               onChange={this.handleChange}
             />
           </div>
-          <div>{this.props.error}</div>
+          <div>{this.state.error}</div>
           <br />
           <br />
           <a onClick={() => this.forgotPassword()} style={style.forgotPassword}>

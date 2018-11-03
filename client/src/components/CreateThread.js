@@ -96,7 +96,7 @@ class Comment extends Component {
                                 onChange={this.handleChange}>
                             </ReactQuill>
                             <div>
-                                <input style={{ background: "teal", color: "white", borderRadius: "10px", width: "60%", marginLeft: "20%", marginTop: "5%" }} type="submit" onClick={this.handleSubmit} />
+                                <button style={{ background: "teal", color: "white", borderRadius: "10px", width: "60%", marginLeft: "20%", marginTop: "5%" }} type="submit" onClick={this.handleSubmit} disabled={!this.props.authenticated}>Submit</button>
                             </div>
                         </Modal>
                     </div>

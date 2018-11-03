@@ -48,7 +48,7 @@ class SignIn extends React.Component {
     axios
       .get('/logout')
       .then((response) => {
-        this.props.setLogin(response.data);
+        this.props.setLogout(response.data);
       })
       .catch((error) => {
         console.log(error);

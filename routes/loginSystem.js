@@ -66,9 +66,8 @@ router.get('/logout', function(req, res) {
   loggedIn = false;
   res.clearCookie('token');
   req.session.destroy();
-  res.end();
+  res.send(loggedIn);
 });
-
 
 router.post('/login', (req, res) => {
   db.User.findOne({
@@ -95,11 +94,12 @@ router.post('/login', (req, res) => {
 
       db.User.update({ token: token }, { where: { id: user.id } }).then(
         (data) => {
+          res.send(data);
         },
       );
     })
     .catch((err) => {
-      res.send('username or password does not match');
+      res.send(err);
     });
 });
 
@@ -164,6 +164,5 @@ router.get('/api/profile/:user', (req, res) => {
       res.send(error);
     });
 });
-
 
 module.exports = router;
