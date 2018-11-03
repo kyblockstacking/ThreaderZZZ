@@ -13,7 +13,7 @@ import NotFound from './components/404';
 import Profile from './components/Profile';
 import Appointment from './components/Appointment';
 import Layout from "./components/Layout";
-// import "./App.css";
+import "./App.css";
 // import ReplyTextbox from "./components/ReplyTextbox";
 // import CreateThread from "./components/CreateThread";
 import AboutUs from "./components/AboutUs";
