@@ -19,6 +19,7 @@ import "./App.css";
 import AboutUs from "./components/AboutUs";
 import Topics from './components/Topics';
 import AdminCategoryForm from './components/AdminCategoryForm';
+import EmailMessage from './components/EmailMessage';
 
 
 // TEST COMPONENTS
