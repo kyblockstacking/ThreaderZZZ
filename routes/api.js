@@ -3,7 +3,6 @@ const db = require('../models');
 //remember "/" is being used by express.static
 
 router.get('/threadCount', function(req, res) {
-  console.log("KEVINKEVIN")
   db.Category.findAll({
     include: [db.Threads],
   }).then((results) => {
@@ -56,5 +55,16 @@ router.post("/comments/api/comments/", function(req, res) {
     res.end();
   });
 });
+
+router.post("/forumCategory", function(req, res) {
+  console.log(req.body);
+  db.Category.create(req.body)
+  .then((results) => {
+    res.json(results)
+  })
+  .catch((err) => {
+    res.json(err);
+  })
+})
 
 module.exports = router;

@@ -18,6 +18,7 @@ import Layout from "./components/Layout";
 // import CreateThread from "./components/CreateThread";
 import AboutUs from "./components/AboutUs";
 import Topics from './components/Topics';
+import AdminCategoryForm from './components/AdminCategoryForm';
 
 class App extends React.Component {
   state = {
@@ -52,6 +53,7 @@ class App extends React.Component {
             <Route exact path="/forum/category/thread=:id" component={ThreadContent} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/api/profile/:user" component={Profile} />
+            <Route exact path="/admin/categoryform" component={AdminCategoryForm} />
             <Route component={NotFound} />
           </Switch>
 
