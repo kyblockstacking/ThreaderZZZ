@@ -11,13 +11,14 @@ class Topic extends React.Component {
     componentDidMount() {
         axios.get(`/api/${this.props.match.params.category}`).then(res => {
             this.setState({ threadsArray: res.data });
+            console.log("KEVIN", this.state.threadsArray)
         })
     }
 
     render() {
         return (
             <div>
-                <div style={{ borderRadius: "10px", padding: '5px', background: '#2e849e', color: 'white', width: "60%", marginRight: "auto", marginLeft: "auto", marginBottom: "1em", textAlign: "center" }}>Javascript ThreadZZZ</div>
+                <div style={{ borderRadius: "10px", padding: '5px', background: '#2e849e', color: 'white', width: "60%", marginRight: "auto", marginLeft: "auto", marginBottom: "1em", textAlign: "center" }}><i className="fab fa-js-square">&nbsp;&nbsp;</i><span style={{cursor: "default"}}>Javascript ThreadZZZ</span></div>
                 <CreateThread />
                 {this.state.threadsArray.map(items => {
                     return (
@@ -34,7 +35,7 @@ class Topic extends React.Component {
                             border: "2px solid #2e849e",
                             padding: "1em"
                         }} key={items.id}>
-                            <span style={{ fontSize: "0.75em", color: "lightgray" }}><i className="far fa-clipboard">&nbsp;</i>Posted By: 'USERNAME' at {items.submitDate}</span>
+                            <span style={{ fontSize: "0.75em", color: "lightgray" }}><i className="far fa-clipboard">&nbsp;</i>Posted By: !USER!{items.UserId} at !DATE!{items.submitDate}</span>
                             <br></br>
                             <Link style={{ fontSize: "1.75em" }} to={`/forum/category/thread=${items.id}`}>
                                 {items.threadName}
