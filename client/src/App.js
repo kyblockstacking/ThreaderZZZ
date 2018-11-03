@@ -13,11 +13,12 @@ import NotFound from './components/404';
 import Profile from './components/Profile';
 import Appointment from './components/Appointment';
 import Layout from "./components/Layout";
-// import "./App.css";
+import "./App.css";
 // import ReplyTextbox from "./components/ReplyTextbox";
 // import CreateThread from "./components/CreateThread";
 import AboutUs from "./components/AboutUs";
 import Topics from './components/Topics';
+import AdminCategoryForm from './components/AdminCategoryForm';
 
 class App extends React.Component {
   state = {
@@ -90,6 +91,7 @@ class App extends React.Component {
             <Route exact path="/signup" 
               render={(props) => <Signup {...props} setLogin={this.setLogin} />} />
             <Route exact path="/api/profile/:user" component={Profile} />
+            <Route exact path="/admin/categoryform" component={AdminCategoryForm} />
             <Route component={NotFound} />
           </Switch>
 
