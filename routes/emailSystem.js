@@ -1,13 +1,14 @@
 const router = require('express').Router();
 const db = require('../models');
 
-router.get("/emailin", function (req, res) {
+router.get("/emailin/:user", function (req, res) {
+    console.log("hi", req.body);
     db.Email.findAll({
         where: {
-            recipient: req.body.userId
+            recipient: req.params.user
         }
     }).then(function (result) {
-        res.send();
+        res.json(result);
     })
 });
 

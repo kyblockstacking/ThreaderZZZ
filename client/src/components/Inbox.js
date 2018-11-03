@@ -5,8 +5,10 @@ class Inbox extends React.Component {
     state = {};
 
     componentDidMount() {
-        axios.get("emailin", { userId: 1 }).then((res) => {
-            console.log("OSFOSAFODSOFSOAFODSAFOSDO")
+        //hardcode 
+        var user = "kaydo"
+        axios.get(`/emailin/${user}`).then((res) => {
+            console.log(res)
         })
     }
 
