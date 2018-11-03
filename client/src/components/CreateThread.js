@@ -5,8 +5,6 @@ import "./codeBlock.css";
 import Modal from 'react-modal';
 import axios from "axios";
 
-
-
 class Comment extends Component {
     constructor(props) {
         super(props);
@@ -53,6 +51,7 @@ class Comment extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        console.log("HIT")
         // On submit of the form, send a POST request with the data to the server.
         let createThread = {
             threadName: this.state.title,
@@ -96,7 +95,7 @@ class Comment extends Component {
                                 onChange={this.handleChange}>
                             </ReactQuill>
                             <div>
-                                <button style={{ background: "teal", color: "white", borderRadius: "10px", width: "60%", marginLeft: "20%", marginTop: "5%" }} type="submit" onClick={this.handleSubmit} disabled={!this.props.authenticated}>Submit</button>
+                                <button type="submit" style={{ background: "teal", color: "white", borderRadius: "10px", width: "60%", marginLeft: "20%", marginTop: "5%" }} onClick={this.handleSubmit}>Submit</button>
                             </div>
                         </Modal>
                     </div>

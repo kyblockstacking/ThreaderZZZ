@@ -86,20 +86,20 @@ router.post('/login', (req, res) => {
         id: user.id,
         loggedIn: loggedIn,
       };
+      res.json(req.session.user);
       const token = 't' + Math.random();
       res.cookie('token', token, {
         expires: new Date(Date.now() + 999999999),
       });
-      res.json(req.session.user);
 
       db.User.update({ token: token }, { where: { id: user.id } }).then(
         (data) => {
-          console.log(data);
+          res.send(data);
         },
       );
     })
     .catch((err) => {
-      res.json(err);
+      console.log(err);
     });
 });
 

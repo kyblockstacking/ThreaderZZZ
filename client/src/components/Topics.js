@@ -18,7 +18,9 @@ class Topic extends React.Component {
         return (
             <div>
                 <div style={{ borderRadius: "10px", padding: '5px', background: '#2e849e', color: 'white', width: "60%", marginRight: "auto", marginLeft: "auto", marginBottom: "1em", textAlign: "center" }}>Javascript ThreadZZZ</div>
-                <CreateThread categoryId={this.props.match.params.category} authenticated={this.props.authenticated}/>
+                {/* {this.props.authenticated ? <CreateThread /> : null} */}
+                <CreateThread />
+                
                 {this.state.threadsArray.map(items => {
                     return (
                         <div style={{
