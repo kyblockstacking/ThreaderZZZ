@@ -54,7 +54,7 @@ class App extends React.Component {
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/api/profile/:user" component={Profile} />
             <Route exact path="/admin/categoryform" component={AdminCategoryForm} />
-            <Route exact path="/kappa" component={EmailMessage} />
+            <Route exact path="/emailsystem" component={EmailMessage} />
             <Route component={NotFound} />
           </Switch>
 
