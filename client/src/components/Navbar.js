@@ -7,11 +7,8 @@ let box = {
     margin: "10px",
     padding: "0px 5px 0px 100px",
     borderRadius: "8px",
-    // float: "right",
-    cursor: "pointer",
     display: "inline-block"
 }
-
 class NavBar extends React.Component {
     state = {};
 
@@ -22,10 +19,14 @@ class NavBar extends React.Component {
     render() {
         return (
             <div>
-                <Link to="/"><box style={box}><i className="fas fa-home"></i>&nbsp;&nbsp;Home</box></Link>
-                <Link to="/DeveloperLounge"><box style={box}><i className="fas fa-couch"></i>&nbsp;&nbsp;Lounge</box></Link>
-                <box onClick={() => this.scroll()} style={box}><i className="far fa-comments"></i>&nbsp;&nbsp;Forums</box>
-                <Link to="/AboutUs"><box style={box}><i className="fas fa-info-circle"></i>&nbsp;&nbsp;About Us</box></Link>
+                <div style={box}><Link style={{ color: "white" }} to="/"><i className="fas fa-home">&nbsp;&nbsp;</i>Home</Link></div>
+                <div style={box}><Link style={{ color: "white" }} to="/DeveloperLounge"><i class="fas fa-chalkboard-teacher">&nbsp;&nbsp;</i>Class</Link></div>
+                <div style={box}><Link onClick={() => this.scroll()} style={{ color: "white" }} to="/" onUpdate={() => this.scroll()}><i className="far fa-comments">&nbsp;&nbsp;</i>Forums</Link></div>
+                <div style={box}><Link style={{ color: "white", cursor: "help" }} to="/AboutUs"><i className="fas fa-info-circle">&nbsp;&nbsp;</i>About Us</Link></div>
+
+                {/* TESTING HERE */}
+                <div style={box}><Link style={{ color: "white" }} to="/email/inbox"><i className="fas fa-inbox">&nbsp;</i>Inbox</Link></div>
+                <div style={box}><Link style={{ color: "white" }} to="/email/outbox"><i className="far fa-share-square">&nbsp;</i>Outbox</Link></div>
             </div>
         )
     }
