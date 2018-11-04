@@ -7,6 +7,7 @@ class EmailMessage extends React.Component {
     state = {
         UserId: "",
         recipient: "",
+        title: "",
         message: ""
     }
 
@@ -29,6 +30,7 @@ class EmailMessage extends React.Component {
                 this.setState(() => ({
                     UserId: "",
                     recipient: "",
+                    title: "",
                     message: ""
                 }));
                 console.log(data);
@@ -48,6 +50,9 @@ class EmailMessage extends React.Component {
 
                         <label htmlFor="recipient">To</label>
                         <input name="recipient" type="text" className="form-control" id="recipient" aria-describedby="recipient" onChange={this.handleInputChange} value={this.state.recipient} />
+
+                          <label htmlFor="title">Title</label>
+                        <input name="title" type="text" className="form-control" id="title" aria-describedby="title" onChange={this.handleInputChange} value={this.state.title} />
 
                         <label htmlFor="message">Message</label>
                         <input name="message" type="text" className="form-control" id="message" aria-describedby="message" onChange={this.handleInputChange} value={this.state.message} />

@@ -21,6 +21,12 @@ import Topics from './components/Topics';
 import AdminCategoryForm from './components/AdminCategoryForm';
 import EmailMessage from './components/EmailMessage';
 
+
+// TEST COMPONENTS
+import Appointment from "./components/Appointment";
+import Inbox from "./components/Inbox";
+import Outbox from "./components/Outbox";
+
 class App extends React.Component {
   state = {
     userData: {},
@@ -82,6 +88,14 @@ class App extends React.Component {
             />
             <Route exact path="/AboutUs" component={AboutUs} />
             <Route exact path="/DeveloperLounge" component={CreateAppointment} />
+
+            {/* TEST HERE */}
+            <Route exact path="/Test" component={Appointment} />
+            <Route exact path="/email/inbox" component={Inbox} />
+            <Route exact path="/email/outbox" component={Outbox} />
+            {/* END TEST */}
+
+            
             {/* <Layout exact path="/vern" title="Chat App BAby" /> */}
             <Route exact path="/mentors/chatrooms/:id" component={Layout} />
             <Route
@@ -94,7 +108,7 @@ class App extends React.Component {
               render={(props) => <Signup {...props} setLogin={this.setLogin} />} />
             <Route exact path="/api/profile/:user" component={Profile} />
             <Route exact path="/admin/categoryform" component={AdminCategoryForm} />
-            <Route exact path="/kappa" component={EmailMessage} />
+            <Route exact path="/emailsystem" component={EmailMessage} />
             <Route component={NotFound} />
           </Switch>
 
