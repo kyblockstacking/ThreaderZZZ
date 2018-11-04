@@ -1,3 +1,4 @@
+
 INSERT INTO users (firstName, lastName, userName, password, upvote, downvote, email)
 VALUES
 ("kevin", "do", "kaydo", "!2Qwqwer", 0, 0, "kdo@gmail.com"),
@@ -12,26 +13,26 @@ VALUES
 ("php"),
 ("python");
 
-INSERT INTO threads (CategoryId, threadName)
+INSERT INTO threads (CategoryId, threadName, UserId, createdAt, updatedAt, threadSummary)
 VALUES 
-(1, "anonymous functions"),
-(1, "callback functions"),
-(1, "closure"),
-(1, "functional programming"),
-(2, "define php"),
-(2, "why do we still use php"),
-(3, "why makes python easy to use");
+(1, "anonymous functions", 1, "2018-11-04 01:21:26", "2018-11-04 01:21:26", "Hi guys, I am in a bootcamp and don't know what this is. My boot camp is at UCLA extension and my professor assigned us homework in relation to this topic. I am still trying to wrap my mind around this concept. Unfortunately, my other classmates are as lost as I am. We're all pretty new to coding. Please help me. Much appreciated."),
+(1, "callback functions", 2, "2018-11-04 01:21:26", "2018-11-04 01:21:26", "Hi guys, I am in a bootcamp and don't know what this is. Please help me. Much appreciated."),
+(1, "closure", 2, "2018-11-04 01:21:26", "2018-11-04 01:21:26", "Hi guys, I am in a bootcamp and don't know what this is. Please help me. Much appreciated."),
+(1, "functional programming", 1, "2018-11-04 01:21:26", "2018-11-04 01:21:26", "Hi guys, I am in a bootcamp and don't know what this is. Please help me. Much appreciated."),
+(2, "define php", 3, "2018-11-04 01:21:26", "2018-11-04 01:21:26", "Hi guys, I am in a bootcamp and don't know what this is. Please help me. Much appreciated."),
+(2, "why do we still use php", 1, "2018-11-04 01:21:26", "2018-11-04 01:21:26", "Hi guys, I am in a bootcamp and don't know what this is. Please help me. Much appreciated."),
+(3, "why makes python easy to use", 3, "2018-11-04 01:21:26", "2018-11-04 01:21:26", "Hi guys, I am in a bootcamp and don't know what this is. Please help me. Much appreciated.");
 
-INSERT INTO comments (ThreadId, replies, upvotes, downvotes)
+INSERT INTO comments (ThreadId, replies, upvotes, downvotes, createdAt, updatedAt, UserId)
 VALUES 
-(1, "do they ask interview questions about anonymous functions?", 1000,1222),
-(1, "i still do not understand anonymous functions", 230, 500),
-(1, "what are anonymous functions",100, 200),
-(2, "what are callback functions?", 150, 75),
-(2, "why do we need call back functions?", 100, 50),
-(2, "is there anything similar to call back functions?", 25, 10),
-(6, "because some companies want to", 25, 10),
-(7, "because of its easy to understand syntax", 30, 10);
+(1, "do they ask interview questions about anonymous functions?", 1000, 1222, "2018-11-04 01:21:26", "2018-11-04 01:21:26", 1),
+(1, "i still do not understand anonymous functions", 230, 500, "2018-11-04 01:21:26", "2018-11-04 01:21:26", 1),
+(1, "what are anonymous functions",100,  200, "2018-11-04 01:21:26", "2018-11-04 01:21:26", 1),
+(2, "what are callback functions?", 150, 75, "2018-11-04 01:21:26", "2018-11-04 01:21:26", 1),
+(2, "why do we need call back functions?", 100, 50, "2018-11-04 01:21:26", "2018-11-04 01:21:26", 1),
+(2, "is there anything similar to call back functions?", 25, 10, "2018-11-04 01:21:26", "2018-11-04 01:21:26", 1),
+(6, "because some companies want to", 25, 10, "2018-11-04 01:21:26", "2018-11-04 01:21:26", 1),
+(7, "because of its easy to understand syntax", 30, 10, "2018-11-04 01:21:26", "2018-11-04 01:21:26", 1);
 
 INSERT INTO votealreadies (upvoteBtn, neutralBtns, downvoteBtns, CommentId, UserId)
 VALUES

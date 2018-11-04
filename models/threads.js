@@ -6,14 +6,12 @@ module.exports = function(sequelize, DataTypes) {
         downvotes: DataTypes.INTEGER,
         submitDate: DataTypes.DATEONLY,
         keyword: DataTypes.STRING,
-
-    },
-    {
-        timestamps: false
+        
     });
 
     Threads.associate = function (models) {
         Threads.hasMany(models.Comments);
+        Threads.belongsTo(models.User);
     }
 
     return Threads;

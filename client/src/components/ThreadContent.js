@@ -17,6 +17,7 @@ class ThreadContent extends React.Component {
             this.setState({
                 content: res.data
             });
+            console.log(this.state.content)
         })
     }
 
@@ -64,11 +65,11 @@ class ThreadContent extends React.Component {
                     <button className="btn btn-primary active row" onClick={() => this.downVote(item)} disabled={content[content.length - 1].notUser}><i class="far fa-thumbs-down"></i></button>
 
                     <p className="col-lg-11" style={{ fontSize: "1em", paddingLeft: "2em" }}>
-                        {item.replies}KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN
+                        {item.replies}
                         </p>
                     <br></br>
                     <div style={{ fontSize: "0.75em", color: "lightgray" }}>
-                        <i className="far fa-clipboard"></i>&nbsp;Posted on:&nbsp;DATEHERE
+                        <i className="far fa-clipboard"></i>&nbsp;Posted on:&nbsp;{item.createdAt}
                     </div>
                     <hr></hr>
                 </div>

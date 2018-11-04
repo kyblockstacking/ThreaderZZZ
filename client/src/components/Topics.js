@@ -11,7 +11,7 @@ class Topic extends React.Component {
     componentDidMount() {
         axios.get(`/api/${this.props.match.params.category}`).then(res => {
             this.setState({ threadsArray: res.data });
-            console.log("KEVIN", this.state.threadsArray)
+            console.log(res.data);
         })
     }
 
@@ -35,7 +35,7 @@ class Topic extends React.Component {
                             border: "2px solid #2e849e",
                             padding: "1em"
                         }} key={items.id}>
-                            <span style={{ fontSize: "0.75em", color: "lightgray" }}><i className="far fa-clipboard">&nbsp;</i>Posted By: !USER!{items.UserId} at !DATE!{items.submitDate}</span>
+                            <span style={{ fontSize: "0.75em", color: "lightgray" }}><i className="far fa-clipboard">&nbsp;</i>Posted By: {items.User.userName} at {items.createdAt}</span>
                             <br></br>
                             <Link style={{ fontSize: "1.75em" }} to={`/forum/category/thread=${items.id}`}>
                                 {items.threadName}
