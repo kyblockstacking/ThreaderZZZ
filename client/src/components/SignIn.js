@@ -58,16 +58,6 @@ class SignIn extends React.Component {
     error: null,
   };
 
-  constructor(props) {
-    super(props);
-
-    this.initialState = {
-      userName: '',
-      password: '',
-    };
-    this.state = this.initialState;
-  }
-
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
