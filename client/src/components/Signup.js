@@ -106,6 +106,7 @@ class Signup extends Component {
         .post('/api/signup', { firstName, lastName, userName, email, password })
         .then((response) => {
           if (response.data) {
+            this.props.setLogin(response.data);
             this.props.history.push('/');
             console.log('Account created');
           } else {

@@ -30,28 +30,62 @@ import Outbox from "./components/Outbox";
 class App extends React.Component {
   state = {
     userData: {},
+    authenticated: false,
+    loaded: false,
   };
+
   componentDidMount() {
     axios.get('/auth').then((res) => {
       this.setState({
         userData: res.data,
+        loaded: true,
+        authenticated: res.data.loggedIn,
       });
     });
   }
 
+  setLogin = (user) => {
+    this.setState({
+      authenticated: true,
+      userData: user,
+    });
+  };
+
+  setLogout = () => {
+    this.setState({
+      authenticated: false,
+      userData: '',
+    });
+  };
+  
   render() {
+    if (!this.state.loaded) {
+      return null;
+    }
+
     return (
       <Router>
-
-        <div style={{ background: "#ededed" }}>
-
+        <div style={{ background: '#ededed' }}>
           <Jumbotron />
           <Navbar />
-          <Route exact path="/" component={this.state.userData.user ? Logout : SignIn} />
+          <Route
+            exact
+            path="/"
+            render={this.state.userData.user ? 
+            (props) => <Logout {...props} setLogout={this.setLogout} /> : 
+            (props) => <SignIn {...props} setLogin={this.setLogin} error={this.state.userData} />}
+          />
+
+          {/* TESTING COMPONENTS ON localhost/port/test */}
+          {/* <Route exact path="/test" component={Appointment} /> */}
 
           <Switch>
             <Route exact path="/" component={Forum} />
-            <Route exact path="/forum/:category" component={Topics} />
+            <Route 
+              exact path="/forum/:category" 
+              render={(props) => <Topics {...props} 
+              authenticated={this.state.authenticated} />}
+            />
             <Route exact path="/AboutUs" component={AboutUs} />
             <Route exact path="/DeveloperLounge" component={CreateAppointment} />
 
@@ -64,8 +98,14 @@ class App extends React.Component {
             
             {/* <Layout exact path="/vern" title="Chat App BAby" /> */}
             <Route exact path="/mentors/chatrooms/:id" component={Layout} />
-            <Route exact path="/forum/category/thread=:id" component={ThreadContent} />
-            <Route exact path="/signup" component={Signup} />
+            <Route
+              exact
+              path="/forum/category/thread=:id"
+              render={(props) => <ThreadContent {...props} 
+              authenticated={this.state.authenticated} />}
+            />
+            <Route exact path="/signup" 
+              render={(props) => <Signup {...props} setLogin={this.setLogin} />} />
             <Route exact path="/api/profile/:user" component={Profile} />
             <Route exact path="/admin/categoryform" component={AdminCategoryForm} />
             <Route exact path="/emailsystem" component={EmailMessage} />

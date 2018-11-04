@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import axios from 'axios';
 
 let style = {
@@ -54,17 +55,8 @@ class SignIn extends React.Component {
   state = {
     userName: '',
     password: '',
+    error: null,
   };
-
-  constructor(props) {
-    super(props);
-
-    this.initialState = {
-      userName: '',
-      password: '',
-    };
-    this.state = this.initialState;
-  }
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -75,17 +67,23 @@ class SignIn extends React.Component {
     alert('haha, what a loser');
   };
 
-  handleSubmit = () => {
+  handleSubmit = (event) => {
+    event.preventDefault();
     const { userName, password } = this.state;
     axios
       .post('/login', { userName, password })
       .then((response) => {
-        console.log(response.data);
+        if (response.data.loggedIn === true) {
+          this.props.setLogin(response.data);
+        } else {
+          this.setState({
+            error: "Username or password did not match",
+          })
+        }
       })
       .catch((error) => {
         console.log(error);
       });
-    this.setState(this.initialState);
   };
 
   render() {
@@ -117,13 +115,14 @@ class SignIn extends React.Component {
               onChange={this.handleChange}
             />
           </div>
+          <div>{this.state.error}</div>
           <br />
           <br />
           <a onClick={() => this.forgotPassword()} style={style.forgotPassword}>
             Forgot Password?
           </a>
           <strong>
-            <a style={style.register}>Register</a>
+            <Link style={style.register} to="/signup">Register</Link>
           </strong>
           <br />
           <button

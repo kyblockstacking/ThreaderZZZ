@@ -17,7 +17,6 @@ router.get('/api/:category', function(req, res) {
       CategoryId: req.params.category,
     },
   }).then((results) => {
-    console.log(results);
     res.json(results);
   });
 });
@@ -29,7 +28,6 @@ router.get('/api/threads/:id', function(req, res) {
     },
     // include: [db.User]
   }).then((results) => {
-    console.log(results);
     res.json(results);
   });
 });
