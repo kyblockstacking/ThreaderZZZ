@@ -54,14 +54,14 @@ class ThreadContent extends React.Component {
             return (
                 <div key={item.id}>
 
-                    <button className="btn btn-primary row" onClick={() => this.upVote(item)} disabled={content[content.length - 1].notUser}><i className="far fa-thumbs-up"></i></button>
+                    <button className="btn btn-primary row" onClick={() => this.upVote(item)} disabled={!this.props.authenticated}><i className="far fa-thumbs-up"></i></button>
                     <div className="row">
                         {this.totalVotes(item)}
                         <p style={{ margin: "0 0 0 1.5em", fontSize: "1em", color: "lightgray" }}>
                             <Link to="/">!USER!{item.UserId}</Link>
                         </p>
                     </div>
-                    <button className="btn btn-primary active row" onClick={() => this.downVote(item)} disabled={content[content.length - 1].notUser}><i class="far fa-thumbs-down"></i></button>
+                    <button className="btn btn-primary active row" onClick={() => this.downVote(item)} disabled={!this.props.authenticated}><i className="far fa-thumbs-down"></i></button>
 
                     <p className="col-lg-11" style={{ fontSize: "1em", paddingLeft: "2em" }}>
                         {item.replies}KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN KEVIN
@@ -90,7 +90,7 @@ class ThreadContent extends React.Component {
                     <div style={{ fontSize: "0.75em", color: "gray", padding: "0.5em 0 0.5em 0" }}>
                         <i className="far fa-share-square"></i>&nbsp;Share&nbsp;&nbsp;<i className="far fa-flag"></i>&nbsp;Report
                     </div>
-                    <ReplyTextbox />
+                    <ReplyTextbox authenticated={this.props.authenticated}/>
                     <br></br>
                 </div>
                 <hr></hr>

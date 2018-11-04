@@ -66,11 +66,12 @@ class Comment extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        console.log("HIT");
         // On submit of the form, send a POST request with the data to the server.
         let createThread = {
             threadName: this.state.title,
             threadSummary: this.state.text.replace("<p>", "").replace("</p>", ""),
-            CategoryId: 1
+            CategoryId: this.props.categoryId
         }
 
         axios.post('/threads/api/threads/', createThread)
@@ -121,7 +122,7 @@ class Comment extends Component {
                             </ReactQuill>
 
                             <div>
-                                <input style={{ background: "#2e849e", color: "white", borderRadius: "10px", width: "60%", marginLeft: "20%", marginTop: "5%" }} type="submit" onClick={this.handleSubmit} />
+                                <button style={{ background: "#2e849e", color: "white", borderRadius: "10px", width: "60%", marginLeft: "20%", marginTop: "5%" }} type="submit" onClick={this.handleSubmit}>Submit</button>
                             </div>
 
                         </Modal>

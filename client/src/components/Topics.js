@@ -19,7 +19,8 @@ class Topic extends React.Component {
         return (
             <div>
                 <div style={{ borderRadius: "10px", padding: '5px', background: '#2e849e', color: 'white', width: "60%", marginRight: "auto", marginLeft: "auto", marginBottom: "1em", textAlign: "center" }}><i className="fab fa-js-square">&nbsp;&nbsp;</i><span style={{cursor: "default"}}>Javascript ThreadZZZ</span></div>
-                <CreateThread />
+                {this.props.authenticated ? <CreateThread /> : null}
+                
                 {this.state.threadsArray.map(items => {
                     return (
                         <div style={{
