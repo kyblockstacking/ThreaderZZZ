@@ -11,13 +11,15 @@ import SignIn from './components/SignIn';
 import Logout from './components/Logout';
 import NotFound from './components/404';
 import Profile from './components/Profile';
-import Appointment from './components/Appointment';
+import CreateAppointment from './components/CreateAppointment';
 import Layout from "./components/Layout";
-// import "./App.css";
+import "./App.css";
 // import ReplyTextbox from "./components/ReplyTextbox";
 // import CreateThread from "./components/CreateThread";
 import AboutUs from "./components/AboutUs";
 import Topics from './components/Topics';
+import AdminCategoryForm from './components/AdminCategoryForm';
+import EmailMessage from './components/EmailMessage';
 
 class App extends React.Component {
   state = {
@@ -69,7 +71,7 @@ class App extends React.Component {
           />
 
           {/* TESTING COMPONENTS ON localhost/port/test */}
-          <Route exact path="/test" component={Appointment} />
+          {/* <Route exact path="/test" component={Appointment} /> */}
 
           <Switch>
             <Route exact path="/" component={Forum} />
@@ -79,6 +81,7 @@ class App extends React.Component {
               authenticated={this.state.authenticated} />} />
             />
             <Route exact path="/AboutUs" component={AboutUs} />
+            <Route exact path="/DeveloperLounge" component={CreateAppointment} />
             {/* <Layout exact path="/vern" title="Chat App BAby" /> */}
             <Route exact path="/mentors/chatrooms/:id" component={Layout} />
             <Route
@@ -90,6 +93,8 @@ class App extends React.Component {
             <Route exact path="/signup" 
               render={(props) => <Signup {...props} setLogin={this.setLogin} />} />
             <Route exact path="/api/profile/:user" component={Profile} />
+            <Route exact path="/admin/categoryform" component={AdminCategoryForm} />
+            <Route exact path="/kappa" component={EmailMessage} />
             <Route component={NotFound} />
           </Switch>
 

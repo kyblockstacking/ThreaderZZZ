@@ -58,7 +58,7 @@ class ThreadContent extends React.Component {
                     <div className="row">
                         {this.totalVotes(item)}
                         <p style={{ margin: "0 0 0 1.5em", fontSize: "1em", color: "lightgray" }}>
-                            <Link to="/">{item.UserId}</Link>
+                            <Link to="/">!USER!{item.UserId}</Link>
                         </p>
                     </div>
                     <button className="btn btn-primary active row" onClick={() => this.downVote(item)} disabled={!this.props.authenticated}><i className="far fa-thumbs-down"></i></button>
