@@ -4,9 +4,6 @@ module.exports = function(sequelize, DataTypes) {
         submitDate: DataTypes.DATEONLY,
         upvotes: DataTypes.INTEGER,
         downvotes: DataTypes.INTEGER
-    },
-    {
-        timestamps: false
     });
 
     Comments.associate = function (models) {

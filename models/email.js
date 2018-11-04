@@ -8,10 +8,11 @@ module.exports = function(sequelize, DataTypes) {
             defaultValue: false,
             allowNull: false
         }
-    },
-    {
-        timestamps: false
     });
+
+    Email.associate = function(models) {
+        Email.belongsTo(models.User);
+      };
 
     return Email;
 };
