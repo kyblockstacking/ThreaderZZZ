@@ -78,7 +78,7 @@ class App extends React.Component {
             <Route 
               exact path="/forum/:category" 
               render={(props) => <Topics {...props} 
-              authenticated={this.state.authenticated} />} />
+              authenticated={this.state.authenticated} />}
             />
             <Route exact path="/AboutUs" component={AboutUs} />
             <Route exact path="/DeveloperLounge" component={CreateAppointment} />
@@ -88,7 +88,7 @@ class App extends React.Component {
               exact
               path="/forum/category/thread=:id"
               render={(props) => <ThreadContent {...props} 
-              authenticated={this.state.authenticated} />} />
+              authenticated={this.state.authenticated} />}
             />
             <Route exact path="/signup" 
               render={(props) => <Signup {...props} setLogin={this.setLogin} />} />

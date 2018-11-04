@@ -53,7 +53,7 @@ router.post('/api/signup', (req, res) => {
         }
       })
       .catch((err) => {
-        res.send(err);
+        res.json(err);
       });
   } else {
     return res.status(400).json({
@@ -66,7 +66,7 @@ router.get('/logout', function(req, res) {
   loggedIn = false;
   res.clearCookie('token');
   req.session.destroy();
-  res.send(loggedIn);
+  res.json(loggedIn);
 });
 
 router.post('/login', (req, res) => {
@@ -86,26 +86,25 @@ router.post('/login', (req, res) => {
         id: user.id,
         loggedIn: loggedIn,
       };
-      res.json(req.session.user);
       const token = 't' + Math.random();
       res.cookie('token', token, {
         expires: new Date(Date.now() + 999999999),
-      });
+      }).json(req.session.user);
 
       db.User.update({ token: token }, { where: { id: user.id } }).then(
         (data) => {
-          res.send(data);
+          console.log(data);
         },
       );
     })
     .catch((err) => {
-      console.log(err);
+      res.json(err);
     });
 });
 
 router.get('/auth', (req, res) => {
   if (req.session.user) {
-    res.send({
+    res.json({
       firstName: req.session.user.firstName,
       username: req.session.user.username,
       admin: req.session.user.admin,
@@ -161,7 +160,7 @@ router.get('/api/profile/:user', (req, res) => {
       });
     })
     .catch((error) => {
-      res.send(error);
+      res.json(error);
     });
 });
 
