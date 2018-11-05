@@ -3,13 +3,27 @@ import ReactQuill from 'react-quill'; // ES6
 import 'react-quill/dist/quill.snow.css'
 import "./codeBlock.css";
 import axios from "axios";
+import Modal from 'react-modal';
+
+const submittedMessage = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        color: "#2e849e"
+    }
+};
 
 class Editor extends Component {
     constructor(props) {
         super(props);
         this.state = {
             text: "",
-            showModal: false
+            showModal: false,
+            ShowSubmitModal: false,
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -41,15 +55,15 @@ class Editor extends Component {
         let createThread = {
             replies: this.state.text.replace("<p>", "").replace("</p>", "")
         }
-        console.log(createThread)
-
 
         axios.post('/comments/api/comments/', createThread)
             .then(function (response) {
                 return response
-            }).then(function (body) {
-                console.log(body);
-            });
+            }).then(() => {
+                this.setState({
+                    ShowSubmitModal: true
+                })
+            })
     }
 
     render() {
@@ -69,6 +83,32 @@ class Editor extends Component {
                                 <button type="submit" style={{ color: "white", background: "#2e849e", borderRadius: "10px", padding: "0.5em" }} onClick={this.handleSubmit} disabled={!this.props.authenticated}>Reply</button>
                             </div>
                         </div>
+
+                        <Modal
+                            isOpen={this.state.ShowSubmitModal}
+                            style={submittedMessage}>
+                            <span
+                                style={{
+                                    fontSize: "1.25em",
+                                    cursor: "default",
+                                    padding: "0 1.5em 0 1.5em"
+                                }}
+                            >Reply posted!</span>
+                            <hr></hr>
+                            <span
+                                style={{
+                                    border: "2px solid #2e849e",
+                                    float: "right",
+                                    borderRadius: "5px",
+                                    fontSize: "0.85em",
+                                    padding: "0.25em 0.5em 0.25em 0.5em",
+                                    cursor: "pointer"
+                                }}
+                                onClick={() => {
+                                    this.setState({ ShowSubmitModal: false })
+                                }}>Close</span>
+                        </Modal>
+
                     </div>
                 </form>
             </div>

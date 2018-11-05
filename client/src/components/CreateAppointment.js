@@ -5,7 +5,17 @@ import "./codeBlock.css";
 import Modal from 'react-modal';
 import axios from "axios";
 
-import DeveloperLounge from "./DeveloperLounge"
+const submittedMessage = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        color: "#2e849e"
+    }
+};
 
 class CreateAppointment extends Component {
     constructor(props) {
@@ -13,7 +23,8 @@ class CreateAppointment extends Component {
         this.state = {
             title: "",
             text: "",
-            showModal: false
+            showModal: false,
+            ShowRequestModal: false
         }
         this.handleChange = this.handleChange.bind(this)
         this.updateInput = this.updateInput.bind(this);
@@ -67,9 +78,17 @@ class CreateAppointment extends Component {
                 this.handleCloseModal();
             }).then(() => {
                 this.props.renderMentorshipPost();
+            }).then(() => {
+                setTimeout(this.delayModal, 200)
             });
 
-        
+
+    }
+
+    delayModal = () => {
+        this.setState({
+            ShowRequestModal: true
+        })
     }
 
     render() {
@@ -103,6 +122,30 @@ class CreateAppointment extends Component {
                             <div>
                                 <button style={{ background: "#2e849e", color: "white", borderRadius: "10px", width: "60%", marginLeft: "20%", marginTop: "5%" }} type="submit" onClick={this.handleSubmit}>Request</button>
                             </div>
+                        </Modal>
+
+                        <Modal
+                            isOpen={this.state.ShowRequestModal}
+                            style={submittedMessage}>
+                            <span
+                                style={{
+                                    fontSize: "1.25em",
+                                    cursor: "default"
+                                }}
+                            >Request posted&nbsp;<i className="fas fa-pray"></i></span>
+                            <hr></hr>
+                            <span
+                                style={{
+                                    border: "2px solid #2e849e",
+                                    float: "right",
+                                    borderRadius: "5px",
+                                    fontSize: "0.85em",
+                                    padding: "0.25em 0.5em 0.25em 0.5em",
+                                    cursor: "pointer"
+                                }}
+                                onClick={() => {
+                                    this.setState({ ShowRequestModal: false })
+                                }}>Close</span>
                         </Modal>
                     </div>
                 </form>
