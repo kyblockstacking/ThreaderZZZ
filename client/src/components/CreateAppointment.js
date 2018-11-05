@@ -54,17 +54,14 @@ class CreateAppointment extends Component {
     handleSubmit(e) {
         e.preventDefault();
         // On submit of the form, send a POST request with the data to the server.
-        let createThread = {
-            threadName: this.state.title,
-            threadSummary: this.state.text.replace("<p>", "").replace("</p>", ""),
-            CategoryId: 1
+        let createRequest = {
+            title: this.state.title,
+            body: this.state.text.replace("<p>", "").replace("</p>", "")
         }
 
-        axios.post('/threads/api/threads/', createThread)
+        axios.post('/requestMentor', createRequest)
             .then(function (response) {
                 return response
-            }).then(function (body) {
-                console.log(body);
             }).then(() => {
                 this.handleCloseModal();
             });

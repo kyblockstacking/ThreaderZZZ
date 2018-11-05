@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
     var Threads = sequelize.define("Threads", {
         threadName: DataTypes.STRING,
         threadSummary: DataTypes.TEXT,
@@ -6,12 +6,12 @@ module.exports = function(sequelize, DataTypes) {
         downvotes: DataTypes.INTEGER,
         submitDate: DataTypes.DATEONLY,
         keyword: DataTypes.STRING,
-        
-    });
+    }
+    );
 
     Threads.associate = function (models) {
         Threads.hasMany(models.Comments);
-        Threads.belongsTo(models.User);
+        Threads.belongsTo(models.User)
     }
 
     return Threads;

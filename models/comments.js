@@ -8,6 +8,7 @@ module.exports = function(sequelize, DataTypes) {
 
     Comments.associate = function (models) {
         Comments.hasMany(models.VoteAlready);
+        Comments.belongsTo(models.User);
     }
     return Comments;
 

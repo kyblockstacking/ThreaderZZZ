@@ -2,6 +2,20 @@ const router = require('express').Router();
 const db = require('../models');
 //remember "/" is being used by express.static
 
+router.get("/mainTopicDiscussion/:id", function (req, res) {
+  db.Threads.find({
+    where: {
+      id: req.params.id
+    },
+    include: [{
+      model: db.User,
+      attributes: ['userName']
+    }]
+  }).then((results) => {
+    res.json(results)
+  })
+})
+
 router.get('/threadCount', function (req, res) {
   db.Category.findAll({
     include: [db.Threads],
@@ -34,7 +48,11 @@ router.get('/api/threads/:id', function (req, res) {
   db.Comments.findAll({
     where: {
       ThreadId: req.params.id
-    }
+    },
+    include: [{
+      model: db.User,
+      attributes: ['userName']
+    }]
   }).then((results) => {
     res.json(results);
   });

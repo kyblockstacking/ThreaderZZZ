@@ -1,9 +1,21 @@
 import React from 'react';
+import axios from 'axios';
 
 let date = new Date()
 
 class ReplyToThread extends React.Component {
-    state = {};
+    state = {
+        user: "",
+        title: "",
+        body: "",
+        time: "",
+    };
+
+    componentDidMount() {
+        axios.get("/mainTopicDiscussion").then((res) => {
+            
+        })
+    }
 
     render() {
         return (
