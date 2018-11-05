@@ -25,6 +25,7 @@ import EmailMessage from './components/EmailMessage';
 import Appointment from './components/Appointment';
 import Inbox from './components/Inbox';
 import Outbox from './components/Outbox';
+import DeveloperLounge from './components/DeveloperLounge';
 
 class App extends React.Component {
   state = {
@@ -90,13 +91,15 @@ class App extends React.Component {
             <Route
               exact path="/forum/:category"
               render={(props) => (
-                <Topics {...props} authenticated={this.state.authenticated} />
+                <Topics {...props} authenticated={this.state.authenticated} 
+                userData={this.state.userData}
+                />
               )}
             />
             <Route exact path="/AboutUs" component={AboutUs} />
             <Route 
               exact path="/DeveloperLounge"
-              render={(props) => <CreateAppointment {...props} 
+              render={(props) => <DeveloperLounge {...props} 
               userData={this.state.userData} />} />
 
             {/* TEST HERE */}

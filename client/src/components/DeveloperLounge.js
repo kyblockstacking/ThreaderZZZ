@@ -1,19 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import moment from "moment";
-
+import moment from 'moment';
+import CreateAppointment from "./CreateAppointment";
 class DeveloperLounge extends React.Component {
     state = {
         classes: [],
     };
 
     componentDidMount() {
+        this.retrievePosts();
+    }
+
+    retrievePosts = () => {
         axios.get("/classes").then((res) => {
             this.setState({
                 classes: res.data
             })
-            console.log(this.state.classes)
+        })
+    }
+
+    renderMentorshipPost = () => {
+        axios.get("/classes").then(response => {
+            this.setState({ classes: response.data });
         })
     }
 
@@ -21,7 +30,7 @@ class DeveloperLounge extends React.Component {
         return (
 
             <div>
-
+                <CreateAppointment userData={this.props.userData} renderMentorshipPost={this.renderMentorshipPost}/>
                 {this.state.classes.map(item => {
                     return (
                         <div style={{
@@ -37,7 +46,7 @@ class DeveloperLounge extends React.Component {
                             border: "2px solid #2e849e",
                             padding: "1em"
                         }}>
-                            <span style={{ fontSize: "0.75em", color: "lightgray" }}><i className="far fa-clipboard">&nbsp;</i>Posted By: {item.User.userName} at {moment(item.createdAt).fromNow()}</span>
+                            <span style={{ fontSize: "0.75em", color: "lightgray" }}><i className="far fa-clipboard">&nbsp;</i>Posted By: <Link to={`/api/profile/${item.User.userName}`}>{item.User.userName}</Link> at {moment(item.createdAt).fromNow()}</span>
                             <br></br>
                             <Link style={{ fontSize: "1.75em" }} to={`/mentorRequest/${item.id}`}>
                                 {item.title}

@@ -10,7 +10,10 @@ router.get("/mainTopicDiscussion/:id", function (req, res) {
     include: [{
       model: db.User,
       attributes: ['userName']
-    }]
+    }],
+    order: [
+      ['createdAt', 'DESC']
+    ]
   }).then((results) => {
     res.json(results)
   })
@@ -35,6 +38,9 @@ router.get('/api/:category', function (req, res) {
     where: {
       CategoryId: req.params.category,
     },
+    order: [
+      ['createdAt', 'DESC']
+    ]
     // include: [{
     //   model: db.User,
     //   required: false
@@ -52,7 +58,10 @@ router.get('/api/threads/:id', function (req, res) {
     include: [{
       model: db.User,
       attributes: ['userName']
-    }]
+    }],
+    order: [
+      ['createdAt', 'DESC']
+    ]
   }).then((results) => {
     res.json(results);
   });

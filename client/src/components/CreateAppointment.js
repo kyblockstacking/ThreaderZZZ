@@ -65,7 +65,11 @@ class CreateAppointment extends Component {
                 return response
             }).then(() => {
                 this.handleCloseModal();
+            }).then(() => {
+                this.props.renderMentorshipPost();
             });
+
+        
     }
 
     render() {
@@ -102,7 +106,7 @@ class CreateAppointment extends Component {
                         </Modal>
                     </div>
                 </form>
-                <DeveloperLounge />
+                {/* <DeveloperLounge /> */}
             </div>
         );
     }

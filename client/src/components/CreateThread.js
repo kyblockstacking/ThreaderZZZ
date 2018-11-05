@@ -71,7 +71,7 @@ class Comment extends Component {
             threadName: this.state.title,
             threadSummary: this.state.text.replace("<p>", "").replace("</p>", ""),
             CategoryId: this.props.categoryId,
-            UserId: 1
+            UserId: this.props.userData.id
         }
 
         axios.post('/threads/api/threads/', createThread)
@@ -83,6 +83,8 @@ class Comment extends Component {
                 this.handleCloseModal()
             }).then(() => {
                 setTimeout(this.kevin, 200)
+            }).then(() => {
+                this.props.updateThreadsArray(this.props.categoryId);
             })
     }
 
