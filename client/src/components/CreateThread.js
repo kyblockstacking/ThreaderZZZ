@@ -66,7 +66,6 @@ class Comment extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log("HIT");
         // On submit of the form, send a POST request with the data to the server.
         let createThread = {
             threadName: this.state.title,
