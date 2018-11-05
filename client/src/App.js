@@ -67,7 +67,7 @@ class App extends React.Component {
       <Router>
         <div style={{ background: '#ededed' }}>
           <Jumbotron />
-          <Navbar />
+          <Navbar authenticated={this.state.authenticated}/>
           <Route
             exact
             path="/"
@@ -108,7 +108,10 @@ class App extends React.Component {
               render={(props) => <Signup {...props} setLogin={this.setLogin} />} />
             <Route exact path="/api/profile/:user" component={Profile} />
             <Route exact path="/admin/categoryform" component={AdminCategoryForm} />
-            <Route exact path="/emailsystem" component={EmailMessage} />
+            <Route 
+              exact path="/emailsystem" 
+              render={(props) => <EmailMessage {...props} 
+              userData={this.state.userData} />} />
             <Route component={NotFound} />
           </Switch>
 
