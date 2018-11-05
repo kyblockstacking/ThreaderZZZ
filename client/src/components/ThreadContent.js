@@ -5,19 +5,32 @@ import { Link } from "react-router-dom";
 
 class ThreadContent extends React.Component {
     state = {
-        content: []
+        content: [],
+        user: "",
+        title: "",
+        body: "",
+        time: ""
     };
 
     componentDidMount() {
         this.getContent();
+
     }
 
     getContent = () => {
         axios.get(`/api/threads/${this.props.match.params.id}`).then(res => {
-            this.setState({
-                content: res.data
-            });
-        })
+            axios.get(`/mainTopicDiscussion/${this.props.match.params.id}`).then((data) => {
+                console.log("DATA", data.data)
+                console.log("RES", res.data)
+                this.setState({
+                    content: res.data,
+                    user: data.data.User.userName,
+                    title: data.data.threadName,
+                    body: data.data.threadSummary,
+                    time: data.data.createdAt
+                })
+            })
+        });
     }
 
     upVote = (item) => {
@@ -58,7 +71,7 @@ class ThreadContent extends React.Component {
                     <div className="row">
                         {this.totalVotes(item)}
                         <p style={{ margin: "0 0 0 1.5em", fontSize: "1em", color: "lightgray" }}>
-                            <Link to="/">!USER!{item.UserId}</Link>
+                            <Link to="/">{item.User.userName}</Link>
                         </p>
                     </div>
                     <button className="btn btn-primary active row" onClick={() => this.downVote(item)} disabled={content[content.length - 1].notUser}><i class="far fa-thumbs-down"></i></button>
@@ -68,7 +81,7 @@ class ThreadContent extends React.Component {
                         </p>
                     <br></br>
                     <div style={{ fontSize: "0.75em", color: "lightgray" }}>
-                        <i className="far fa-clipboard"></i>&nbsp;Posted on:&nbsp;DATEHERE
+                        <i className="far fa-clipboard"></i>&nbsp;Posted on:&nbsp;{item.createdAt}
                     </div>
                     <hr></hr>
                 </div>
@@ -81,11 +94,11 @@ class ThreadContent extends React.Component {
         return (
             <div style={{ margin: "1em 8em 1em 8em" }}>
                 <div style={{ padding: "1em 2.5em 1em 2.5em" }}>
-                    <span style={{ fontSize: "0.75em", color: "lightgray", padding: "1em 0 1em 0" }}><i className="far fa-clipboard">&nbsp;</i>Posted By: 'USERNAME' at 'TIMEHERE'</span>
+                    <span style={{ fontSize: "0.75em", color: "lightgray", padding: "1em 0 1em 0" }}><i className="far fa-clipboard">&nbsp;</i>Posted By: {this.state.user} at {this.state.time}</span>
                     <div>
-                        <span style={{ padding: "0.5em 0 0.5em 0", fontSize: "2em" }}>THIS IS MY QUESTION/TITLE</span>
+                        <span style={{ padding: "0.5em 0 0.5em 0", fontSize: "2em" }}>{this.state.title}</span>
                         <br></br>
-                        <span style={{ padding: "1em 0 1em 0", fontSize: "1em" }}>THIS IS A LONGER DESCRIPTION OF MY QUESTION WITH CODE BLOCK AND SUCH AND BOLD AND ITALIC AND KEVIN IS AWESOME AND STUFF AND MORE STUFF AND JAVASCRIPT IS MEH AND DOGS AND PUPPIES</span>
+                        <span style={{ padding: "1em 0 1em 0", fontSize: "1em" }}>{this.state.body}</span>
                     </div>
                     <div style={{ fontSize: "0.75em", color: "gray", padding: "0.5em 0 0.5em 0" }}>
                         <i className="far fa-share-square"></i>&nbsp;Share&nbsp;&nbsp;<i className="far fa-flag"></i>&nbsp;Report

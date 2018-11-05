@@ -56,7 +56,7 @@ class App extends React.Component {
             <Route exact path="/DeveloperLounge" component={CreateAppointment} />
 
             {/* TEST HERE */}
-            <Route exact path="/Test" component={Appointment} />
+            <Route exact path="/mentorRequest/:id" component={Appointment} />
             <Route exact path="/email/inbox" component={Inbox} />
             <Route exact path="/email/outbox" component={Outbox} />
             {/* END TEST */}
