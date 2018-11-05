@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import CreateThread from "./CreateThread"
+import moment from 'moment';
 
 class Topic extends React.Component {
     state = {
@@ -36,7 +37,7 @@ class Topic extends React.Component {
                             border: "2px solid #2e849e",
                             padding: "1em"
                         }} key={items.id}>
-                            <span style={{ fontSize: "0.75em", color: "lightgray" }}><i className="far fa-clipboard">&nbsp;</i>Posted By: {items.User.userName} at {items.createdAt}</span>
+                            <span style={{ fontSize: "0.75em", color: "lightgray" }}><i className="far fa-clipboard">&nbsp;</i>Posted By: {items.User.userName} {moment(items.createdAt).fromNow()}</span>
                             <br></br>
                             <Link style={{ fontSize: "1.75em" }} to={`/forum/category/thread=${items.id}`}>
                                 {items.threadName}

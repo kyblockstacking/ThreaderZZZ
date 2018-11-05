@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import moment from "moment";
 
 class Inbox extends React.Component {
     state = {
@@ -22,7 +23,7 @@ class Inbox extends React.Component {
             this.state.inbox.map(item => {
                 return (
                 <div style={{ margin: "2% 50% 2% 2%", border: "2px dashed #2e849e", padding: "1em", fontSize: "0.65em", borderRadius: "5px" }}>
-                    <p style={{ marginTop: "1em" }}>Sent by {item.User.userName} at {item.createdAt}</p>
+                    <p style={{ marginTop: "1em" }}>Sent by {item.User.userName} {moment(item.createdAt).fromNow()}</p>
                     <hr></hr>
                     <h6>{item.title}</h6>
                     <br></br>
