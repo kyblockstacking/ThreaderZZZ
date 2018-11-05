@@ -34,8 +34,8 @@ class EmailMessage extends Component {
       .then((response) => {
         console.log(response.data);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log(error);
       });
     this.setState(this.initialState);
   };
@@ -51,7 +51,6 @@ class EmailMessage extends Component {
               type="text"
               className="form-control mb-1"
               id="recipient"
-              aria-describedby="recipient"
               name="recipient"
               value={recipient}
               onChange={this.handleChange}
@@ -63,7 +62,6 @@ class EmailMessage extends Component {
               type="text"
               className="form-control mb-1"
               id="title"
-              aria-describedby="title"
               name="title"
               value={title}
               onChange={this.handleChange}

@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const db = require('../models');
 
-router.get('/emailin/:user', (req, res) => {
+router.get('/emailin/:recipient', (req, res) => {
   db.Email.findAll({
     include: [
       {
@@ -10,17 +10,17 @@ router.get('/emailin/:user', (req, res) => {
       },
     ],
     where: {
-      recipient: req.params.user,
+      recipient: req.params.recipient,
     },
   }).then((result) => {
     res.json(result);
   });
 });
 
-router.get('/emailout/:user', (req, res) => {
+router.get('/emailout/:sender', (req, res) => {
   db.Email.findAll({
     where: {
-      UserId: req.params.user,
+      UserId: req.params.sender,
     },
   }).then((result) => {
     res.json(result);

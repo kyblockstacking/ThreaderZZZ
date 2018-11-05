@@ -67,7 +67,7 @@ class App extends React.Component {
       <Router>
         <div style={{ background: '#ededed' }}>
           <Jumbotron />
-          <Navbar authenticated={this.state.authenticated}/>
+          <Navbar authenticated={this.state.authenticated} />
           <Route
             exact
             path="/"
@@ -91,8 +91,14 @@ class App extends React.Component {
 
             {/* TEST HERE */}
             <Route exact path="/Test" component={Appointment} />
-            <Route exact path="/email/inbox" component={Inbox} />
-            <Route exact path="/email/outbox" component={Outbox} />
+            <Route
+              exact path="/email/inbox"
+              render={(props) => <Inbox {...props} 
+              userData={this.state.userData} />} />
+            <Route
+              exact path="/email/outbox"
+              render={(props) => <Outbox {...props} 
+              userData={this.state.userData} />} />
             {/* END TEST */}
 
             
