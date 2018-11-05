@@ -26,18 +26,18 @@ class Outbox extends Component {
         <div
           key={iterator}
           style={{
-            margin: '2% 50% 2% 2%',
             border: '2px dashed #2e849e',
             padding: '1em',
             fontSize: '0.65em',
             borderRadius: '5px',
           }}
+          className="container"
         >
           <p style={{ marginTop: '1em' }}>
             Sent to {email.recipient} {moment(email.createdAt).fromNow()}
           </p>
           <hr />
-          <h6>{email.title}</h6>
+          <p  style={{ fontSize: '3em' }}>{email.title}</p>
           <br />
           <p>{email.message}</p>
         </div>

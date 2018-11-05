@@ -45,23 +45,22 @@ class Inbox extends Component {
           key={iterator}
           onClick={() => this.handleClick(email.id, email.recipient)}
           style={{
-            margin: '2% 50% 2% 2%',
             border: '2px dashed #2e849e',
             padding: '1em',
             fontSize: '0.65em',
             borderRadius: '5px',
           }}
+          className="container"
         >
           <p style={{ marginTop: '1em' }}>
             Sent by {email.User.userName} {moment(email.createdAt).fromNow()}
           </p>
           <hr />
           {email.userRead === false ? (
-            <p style={{ fontWeight: 'bold' }}>{email.title}</p>
+            <p style={{ fontWeight: 'bold', fontSize: '3em' }}>{email.title}</p>
           ) : (
-            <p>{email.title}</p>
+            <p style={{ fontSize: '3em' }}>{email.title}</p>
           )}
-
           <br />
           <p>{email.message}</p>
         </div>

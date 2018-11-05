@@ -12,6 +12,9 @@ router.get('/emailin/:recipient', (req, res) => {
     where: {
       recipient: req.params.recipient,
     },
+    order: [
+      ['createdAt', 'DESC']
+    ]
   }).then((result) => {
     res.json(result);
   });
@@ -22,6 +25,9 @@ router.get('/emailout/:sender', (req, res) => {
     where: {
       UserId: req.params.sender,
     },
+    order: [
+      ['createdAt', 'DESC']
+    ]
   }).then((result) => {
     res.json(result);
   });
@@ -45,6 +51,9 @@ router.put('/email/read/:id', (req, res) => {
       where: {
         id: req.params.id,
       },
+      order: [
+        ['createdAt', 'DESC']
+      ]
     },
   )
     .then((result) => {
