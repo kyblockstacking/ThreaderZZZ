@@ -131,6 +131,8 @@ class App extends React.Component {
                 <ThreadContent
                   {...props}
                   authenticated={this.state.authenticated}
+                  userData={this.state.userData}
+
                 />
               )}
             />

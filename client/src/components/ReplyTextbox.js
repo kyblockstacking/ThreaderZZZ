@@ -53,11 +53,14 @@ class Editor extends Component {
         e.preventDefault();
         // On submit of the form, send a POST request with the data to the server.
         let createThread = {
-            replies: this.state.text.replace("<p>", "").replace("</p>", "")
+            replies: this.state.text.replace("<p>", "").replace("</p>", ""),
+            UserId: this.props.userData.id,
+            ThreadId: this.props.threadId
         }
 
         axios.post('/comments/api/comments/', createThread)
             .then(function (response) {
+                console.log("aidan did it");
                 return response
             }).then(() => {
                 this.setState({
