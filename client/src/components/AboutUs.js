@@ -1,7 +1,7 @@
 import React from "react";
 
 let card = {
-    margin: "2em",
+    margin: "1.5em",
     width: "14rem",
  }
  
@@ -15,7 +15,7 @@ class AboutUs extends React.Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="container d-flex flex-wrap justify-content-around">
                 <br></br><br></br>
                 <div className="aboutUs" style={about}>
                     <h1>Our Mission</h1>
@@ -33,7 +33,7 @@ class AboutUs extends React.Component {
                 <div className="card" style={card}>
                     <img className="card-img-top" src="/images/python_logo.jpg" alt="Profile Picture" />
                     <div className="card-body">
-                        <h5 className="card-title">Aiden</h5>
+                        <h5 className="card-title">Aidan</h5>
                         <a href="https://github.com/ironaidan" className="btn btn-primary">Github Profile</a>
                     </div>
                 </div>

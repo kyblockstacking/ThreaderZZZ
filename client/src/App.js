@@ -97,10 +97,13 @@ class App extends React.Component {
               )}
             />
             <Route exact path="/AboutUs" component={AboutUs} />
-            <Route 
-              exact path="/DeveloperLounge"
-              render={(props) => <DeveloperLounge {...props} 
-              userData={this.state.userData} />} />
+            {this.state.authenticated ? (
+              <Route 
+                exact path="/DeveloperLounge"
+                render={(props) => <DeveloperLounge {...props} 
+                userData={this.state.userData} />} /> 
+              ) : null}
+            
 
             {/* TEST HERE */}
             <Route exact path="/mentorRequest/:id" component={Appointment} />
