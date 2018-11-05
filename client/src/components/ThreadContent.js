@@ -1,7 +1,8 @@
 import React from "react";
-import axios from "axios";
-import ReplyTextbox from "../components/ReplyTextbox";
 import { Link } from "react-router-dom";
+import ReplyTextbox from "../components/ReplyTextbox";
+import axios from "axios";
+import moment from "moment";
 
 class ThreadContent extends React.Component {
     state = {
@@ -69,7 +70,7 @@ class ThreadContent extends React.Component {
                         </p>
                     <br></br>
                     <div style={{ fontSize: "0.75em", color: "lightgray" }}>
-                        <i className="far fa-clipboard"></i>&nbsp;Posted on:&nbsp;{item.createdAt}
+                        <i className="far fa-clipboard"></i>&nbsp;Posted:&nbsp;{moment(item.createdAt).fromNow()}
                     </div>
                     <hr></hr>
                 </div>
@@ -82,7 +83,7 @@ class ThreadContent extends React.Component {
         return (
             <div style={{ margin: "1em 8em 1em 8em" }}>
                 <div style={{ padding: "1em 2.5em 1em 2.5em" }}>
-                    <span style={{ fontSize: "0.75em", color: "lightgray", padding: "1em 0 1em 0" }}><i className="far fa-clipboard">&nbsp;</i>Posted By: 'USERNAME' at 'TIMEHERE'</span>
+                    <span style={{ fontSize: "0.75em", color: "lightgray", padding: "1em 0 1em 0" }}><i className="far fa-clipboard">&nbsp;</i>Posted By: 'USERNAME' {moment().fromNow()}</span>
                     <div>
                         <span style={{ padding: "0.5em 0 0.5em 0", fontSize: "2em" }}>THIS IS MY QUESTION/TITLE</span>
                         <br></br>
