@@ -66,6 +66,8 @@ class Editor extends Component {
                 this.setState({
                     ShowSubmitModal: true
                 })
+            }).then(() => {
+                this.props.threadContRefresh(this.props.threadId);
             })
     }
 

@@ -34,6 +34,22 @@ class ThreadContent extends React.Component {
         });
     }
 
+    threadContRefresh = (id) => {
+        axios.get(`/api/threads/${id}`).then(res => {
+            axios.get(`/mainTopicDiscussion/${id}`).then((data) => {
+                console.log("DATA", data.data)
+                console.log("RES", res.data)
+                this.setState({
+                    content: res.data,
+                    user: data.data.User.userName,
+                    title: data.data.threadName,
+                    body: data.data.threadSummary,
+                    time: data.data.createdAt
+                })
+            })
+        });
+    }
+
     upVote = (item) => {
         let upVoteData = {
             id: item.id,
@@ -104,7 +120,7 @@ class ThreadContent extends React.Component {
                     <div style={{ fontSize: "0.75em", color: "gray", padding: "0.5em 0 0.5em 0" }}>
                         <i className="far fa-share-square"></i>&nbsp;Share&nbsp;&nbsp;<i className="far fa-flag"></i>&nbsp;Report
                     </div>
-                    <ReplyTextbox authenticated={this.props.authenticated} userData={this.props.userData} threadId={this.props.match.params.id}/>
+                    <ReplyTextbox authenticated={this.props.authenticated} userData={this.props.userData} threadId={this.props.match.params.id} threadContRefresh={this.threadContRefresh} />
                     <br></br>
                 </div>
                 <hr></hr>
