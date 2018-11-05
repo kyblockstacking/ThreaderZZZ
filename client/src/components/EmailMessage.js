@@ -3,11 +3,24 @@ import axios from 'axios';
 
 class EmailMessage extends Component {
   state = {
+    UserId: this.props.userData.id,
     sender: this.props.userData.username,
     recipient: '',
     title: '',
     message: '',
   };
+
+  constructor(props) {
+    super(props);
+    this.initialState = {
+      UserId: this.props.userData.id,
+      sender: this.props.userData.username,
+      recipient: '',
+      title: '',
+      message: '',
+    };
+    this.state = this.initialState;
+  }
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -24,6 +37,7 @@ class EmailMessage extends Component {
       .catch((err) => {
         console.log(err);
       });
+    this.setState(this.initialState);
   };
 
   render() {
