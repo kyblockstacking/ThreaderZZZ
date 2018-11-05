@@ -1,5 +1,19 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Modal from 'react-modal';
+
+
+const submittedMessage = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    color: "#2e849e"
+  }
+};
 
 class EmailMessage extends Component {
   state = {
@@ -8,6 +22,7 @@ class EmailMessage extends Component {
     recipient: '',
     title: '',
     message: '',
+    ShowEmailModal: false,
   };
 
   constructor(props) {
@@ -83,10 +98,41 @@ class EmailMessage extends Component {
             type="submit"
             className="btn btn-primary mb-5"
             style={{ backgroundColor: '#2e849e' }}
+            onClick={() => {
+              this.setState({
+                ShowEmailModal: true
+              })
+            }}
           >
             Submit
           </button>
         </form>
+
+        <Modal
+          isOpen={this.state.ShowEmailModal}
+          style={submittedMessage}>
+          <span
+            style={{
+              fontSize: "1.25em",
+              cursor: "default",
+              padding: "0 1.5em 0 1.5em"
+            }}
+          >Email Sent&nbsp;<i className="fas fa-plane-departure"></i></span>
+          <hr></hr>
+          <span
+            style={{
+              border: "2px solid #2e849e",
+              float: "right",
+              borderRadius: "5px",
+              fontSize: "0.85em",
+              padding: "0.25em 0.5em 0.25em 0.5em",
+              cursor: "pointer"
+            }}
+            onClick={() => {
+              this.setState({ ShowEmailModal: false })
+            }}>Close</span>
+        </Modal>
+
       </div>
     );
   }
