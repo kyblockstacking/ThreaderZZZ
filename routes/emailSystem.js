@@ -38,4 +38,21 @@ router.post('/emailout', (req, res) => {
     });
 });
 
+router.put('/email/read/:id', (req, res) => {
+  db.Email.update(
+    { userRead: true },
+    {
+      where: {
+        id: req.params.id,
+      },
+    },
+  )
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((error) => {
+      res.json(error);
+    });
+});
+
 module.exports = router;
