@@ -3,8 +3,6 @@ const db = require('../models');
 
 
 router.post('/requestMentor', function (req, res) {
-    //hardcode userId
-    req.body.UserId = 1;
     db.RequestMentor.create(req.body).then(function (result) {
         res.send(200);
     })
@@ -35,5 +33,14 @@ router.get("/mentorRequest/:id", (req, res) => {
         res.json(results);
     })
 })
+
+router.post("/mentorCandidate/:id", (req, res) => {
+    req.body.RequestMentorId = req.params.id;
+    console.log(req.body);
+    // db.MentorCandidate.create(req.body)
+    // .then((res) => {
+    //     res.status(200);
+    // })
+});
 
 module.exports = router;

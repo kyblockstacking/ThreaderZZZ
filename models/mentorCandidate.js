@@ -8,6 +8,9 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
+    MentorCandidate.associate = function (models) {
+        MentorCandidate.belongsTo(models.User);
+    }
     return MentorCandidate;
 
 }

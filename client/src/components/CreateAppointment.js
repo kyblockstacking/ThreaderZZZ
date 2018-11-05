@@ -56,7 +56,8 @@ class CreateAppointment extends Component {
         // On submit of the form, send a POST request with the data to the server.
         let createRequest = {
             title: this.state.title,
-            body: this.state.text.replace("<p>", "").replace("</p>", "")
+            body: this.state.text.replace("<p>", "").replace("</p>", ""),
+            UserId: this.props.userData.id
         }
 
         axios.post('/requestMentor', createRequest)

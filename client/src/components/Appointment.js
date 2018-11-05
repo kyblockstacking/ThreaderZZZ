@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-
+import moment from "moment";
 class Appointment extends React.Component {
 
     state = {
@@ -22,12 +22,23 @@ class Appointment extends React.Component {
         })
     }
 
+    mentorCandidate = () => {
+        let mentorReq = {
+
+        }
+        axios.post(`/mentorCandidate/${this.props.match.params.id}`, mentorReq).then ((res) => {
+            console.log("posted");
+        })
+
+    }
+
+    
 
     render() {
         return (
             <div style={{ margin: "1em 8em 1em 8em" }}>
                 <div style={{ padding: "1em 2.5em 1em 2.5em" }}>
-                    <span style={{ fontSize: "0.75em", color: "lightgray", padding: "1em 0 1em 0" }}><i className="far fa-clipboard">&nbsp;</i>Posted By: {this.state.user} at {this.state.time}</span>
+                    <span style={{ fontSize: "0.75em", color: "lightgray", padding: "1em 0 1em 0" }}><i className="far fa-clipboard">&nbsp;</i>Posted By: {this.state.user} at {moment(this.state.time).fromNow()}</span>
                     <div>
                         <span style={{ padding: "0.5em 0 0.5em 0", fontSize: "2em" }}>{this.state.title}</span>
                         <br></br>
