@@ -94,17 +94,10 @@ class App extends React.Component {
               )}
             />
             <Route exact path="/AboutUs" component={AboutUs} />
-<<<<<<< HEAD
-            <Route
-              exact path="/DeveloperLounge"
-              component={CreateAppointment}
-            />
-=======
             <Route 
               exact path="/DeveloperLounge"
               render={(props) => <CreateAppointment {...props} 
               userData={this.state.userData} />} />
->>>>>>> mentorComponent2
 
             {/* TEST HERE */}
             <Route exact path="/mentorRequest/:id" component={Appointment} />
