@@ -93,6 +93,10 @@ class Comment extends Component {
     }
 
     render() {
+        let disableButton = false
+        if (this.state.title === "") {
+            disableButton = true
+        }
         return (
             <div>
                 <form>
@@ -124,7 +128,7 @@ class Comment extends Component {
                             </ReactQuill>
 
                             <div>
-                                <button style={{ background: "#2e849e", color: "white", borderRadius: "10px", width: "60%", marginLeft: "20%", marginTop: "5%" }} type="submit" onClick={this.handleSubmit}>Submit</button>
+                                <button style={{ background: "#2e849e", color: "white", borderRadius: "10px", width: "60%", marginLeft: "20%", marginTop: "5%" }} type="submit" onClick={this.handleSubmit} disabled={disableButton}>Submit</button>
                             </div>
 
                         </Modal>

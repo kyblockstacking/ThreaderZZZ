@@ -73,6 +73,10 @@ class CreateAppointment extends Component {
     }
 
     render() {
+        let disableButton = false
+        if (this.state.title === "") {
+            disableButton = true
+        }
         return (
             <div>
                 <div style={{ borderRadius: "10px", padding: '5px', background: '#2e849e', color: 'white', width: "60%", marginRight: "auto", marginLeft: "auto", marginBottom: "1em", textAlign: "center" }}><i class="fas fa-chalkboard-teacher">&nbsp;&nbsp;</i>Developer Classes</div>
@@ -101,7 +105,7 @@ class CreateAppointment extends Component {
                                 onChange={this.handleChange}>
                             </ReactQuill>
                             <div>
-                                <button style={{ background: "#2e849e", color: "white", borderRadius: "10px", width: "60%", marginLeft: "20%", marginTop: "5%" }} type="submit" onClick={this.handleSubmit}>Request</button>
+                                <button style={{ background: "#2e849e", color: "white", borderRadius: "10px", width: "60%", marginLeft: "20%", marginTop: "5%" }} type="submit" onClick={this.handleSubmit} disabled={disableButton}>Request</button>
                             </div>
                         </Modal>
                     </div>

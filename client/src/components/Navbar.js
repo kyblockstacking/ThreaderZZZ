@@ -31,9 +31,11 @@ class NavBar extends React.Component {
                 {this.props.authenticated ? 
                     <div style={box}><Link style={{ color: "white" }} to="/email/outbox"><i className="far fa-share-square">&nbsp;</i>Outbox</Link></div>  
                 : null}
-
                 {this.props.authenticated ? 
-                    <div style={box}><Link style={{ color: "white" }} to="/DeveloperLounge"><i className="fas fa-inbox">&nbsp;</i>Class</Link></div>
+                    <div style={box}><Link style={{ color: "white" }} to="/emailsystem"><i className="fas fa-envelope">&nbsp;</i>Send Mail</Link></div>
+                : null}
+                {this.props.authenticated ? 
+                    <div style={box}><Link style={{ color: "white" }} to="/DeveloperLounge"><i className="fas fa-pray">&nbsp;</i>Mentor</Link></div>
                 : null}
             </div>
         )

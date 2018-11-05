@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 class Profile extends Component {
@@ -27,7 +28,7 @@ class Profile extends Component {
 
     return (
       <div className="container">
-        <div className="card m-5 w-50">
+        <div className="card m-5">
           <div className="card-header">Profile</div>
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
@@ -47,6 +48,14 @@ class Profile extends Component {
               <div className="float-right">{upvote - downvote}</div>
             </li>
           </ul>
+          <Link to="/emailsystem">
+            <button
+              className="btn btn-primary"
+              style={{ backgroundColor: '#2e849e' }}
+            >
+              Message {userName}
+            </button>
+          </Link>
         </div>
       </div>
     );
