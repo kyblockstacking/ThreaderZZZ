@@ -104,7 +104,7 @@ class ThreadContent extends React.Component {
                     <div style={{ fontSize: "0.75em", color: "gray", padding: "0.5em 0 0.5em 0" }}>
                         <i className="far fa-share-square"></i>&nbsp;Share&nbsp;&nbsp;<i className="far fa-flag"></i>&nbsp;Report
                     </div>
-                    <ReplyTextbox authenticated={this.props.authenticated} />
+                    <ReplyTextbox authenticated={this.props.authenticated} userData={this.props.userData} threadId={this.props.match.params.id}/>
                     <br></br>
                 </div>
                 <hr></hr>

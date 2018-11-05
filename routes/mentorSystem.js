@@ -14,7 +14,10 @@ router.get("/classes", (req, res) => {
         include: [{
             model: db.User,
             attributes: ['userName']
-        }]
+        }],
+        order: [
+            ['createdAt', 'DESC']
+        ]
     }).then((results) => {
         res.json(results)
     })
