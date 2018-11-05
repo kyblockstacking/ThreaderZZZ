@@ -3,11 +3,24 @@ import axios from 'axios';
 
 class EmailMessage extends Component {
   state = {
-    userId: '',
+    UserId: this.props.userData.id,
+    sender: this.props.userData.username,
     recipient: '',
     title: '',
     message: '',
   };
+
+  constructor(props) {
+    super(props);
+    this.initialState = {
+      UserId: this.props.userData.id,
+      sender: this.props.userData.username,
+      recipient: '',
+      title: '',
+      message: '',
+    };
+    this.state = this.initialState;
+  }
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -21,63 +34,56 @@ class EmailMessage extends Component {
       .then((response) => {
         console.log(response.data);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log(error);
       });
+    this.setState(this.initialState);
   };
 
   render() {
-    const { userId, recipient, title, message } = this.state;
+    const { recipient, title, message } = this.state;
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <label htmlFor="userId">From</label>
+            <label htmlFor="recipient">To:</label>
             <input
               type="text"
-              className="form-control"
-              id="userId"
-              aria-describedby="userId"
-              name="userId"
-              value={userId}
-              onChange={this.handleChange}
-            />
-
-            <label htmlFor="recipient">To</label>
-            <input
-              type="text"
-              className="form-control"
+              className="form-control mb-1"
               id="recipient"
-              aria-describedby="recipient"
               name="recipient"
               value={recipient}
               onChange={this.handleChange}
+              required
             />
 
-            <label htmlFor="title">Title</label>
+            <label htmlFor="title">Title:</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control mb-1"
               id="title"
-              aria-describedby="title"
               name="title"
               value={title}
               onChange={this.handleChange}
+              required
             />
 
-            <label htmlFor="message">Message</label>
-            <input
-              type="text"
-              className="form-control"
+            <label htmlFor="message">Message:</label>
+            <textarea
+              class="form-control mb-1"
               id="message"
-              aria-describedby="message"
+              rows="10"
               name="message"
               value={message}
               onChange={this.handleChange}
+              required
             />
-            <text-area></text-area>
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button
+            type="submit"
+            className="btn btn-primary mb-5"
+            style={{ backgroundColor: '#2e849e' }}
+          >
             Submit
           </button>
         </form>

@@ -25,8 +25,12 @@ class NavBar extends React.Component {
                 <div style={box}><Link style={{ color: "white", cursor: "help" }} to="/AboutUs"><i className="fas fa-info-circle">&nbsp;&nbsp;</i>About Us</Link></div>
 
                 {/* TESTING HERE */}
-                <div style={box}><Link style={{ color: "white" }} to="/email/inbox"><i className="fas fa-inbox">&nbsp;</i>Inbox</Link></div>
-                <div style={box}><Link style={{ color: "white" }} to="/email/outbox"><i className="far fa-share-square">&nbsp;</i>Outbox</Link></div>
+                {this.props.authenticated ? 
+                    <div style={box}><Link style={{ color: "white" }} to="/email/inbox"><i className="fas fa-inbox">&nbsp;</i>Inbox</Link></div>
+                : null}
+                {this.props.authenticated ? 
+                    <div style={box}><Link style={{ color: "white" }} to="/email/outbox"><i className="far fa-share-square">&nbsp;</i>Outbox</Link></div>  
+                : null}
             </div>
         )
     }
