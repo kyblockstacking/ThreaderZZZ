@@ -11,7 +11,8 @@ module.exports = function (sequelize, DataTypes) {
 
     Threads.associate = function (models) {
         Threads.hasMany(models.Comments);
-        Threads.belongsTo(models.User)
+        Threads.belongsTo(models.User);
+        Threads.belongsTo(models.Category)
     }
 
     return Threads;
