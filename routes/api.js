@@ -34,6 +34,9 @@ router.get('/api/:category', function (req, res) {
     }, {
       model: db.User,
       attributes: ["userName"]
+    }, {
+      model: db.Category,
+      attributes: ["name"]
     }],
     where: {
       CategoryId: req.params.category,

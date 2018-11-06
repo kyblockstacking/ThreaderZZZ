@@ -6,7 +6,8 @@ import moment from 'moment';
 
 class Topic extends React.Component {
     state = {
-        threadsArray: []
+        threadsArray: [],
+        category: ""
     };
 
     componentDidMount() {
@@ -15,8 +16,18 @@ class Topic extends React.Component {
 
     findAll = () => {
         axios.get(`/api/${this.props.match.params.category}`).then(res => {
-            this.setState({ threadsArray: res.data });
+            console.log(res.data);
+            let category = "";
+            if (res.data[0].Category.name){
+                category = res.data[0].Category.name
+            }
+            this.setState({ 
+                threadsArray: res.data,
+                category: category
+            });
+            // console.log(this.state);
         })
+
     }
 
     updateThreadsArray = (category) => {
@@ -26,9 +37,24 @@ class Topic extends React.Component {
     }
 
     render() {
+        // let category;
+        // switch (this.state.threadsArray[0].CategoryId) {
+        //     case '1':
+        //         category = "Javascript"
+        //         break;
+        //     case '2':
+        //         category = "PHP"
+        //         break;
+        //     case '3':
+        //         category = "Python"
+        //         break;
+        //     default:
+        //         break;
+        // }
+
         return (
             <div>
-                <div style={{ borderRadius: "10px", padding: '5px', background: '#2e849e', color: 'white', width: "60%", marginRight: "auto", marginLeft: "auto", marginBottom: "1em", textAlign: "center" }}><i className="fab fa-js-square">&nbsp;&nbsp;</i><span style={{ cursor: "default" }}>Javascript ThreadZZZ</span></div>
+                <div style={{ borderRadius: "10px", padding: '5px', background: '#2e849e', color: 'white', width: "60%", marginRight: "auto", marginLeft: "auto", marginBottom: "1em", textAlign: "center" }}><span style={{ cursor: "default" }}>{this.state.category}</span></div>
                 {this.props.authenticated ? <CreateThread categoryId={this.props.match.params.category} userData={this.props.userData} updateThreadsArray={this.updateThreadsArray} /> : null}
 
                 {this.state.threadsArray.map(items => {
