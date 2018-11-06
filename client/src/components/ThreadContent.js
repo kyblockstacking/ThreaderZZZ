@@ -15,14 +15,11 @@ class ThreadContent extends React.Component {
 
     componentDidMount() {
         this.getContent();
-
     }
 
     getContent = () => {
         axios.get(`/api/threads/${this.props.match.params.id}`).then(res => {
             axios.get(`/mainTopicDiscussion/${this.props.match.params.id}`).then((data) => {
-                console.log("DATA", data.data)
-                console.log("RES", res.data)
                 this.setState({
                     content: res.data,
                     user: data.data.User.userName,
@@ -37,8 +34,6 @@ class ThreadContent extends React.Component {
     threadContRefresh = (id) => {
         axios.get(`/api/threads/${id}`).then(res => {
             axios.get(`/mainTopicDiscussion/${id}`).then((data) => {
-                console.log("DATA", data.data)
-                console.log("RES", res.data)
                 this.setState({
                     content: res.data,
                     user: data.data.User.userName,
@@ -53,22 +48,26 @@ class ThreadContent extends React.Component {
     upVote = (item) => {
         let upVoteData = {
             id: item.id,
-            newUpVoteCount: item.upvotes + 1
+            newUpVoteCount: item.upvotes + 1,
+            userId: item.UserId,
+            upvote: item.User.upvote
         }
-        axios.post("/api/upvote", upVoteData).then(res => {
+        axios.put("/api/upvote", upVoteData).then(res => {
             this.getContent();
         })
     }
 
     downVote = (item) => {
+        console.log("almost here", item);
         let downVoteData = {
             id: item.id,
-            newDownVoteCount: item.downvotes + 1
+            newDownVoteCount: item.downvotes + 1,
+            userId: item.UserId,
+            downvote: item.User.downvote
         }
-        axios.post("/api/downvote", downVoteData).then(res => {
+        axios.put("/api/downvote", downVoteData).then(res => {
             this.getContent();
         })
-
     }
 
     totalVotes = (item) => {
@@ -76,11 +75,12 @@ class ThreadContent extends React.Component {
     }
 
     threadContent = () => {
-        let content = this.state.content;
-        let filteredArr = this.state.content.filter(item => {
+        let { content } = this.state;
+        let filteredArr = content.filter(item => {
             return (item.id);
         })
         let thread = filteredArr.map(item => {
+            console.log(item);
             return (
                 <div key={item.id}>
 

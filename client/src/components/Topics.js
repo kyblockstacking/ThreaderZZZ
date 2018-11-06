@@ -16,14 +16,12 @@ class Topic extends React.Component {
     findAll = () => {
         axios.get(`/api/${this.props.match.params.category}`).then(res => {
             this.setState({ threadsArray: res.data });
-            console.log(res.data);
         })
     }
 
     updateThreadsArray = (category) => {
         axios.get(`/api/${category}`).then(response => {
             this.setState({ threadsArray: response.data });
-            console.log(response.data);
         })
     }
 

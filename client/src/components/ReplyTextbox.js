@@ -60,7 +60,6 @@ class Editor extends Component {
 
         axios.post('/comments/api/comments/', createThread)
             .then(function (response) {
-                console.log("aidan did it");
                 return response
             }).then(() => {
                 this.setState({

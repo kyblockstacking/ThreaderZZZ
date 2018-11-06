@@ -117,7 +117,7 @@ class Comment extends Component {
                             <br></br>
                             <ReactQuill
                                 placeholder="Description Text (optional)"
-                                style={{ width: "60%", height: "60%", margin: "0 auto" }}
+                                style={{ width: "60%", height: "60%", margin: "0 auto"}}
                                 value={this.state.text}
                                 theme="snow"
                                 modules={this.modules}
@@ -126,7 +126,7 @@ class Comment extends Component {
                             </ReactQuill>
 
                             <div>
-                                <button style={{ background: "#2e849e", color: "white", borderRadius: "10px", width: "60%", marginLeft: "20%", marginTop: "5%" }} type="submit" onClick={this.handleSubmit} disabled={disableButton}>Submit</button>
+                                <button style={{ background: "#2e849e", color: "white", borderRadius: "10px", width: "60%", marginLeft: "20%", marginTop: "5%", position: "relative"}} type="submit" onClick={this.handleSubmit} disabled={disableButton}>Submit</button>
                             </div>
 
                         </Modal>

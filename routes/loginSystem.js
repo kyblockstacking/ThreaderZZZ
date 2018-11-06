@@ -78,6 +78,7 @@ router.post('/login', (req, res) => {
   })
     .then((user) => {
       loggedIn = true;
+      
       req.session.user = {
         firstName: user.firstName,
         username: user.userName,
@@ -85,11 +86,25 @@ router.post('/login', (req, res) => {
         user: user.user,
         id: user.id,
         loggedIn: loggedIn,
+        upvote: user.upvote,
+        downvote: user.downvote,
       };
+      
+      if (user.upvote - user.downvote > 1000) {
+        req.session.user.admin = true;
+        db.User.update({ admin: true }, { where: { id: user.id } }).then(
+          () => {
+            console.log("Updated status to Mentor");
+          },
+        );
+      }
+
       const token = 't' + Math.random();
-      res.cookie('token', token, {
-        expires: new Date(Date.now() + 999999999),
-      }).json(req.session.user);
+      res
+        .cookie('token', token, {
+          expires: new Date(Date.now() + 999999999),
+        })
+        .json(req.session.user);
 
       db.User.update({ token: token }, { where: { id: user.id } }).then(
         (data) => {
@@ -111,6 +126,8 @@ router.get('/auth', (req, res) => {
       user: req.session.user.user,
       id: req.session.user.id,
       loggedIn: loggedIn,
+      upvote: req.session.user.upvote,
+      downvote: req.session.user.downvote,
     });
   } else if (req.headers.cookie.indexOf('token=') !== -1) {
     const cookie = req.headers.cookie.match(/(?<=token=)[^ ;]*/)[0];
@@ -128,6 +145,8 @@ router.get('/auth', (req, res) => {
             user: user.user,
             id: user.id,
             loggedIn: loggedIn,
+            upvote: user.upvote,
+            downvote: user.downvote,
           };
           res.json(req.session.user);
         } else {

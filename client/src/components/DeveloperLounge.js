@@ -31,9 +31,11 @@ class DeveloperLounge extends React.Component {
 
             <div>
                 <CreateAppointment userData={this.props.userData} renderMentorshipPost={this.renderMentorshipPost}/>
-                {this.state.classes.map(item => {
+                {this.state.classes.map((item, iterator) => {
                     return (
-                        <div style={{
+                        <div 
+                            key={iterator}
+                            style={{
                             width: '60%',
                             background: 'white',
                             borderTopRightRadius: '10px',

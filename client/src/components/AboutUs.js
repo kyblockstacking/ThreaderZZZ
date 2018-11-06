@@ -31,7 +31,7 @@ class AboutUs extends React.Component {
                     <h1>Meet the admins</h1>
                 </div>
                 <div className="card" style={card}>
-                    <img className="card-img-top" src="/images/python_logo.jpg" alt="Profile Picture" />
+                    <img className="card-img-top" src="/images/python_logo.jpg" alt="Profile" />
                     <div className="card-body">
                         <h5 className="card-title">Aidan</h5>
                         <a href="https://github.com/ironaidan" className="btn btn-primary">Github Profile</a>
@@ -39,7 +39,7 @@ class AboutUs extends React.Component {
                 </div>
 
                 <div className="card" style={card}>
-                    <img className="card-img-top" src="/images/python_logo.jpg" alt="Profile Picture" />
+                    <img className="card-img-top" src="/images/python_logo.jpg" alt="Profile" />
                     <div className="card-body">
                         <h5 className="card-title">David</h5>
                         <a href="https://github.com/davidmhuh" className="btn btn-primary">Github Profile</a>
@@ -47,7 +47,7 @@ class AboutUs extends React.Component {
                 </div>
 
                 <div className="card" style={card}>
-                    <img className="card-img-top" src="/images/python_logo.jpg" alt="Profile Picture" />
+                    <img className="card-img-top" src="/images/python_logo.jpg" alt="Profile" />
                     <div className="card-body">
                         <h5 className="card-title">Kevin</h5>
                         <a href="https://github.com/kyblockstacking" className="btn btn-primary">Github Profile</a>
@@ -55,7 +55,7 @@ class AboutUs extends React.Component {
                 </div>
 
                 <div className="card" style={card}>
-                    <img className="card-img-top" src="/images/python_logo.jpg" alt="Profile Picture" />
+                    <img className="card-img-top" src="/images/python_logo.jpg" alt="Profile" />
                     <div className="card-body">
                         <h5 className="card-title">Vernie</h5>
                         <a href="https://github.com/vedelacruz" className="btn btn-primary">Github Profile</a>
