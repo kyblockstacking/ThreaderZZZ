@@ -36,6 +36,7 @@ class Appointment extends React.Component {
             RequestMentorId: this.props.match.params.id
         }
         axios.post(`/mentorCandidate/${this.props.match.params.id}`, mentorReq).then((res) => {
+            this.mentorApplicants();
         })
     }
 
@@ -62,10 +63,9 @@ class Appointment extends React.Component {
         }
         axios.post(`/acceptMentor/${threadId}`, data).then(() => {
             this.mentorApplicants();
-        }).then(() => {
-            console.log("im done with this bootcamp!");
         });
     }
+
 
     render() {
         return (

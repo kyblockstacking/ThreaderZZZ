@@ -34,9 +34,6 @@ router.get("/mentorBoxes/:id", (req, res) => {
         where: {
             RequestMentorId: req.params.id
         },
-        order: [
-            ['createdAt', 'DESC']
-        ],
         include: [{
             model: db.User,
             attributes: ['userName']
