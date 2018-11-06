@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
 import Modal from 'react-modal';
@@ -93,7 +94,7 @@ class Appointment extends React.Component {
         return (
             <div style={{ margin: "1em 8em 1em 8em" }}>
                 <div style={{ padding: "1em 2.5em 1em 2.5em" }}>
-                    <span style={{ fontSize: "0.75em", color: "lightgray", padding: "1em 0 1em 0" }}><i className="far fa-clipboard">&nbsp;</i>Posted By: {this.state.user} {moment(this.state.time).fromNow()}</span>
+                    <span style={{ fontSize: "0.75em", color: "lightgray", padding: "1em 0 1em 0" }}><i className="far fa-clipboard">&nbsp;</i>Posted By: <Link to={`/api/profile/${this.state.user}`}>{this.state.user}</Link> {moment(this.state.time).fromNow()}</span>
                     <div>
                         <span style={{ padding: "0.5em 0 0.5em 0", fontSize: "2em" }}>{this.state.title}</span>
                         <br></br>
@@ -109,26 +110,29 @@ class Appointment extends React.Component {
 
 
 
-
-                <p>By committing, you agree to mentor OP or else...</p>
-                <div className="form-group">
-                    <textarea onChange={this.textAreaChange} placeholder="Comment here" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-
-                <div onChange={this.handleChange} className="form-group">
-                    <select className="form-control" id="exampleFormControlSelect1">
-                        <option>Please select a time</option>
-                        <option>10:00 am</option>
-                        <option>10:30 am</option>
-                        <option>11:00 am</option>
-                        <option>11:30 am</option>
-                        <option>12:00 pm</option>
-                        <option>12:30 pm</option>
-                        <option>1:00 pm</option>
-                    </select>
-                </div>
-                <button type="Submit" onClick={this.mentorCandidatePost}>Submit</button>
-                <hr />
+                {this.props.userData.admin ? 
+                    <div>
+                        <p>By committing, you agree to mentor OP or else...</p>
+                        <div className="form-group">
+                            <textarea onChange={this.textAreaChange} placeholder="Comment here" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                        <div onChange={this.handleChange} className="form-group">
+                            <select className="form-control" id="exampleFormControlSelect1">
+                                <option>Please select a time</option>
+                                <option>10:00 am</option>
+                                <option>10:30 am</option>
+                                <option>11:00 am</option>
+                                <option>11:30 am</option>
+                                <option>12:00 pm</option>
+                                <option>12:30 pm</option>
+                                <option>1:00 pm</option>
+                            </select>
+                        </div>
+                        <button type="Submit" onClick={this.mentorCandidatePost}>Submit</button>
+                        <hr />
+                    </div>
+                : <p>You are not a Mentor. Access Denied</p>}
+                
 
 
 
@@ -152,7 +156,7 @@ class Appointment extends React.Component {
                             border: "2px solid #2e849e",
                             padding: "1em"
                         }}>
-                            <span style={{ fontSize: "0.75em", color: "gray" }}>Posted by: {item.User.userName} {moment(item.createdAt).fromNow()}</span>
+                            <span style={{ fontSize: "0.75em", color: "gray" }}>Posted by: <Link to={`/api/profile/${item.User.userName}`}>{item.User.userName}</Link> {moment(item.createdAt).fromNow()}</span>
                             <p>{item.body}</p>
                             <br></br>
                             <button disabled={item.accepted} onClick={() => this.acceptMentor(item.id, item.User.userName, item.agreeTime)}>Accept</button>&nbsp;<span style={{ color: "teal" }}>[{item.agreeTime}]</span>
