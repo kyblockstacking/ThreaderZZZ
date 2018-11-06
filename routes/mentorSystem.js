@@ -79,14 +79,17 @@ router.post('/acceptMentor/:id', function (req, res) {
         UserId: 6, 
         recipient: req.body.mentorName,
         title: "You have an appointment",
-        message: `Your appointment with ${req.body.menteeName} is at ${req.body.aptTime}. Follow link to chatroom: ${chatRoom}`
+        message: `Your appointment with ${req.body.menteeName} is at ${req.body.aptTime}. Follow link to chatroom:`,
+        chatLink: chatRoom
+
 
     };
     let email2 = {
         UserId: 6,
         recipient: req.body.menteeName, 
         title: "You have an appointment!",
-        message: `Your appointment with ${req.body.mentorName} is at ${req.body.aptTime}. Follow link to chatroom: ${chatRoom}`
+        message: `Your appointment with ${req.body.mentorName} is at ${req.body.aptTime}. Follow link to chatroom:`,
+        chatLink: chatRoom
     };
 
 

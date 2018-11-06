@@ -63,6 +63,7 @@ class Inbox extends Component {
           )}
           <br />
           <p>{email.message}</p>
+          <a href={email.chatLink ? email.chatLink : null}>{email.chatLink ? email.chatLink : null}</a>
         </div>
       );
     });

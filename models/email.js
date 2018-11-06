@@ -33,6 +33,9 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: false,
       allowNull: false,
     },
+    chatLink: {
+      type: DataTypes.STRING
+    }
   });
 
   Email.associate = (models) => {
