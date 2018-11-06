@@ -1,7 +1,7 @@
 
 INSERT INTO users (firstName, lastName, userName, password, upvote, downvote, email)
 VALUES
-("kevin", "do", "kaydo", "!2Qwqwer", 234, 135, "kdo@gmail.com"),
+("kevin", "do", "kaydo", "!2Qwqwer", 999, 0, "kdo@gmail.com"),
 ("aidan", "guitar", "guitarman", "!2Qwqwer", 789, 456, "aguitar@gmail.com"),
 ("chris", "army", "armomo", "!2Qwqwer", 897, 234, "carmy@gmail.com"),
 ("pauline", "yoyo", "catgirl", "!2Qwqwer", 789, 413, "paulcat@gmail.com"),
