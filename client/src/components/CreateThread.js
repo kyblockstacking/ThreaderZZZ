@@ -77,8 +77,6 @@ class Comment extends Component {
         axios.post('/threads/api/threads/', createThread)
             .then(function (response) {
                 return response
-            }).then(function (body) {
-                console.log(body);
             }).then(() => {
                 this.handleCloseModal()
             }).then(() => {

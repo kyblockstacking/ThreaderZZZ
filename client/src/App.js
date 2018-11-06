@@ -106,8 +106,9 @@ class App extends React.Component {
             
 
             {/* TEST HERE */}
-            <Route exact path="/mentorRequest/:id" component={Appointment} />
-            <Route exact path="/Test" component={Appointment} />
+            <Route exact path="/mentorRequest/:id" render={(props) => (
+                  <Appointment {...props} userData={this.state.userData} />
+                )} />
             {this.state.authenticated ? (
               <Route
                 exact path="/email/inbox"

@@ -6,9 +6,13 @@ class Appointment extends React.Component {
     state = {
         user: "",
         title: "",
-        body: "",
+        userReqComment: "",
         time: "",
-        mentorReplies: []
+        mentorReplies: [],
+        agreeTime: "",
+        body: "",
+
+
     };
 
     componentDidMount() {
@@ -16,23 +20,52 @@ class Appointment extends React.Component {
             this.setState({
                 user: res.data.User.userName,
                 title: res.data.title,
-                body: res.data.body,
+                userReqComment: res.data.userReqComment,
                 time: res.data.createdAt
             })
+        }).then(() => {
+            this.mentorApplicants();
         })
     }
 
-    mentorCandidate = () => {
+    mentorCandidatePost = () => {
         let mentorReq = {
-
+            body: this.state.body,
+            agreeTime: this.state.agreeTime,
+            UserId: this.props.userData.id,
+            RequestMentorId: this.props.match.params.id
         }
-        axios.post(`/mentorCandidate/${this.props.match.params.id}`, mentorReq).then ((res) => {
-            console.log("posted");
+        axios.post(`/mentorCandidate/${this.props.match.params.id}`, mentorReq).then((res) => {
         })
-
     }
 
-    
+    mentorApplicants = () => {
+        axios.request(`/mentorBoxes/${this.props.match.params.id}`).then(data => {
+            this.setState({ mentorReplies: data.data });
+            console.log("almost", data.data);
+        })
+    }
+
+    handleChange = (e) => {
+        this.setState({ agreeTime: e.target.value })
+    }
+
+    textAreaChange = (e) => {
+        this.setState({ body: e.target.value });
+    }
+
+    acceptMentor = (threadId, mentorName, appointmentTime) => {
+        let data = {
+            mentorName: mentorName,
+            menteeName: this.props.userData.username,
+            aptTime: appointmentTime
+        }
+        axios.post(`/acceptMentor/${threadId}`, data).then(() => {
+            this.mentorApplicants();
+        }).then(() => {
+            console.log("im done with this bootcamp!");
+        });
+    }
 
     render() {
         return (
@@ -42,7 +75,7 @@ class Appointment extends React.Component {
                     <div>
                         <span style={{ padding: "0.5em 0 0.5em 0", fontSize: "2em" }}>{this.state.title}</span>
                         <br></br>
-                        <span style={{ padding: "1em 0 1em 0", fontSize: "1em" }}>{this.state.body}</span>
+                        <span style={{ padding: "1em 0 1em 0", fontSize: "1em" }}>{this.state.userReqComment}</span>
                     </div>
                     <div style={{ fontSize: "0.75em", color: "gray", padding: "0.5em 0 0.5em 0" }}>
                         <i className="far fa-share-square"></i>&nbsp;Share&nbsp;&nbsp;<i className="far fa-flag"></i>&nbsp;Report
@@ -53,10 +86,10 @@ class Appointment extends React.Component {
 
                 <p>By committing, you agree to mentor OP or else...</p>
                 <div className="form-group">
-                    <textarea placeholder="Comment here" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea onChange={this.textAreaChange} placeholder="Comment here" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
 
-                <div className="form-group">
+                <div onChange={this.handleChange} className="form-group">
                     <select className="form-control" id="exampleFormControlSelect1">
                         <option>Please select a time</option>
                         <option>10:00 am</option>
@@ -68,7 +101,29 @@ class Appointment extends React.Component {
                         <option>1:00 pm</option>
                     </select>
                 </div>
-
+                <button type="Submit" onClick={this.mentorCandidatePost}>Submit</button>
+                <hr />
+                {this.state.mentorReplies.map(item => {
+                    return (
+                        <div style={{
+                            width: '60%',
+                            background: 'white',
+                            borderTopRightRadius: '10px',
+                            borderTopLeftRadius: '10px',
+                            borderBottomRightRadius: '10px',
+                            borderBottomLeftRadius: '10px',
+                            marginBottom: "1em",
+                            marginLeft: "auto",
+                            marginRight: "auto",
+                            border: "2px solid #2e849e",
+                            padding: "1em"
+                        }}>
+                            <span>Posted by: {item.User.userName} at {moment(item.createdAt).fromNow()}</span>
+                            <p>{item.body}</p>
+                            <button disabled={item.accepted} onClick={() => this.acceptMentor(item.id, item.User.userName, item.agreeTime)}>Accept</button>
+                        </div>
+                    )
+                })}
             </div>
         );
     }

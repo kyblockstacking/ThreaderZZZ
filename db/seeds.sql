@@ -1,11 +1,12 @@
 
 INSERT INTO users (firstName, lastName, userName, password, upvote, downvote, email)
 VALUES
-("kevin", "do", "kaydo", "!2Qwqwer", 0, 0, "kdo@gmail.com"),
-("aidan", "guitar", "guitarman", "!2Qwqwer", 0, 0, "aguitar@gmail.com"),
-("chris", "army", "armomo", "!2Qwqwer", 0, 0, "carmy@gmail.com"),
-("pauline", "yoyo", "catgirl", "!2Qwqwer", 0, 0, "paulcat@gmail.com"),
-("michael", "jackson", "thriller", "!2Qwqwer", 0, 0, "smoothcriminal@gmail.com");
+("kevin", "do", "kaydo", "!2Qwqwer", 234, 135, "kdo@gmail.com"),
+("aidan", "guitar", "guitarman", "!2Qwqwer", 789, 456, "aguitar@gmail.com"),
+("chris", "army", "armomo", "!2Qwqwer", 897, 234, "carmy@gmail.com"),
+("pauline", "yoyo", "catgirl", "!2Qwqwer", 789, 413, "paulcat@gmail.com"),
+("michael", "jackson", "thriller", "!2Qwqwer", 978, 123, "smoothcriminal@gmail.com"),
+("threaderzzz bot", "threaderzzz bot", "threaderzzz bot", "!2Qwqwer", 10000, 0, "bot@threaderzzz.com");
 
 INSERT INTO categories (name)
 VALUES 
@@ -42,13 +43,13 @@ VALUES
 (false, true, false, 1, 4),
 (false, true, false, 1, 5);
 
-INSERT INTO emails (createdAt, updatedAt, UserId, sender, recipient, title, message)
+INSERT INTO emails (createdAt, updatedAt, UserId, recipient, title, message)
 VALUES
-("2018-11-04 01:21:26", "2018-11-04 01:21:26", 2, "guitarman", "kaydo", "callback functions", "Hi, can you help me at 730 this friday?"),
-("2018-11-04 01:21:26", "2018-11-04 01:21:26", 2, "guitarman", "kaydo", "anonymous functions", "Actually, I'm feeling kind of sick. Can wee meet next Monday?"),
-("2018-11-04 01:21:26", "2018-11-04 01:21:26", 1, "kaydo", "guitarman", "callback functions", "Yes, I can help you. You should watch understanding the weird parts of javascript before we chat." ),
-("2018-11-04 01:21:26", "2018-11-04 01:21:26", 1, "kaydo", "guitarman", "anonymous functions", "That's a bummer! I hope you don't have the flu. I hear that it's worse this year. Hope you feel better soon!"),
-("2018-11-04 01:21:26", "2018-11-04 01:21:26", 1, "kaydo", "guitarman", "closures", "I heard you just learned about closures in your bootcamp! Can you help me?"),
-("2018-11-04 01:21:26", "2018-11-04 01:21:26", 2, "guitarman", "kaydo", "closures", "Yeah, I feel like I understand it pretty well! My professor, Clark, is one of the best instructors I've encountered."),
-("2018-11-04 01:21:26", "2018-11-04 01:21:26", 1, "kaydo", "guitarman", "study habits", "How do you study best? Do you like reading everything entirely before moving onto the next thing? Im not sure what's the best way to learn programming"),
-("2018-11-04 01:21:26", "2018-11-04 01:21:26", 2, "guitarman", "kaydo", "study habits", "I feel that learning by trial and error and building projects seem to work well for me. Don't get stuck into a bunch of rabbit holes. You should definitely practice hard, but move on quickly. You'll find that things that were hard a few weeks ago, don't seem that difficult to comprehend.");
+("2018-11-04 01:21:26", "2018-11-04 01:21:26", 2, "kaydo", "callback functions", "Hi, can you help me at 730 this friday?"),
+("2018-11-04 01:21:26", "2018-11-04 01:21:26", 2, "kaydo", "anonymous functions", "Actually, I'm feeling kind of sick. Can wee meet next Monday?"),
+("2018-11-04 01:21:26", "2018-11-04 01:21:26", 1, "guitarman", "callback functions", "Yes, I can help you. You should watch understanding the weird parts of javascript before we chat." ),
+("2018-11-04 01:21:26", "2018-11-04 01:21:26", 1, "guitarman", "anonymous functions", "That's a bummer! I hope you don't have the flu. I hear that it's worse this year. Hope you feel better soon!"),
+("2018-11-04 01:21:26", "2018-11-04 01:21:26", 1, "guitarman", "closures", "I heard you just learned about closures in your bootcamp! Can you help me?"),
+("2018-11-04 01:21:26", "2018-11-04 01:21:26", 2, "kaydo", "closures", "Yeah, I feel like I understand it pretty well! My professor, Clark, is one of the best instructors I've encountered."),
+("2018-11-04 01:21:26", "2018-11-04 01:21:26", 1, "guitarman", "study habits", "How do you study best? Do you like reading everything entirely before moving onto the next thing? Im not sure what's the best way to learn programming"),
+("2018-11-04 01:21:26", "2018-11-04 01:21:26", 2, "kaydo", "study habits", "I feel that learning by trial and error and building projects seem to work well for me. Don't get stuck into a bunch of rabbit holes. You should definitely practice hard, but move on quickly. You'll find that things that were hard a few weeks ago, don't seem that difficult to comprehend.");
