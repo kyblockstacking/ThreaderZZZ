@@ -57,7 +57,7 @@ router.get('/api/threads/:id', function (req, res) {
     },
     include: [{
       model: db.User,
-      attributes: ['userName']
+      attributes: ['userName', 'upvote', 'downvote']
     }],
     order: [
       ['createdAt', 'DESC']
@@ -65,14 +65,6 @@ router.get('/api/threads/:id', function (req, res) {
   }).then((results) => {
     res.json(results);
   });
-});
-
-router.get('/categories/:thread', function (req, res) {
-  if (req.session.user) {
-    //you can post and vote
-  } else {
-    //you cannot post and vote
-  }
 });
 
 router.post("/threads/api/threads/", function (req, res) {

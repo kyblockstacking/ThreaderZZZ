@@ -85,7 +85,7 @@ class EmailMessage extends Component {
 
             <label htmlFor="message">Message:</label>
             <textarea
-              class="form-control mb-1"
+              className="form-control mb-1"
               id="message"
               rows="10"
               name="message"

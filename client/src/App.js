@@ -11,7 +11,6 @@ import SignIn from './components/SignIn';
 import Logout from './components/Logout';
 import NotFound from './components/404';
 import Profile from './components/Profile';
-import CreateAppointment from './components/CreateAppointment';
 import Layout from './components/Layout';
 import './App.css';
 // import ReplyTextbox from "./components/ReplyTextbox";

@@ -58,7 +58,7 @@ class footer extends React.Component {
           <div>ThreaderZZZ is made by Aidan, David, Kevin, Vernie</div>
           <div>
             Contribute to this project's{' '}
-            <a href="https://github.com/vedelacruz/project3x`">GitHub</a>{' '}
+            <a href="https://github.com/vedelacruz/project3">GitHub</a>{' '}
             <i className="fab fa-github" />
           </div>
         </div>
