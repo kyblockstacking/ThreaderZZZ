@@ -1,6 +1,20 @@
 import React from "react";
 import axios from "axios";
 import moment from "moment";
+import Modal from 'react-modal';
+
+const submittedMessage = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        color: "#2e849e"
+    }
+};
+
 class Appointment extends React.Component {
 
     state = {
@@ -11,8 +25,8 @@ class Appointment extends React.Component {
         mentorReplies: [],
         agreeTime: "",
         body: "",
-
-
+        ShowAcceptAptModal: false,
+        MentorSubmit: false
     };
 
     componentDidMount() {
@@ -37,6 +51,10 @@ class Appointment extends React.Component {
         }
         axios.post(`/mentorCandidate/${this.props.match.params.id}`, mentorReq).then((res) => {
             this.mentorApplicants();
+        }).then(() => {
+            this.setState({
+                MentorSubmit: true
+            })
         })
     }
 
@@ -63,6 +81,10 @@ class Appointment extends React.Component {
         }
         axios.post(`/acceptMentor/${threadId}`, data).then(() => {
             this.mentorApplicants();
+        }).then(() => {
+            this.setState({
+                ShowAcceptAptModal: true
+            })
         });
     }
 
@@ -71,7 +93,7 @@ class Appointment extends React.Component {
         return (
             <div style={{ margin: "1em 8em 1em 8em" }}>
                 <div style={{ padding: "1em 2.5em 1em 2.5em" }}>
-                    <span style={{ fontSize: "0.75em", color: "lightgray", padding: "1em 0 1em 0" }}><i className="far fa-clipboard">&nbsp;</i>Posted By: {this.state.user} at {moment(this.state.time).fromNow()}</span>
+                    <span style={{ fontSize: "0.75em", color: "lightgray", padding: "1em 0 1em 0" }}><i className="far fa-clipboard">&nbsp;</i>Posted By: {this.state.user} {moment(this.state.time).fromNow()}</span>
                     <div>
                         <span style={{ padding: "0.5em 0 0.5em 0", fontSize: "2em" }}>{this.state.title}</span>
                         <br></br>
@@ -83,6 +105,10 @@ class Appointment extends React.Component {
 
                 </div>
                 <hr></hr>
+
+
+
+
 
                 <p>By committing, you agree to mentor OP or else...</p>
                 <div className="form-group">
@@ -103,6 +129,14 @@ class Appointment extends React.Component {
                 </div>
                 <button type="Submit" onClick={this.mentorCandidatePost}>Submit</button>
                 <hr />
+
+
+
+
+
+
+
+
                 {this.state.mentorReplies.map(item => {
                     return (
                         <div style={{
@@ -118,12 +152,61 @@ class Appointment extends React.Component {
                             border: "2px solid #2e849e",
                             padding: "1em"
                         }}>
-                            <span>Posted by: {item.User.userName} at {moment(item.createdAt).fromNow()}</span>
+                            <span style={{ fontSize: "0.75em", color: "gray" }}>Posted by: {item.User.userName} {moment(item.createdAt).fromNow()}</span>
                             <p>{item.body}</p>
-                            <button disabled={item.accepted} onClick={() => this.acceptMentor(item.id, item.User.userName, item.agreeTime)}>Accept</button>
+                            <br></br>
+                            <button disabled={item.accepted} onClick={() => this.acceptMentor(item.id, item.User.userName, item.agreeTime)}>Accept</button>&nbsp;<span style={{ color: "teal" }}>[{item.agreeTime}]</span>
                         </div>
                     )
                 })}
+
+                <Modal
+                    isOpen={this.state.ShowAcceptAptModal}
+                    style={submittedMessage}>
+                    <span
+                        style={{
+                            fontSize: "1.25em",
+                            cursor: "default"
+                        }}
+                    >You have accepted this appointment. Please check your inbox for more information.&nbsp;<i className="fas fa-inbox"></i></span>
+                    <hr></hr>
+                    <span
+                        style={{
+                            border: "2px solid #2e849e",
+                            float: "right",
+                            borderRadius: "5px",
+                            fontSize: "0.85em",
+                            padding: "0.25em 0.5em 0.25em 0.5em",
+                            cursor: "pointer"
+                        }}
+                        onClick={() => {
+                            this.setState({ ShowAcceptAptModal: false })
+                        }}>Close</span>
+                </Modal>
+
+                <Modal
+                    isOpen={this.state.MentorSubmit}
+                    style={submittedMessage}>
+                    <span
+                        style={{
+                            fontSize: "1.25em",
+                            cursor: "default"
+                        }}
+                    >Thank you for mentoring! Your request has been posted.&nbsp;<i className="fas fa-chalkboard-teacher"></i></span>
+                    <hr></hr>
+                    <span
+                        style={{
+                            border: "2px solid #2e849e",
+                            float: "right",
+                            borderRadius: "5px",
+                            fontSize: "0.85em",
+                            padding: "0.25em 0.5em 0.25em 0.5em",
+                            cursor: "pointer"
+                        }}
+                        onClick={() => {
+                            this.setState({ MentorSubmit: false })
+                        }}>Close</span>
+                </Modal>
             </div>
         );
     }

@@ -153,7 +153,6 @@ class CreateAppointment extends Component {
                         </Modal>
                     </div>
                 </form>
-                {/* <DeveloperLounge /> */}
             </div>
         );
     }
