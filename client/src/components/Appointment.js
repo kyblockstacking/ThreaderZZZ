@@ -32,10 +32,11 @@ class Appointment extends React.Component {
 
     componentDidMount() {
         axios.get(`/mentorRequest/${this.props.match.params.id}`).then((res) => {
+            console.log(res.data);
             this.setState({
                 user: res.data.User.userName,
                 title: res.data.title,
-                userReqComment: res.data.userReqComment,
+                userReqComment: res.data.body,
                 time: res.data.createdAt
             })
         }).then(() => {
