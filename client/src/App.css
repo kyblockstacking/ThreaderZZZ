@@ -464,3 +464,6 @@ input,textarea{
   background:#5d5d8a
 }
 
+#emailRow:hover {
+  background-color:white;
+}

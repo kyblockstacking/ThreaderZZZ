@@ -13,6 +13,7 @@ import NotFound from './components/404';
 import Profile from './components/Profile';
 import Layout from './components/Layout';
 import './App.css';
+import EmailSystem from './components/EmailSystem';
 // import ReplyTextbox from "./components/ReplyTextbox";
 // import CreateThread from "./components/CreateThread";
 import AboutUs from './components/AboutUs';
@@ -154,6 +155,7 @@ class App extends React.Component {
                 <EmailMessage {...props} userData={this.state.userData} />
               )}
             />
+            <Route exact path="/generalemail" component={EmailSystem} />
             <Route component={NotFound} />
           </Switch>
 
