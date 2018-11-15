@@ -71,8 +71,7 @@ class App extends React.Component {
         <div style={{ background: '#ededed', height: "100%", width: "100%" }}>
 
           <Switch>
-            <Route exact path="/test" component={LandingPage}></Route>
-
+              <Route exact path="/test" component={LandingPage}></Route>
 
             <Jumbotron />
             <Navbar authenticated={this.state.authenticated} />

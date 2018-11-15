@@ -2,20 +2,17 @@ import React from "react";
 
 export default class LandingPage extends React.Component {
     state = {
-        navbar: {
+        stickyNavbar: {
             color: "white",
-            fontSize: "2em",
-            padding: "2% 0 0 5%"
-        },
-        navbar2: {
-            color: "white",
-            fontSize: "1em",
-            padding: "0.8% 0 0.8% 5%",
-            background: "teal",
-            position: "fixed",
+            fontSize: "1.5em",
+            padding: "0.5em 0 0.5em 5%",
+            background: "",
+            position: "",
             top: "0",
             width: "100%"
-        }
+        },
+        navbarClass: "",
+        arrowClass: "fas fa-chevron-down fadeInDown infinite animated"
     };
 
     componentDidMount() {
@@ -26,15 +23,52 @@ export default class LandingPage extends React.Component {
         window.removeEventListener('scroll', this.handleScroll);
     }
 
-    handleScroll = (event) => {
-        let scrollTop = event.srcElement.body.scrollTop
-
-        console.log(event.srcElement.body.scrollY)
-
-        this.setState({
-            navbar: this.state.navbar2
-        });
+    handleScroll = () => {
+        if (window.scrollY > 0) {
+            this.setState({
+                stickyNavbar: {
+                    color: "white",
+                    fontSize: "1em",
+                    padding: "0.5em 0 0.5em 5%",
+                    background: "teal",
+                    position: "fixed",
+                    top: "0",
+                    width: "100%"
+                },
+                navbarClass: "animated fadeIn"
+            })
+        }
+        else if (window.scrollY < window.innerHeight * 2) {
+            this.setState({
+                stickyNavbar: {
+                    color: "white",
+                    fontSize: "1em",
+                    padding: "0.5em 0 0.5em 5%",
+                    background: "teal",
+                    position: "",
+                    top: "0",
+                    width: "100%"
+                },
+                navbarClass: "animated fadeOut"
+            })
+        }
+        if (window.scrollY === 0) {
+            console.log("HELLO")
+            this.setState({
+                stickyNavbar: {
+                    color: "white",
+                    fontSize: "1.5em",
+                    padding: "0.5em 0 0.5em 5%",
+                    background: "",
+                    position: "",
+                    top: "0",
+                    width: "100%"
+                },
+                navbarClass: "",
+            })
+        }
     }
+
 
     render() {
         return (
@@ -45,16 +79,17 @@ export default class LandingPage extends React.Component {
                 backgroundRepeat: "no-repeat",
                 backgroundImage: "url('/images/background.jpg')"
             }}>
-                <div style={this.state.navbar}>
-                    <i className="fas fa-bed"></i>&nbsp;ThreaderZZZ
+                <div style={this.state.stickyNavbar} className={this.state.navbarClass}>
+                    <i className="fas fa-bed" />&nbsp;ThreaderZZZ
                 </div>
+
                 <div style={{
                     fontSize: "4em",
                     color: "white",
                     textAlign: "center",
                     margin: "0",
-                    padding: "2em 0 0 0"
-                }}><strong>THE LAW OF KEVIN YANG</strong>
+                    padding: "20vh 0 0 0"
+                }}><strong>THIS IS OUR PROJECT</strong>
                     <br />
                     <div style={{
                         fontSize: "0.3em",
@@ -66,14 +101,24 @@ export default class LandingPage extends React.Component {
                     }}>
                         Discover coders like you that are getting the support they seek by being involved in our community
                     </div>
+                    <div style={{
+                        fontSize: "0.5em",
+                        padding: "1.5em 0 0.5em 0"
+                    }}>Meet the team!</div>
+                    <i style={{
+                        fontSize: "0.5em",
+                        padding: "0.75em 0 0.4em 0"
+                    }} className={this.state.arrowClass}></i>
                 </div>
-                <div style={{
-                    marginTop: "30%"
-                }}>
-                    ABOUT THE TEAM
-                </div>
-
-
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
             </div>
         );
     };
