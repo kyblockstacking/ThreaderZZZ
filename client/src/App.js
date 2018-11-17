@@ -68,7 +68,7 @@ class App extends React.Component {
       <Router>
 
 
-        <div style={{ background: '#ededed', height: "100%", width: "100%" }}>
+        <div style={{height: "100%", width: "100%" }}>
 
           <Switch>
               <Route exact path="/test" component={LandingPage}></Route>
