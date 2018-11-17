@@ -9,7 +9,6 @@ export default class LandingPage extends React.Component {
             background: "",
             position: "",
             top: "0",
-            width: "100%",
             zIndex: "100"
         },
         navbarClass: "",
@@ -18,9 +17,11 @@ export default class LandingPage extends React.Component {
         aboutMeKevin: "card col-lg-4",
         aboutMeVernie: "card col-lg-4",
         card: {
-            height: "200px",
-            visibility: "hidden",
-        }
+            height: "100%",
+            width: "75px",
+            visibility: "hidden"
+        },
+        page: ""
     };
 
     componentDidMount() {
@@ -48,23 +49,25 @@ export default class LandingPage extends React.Component {
                 },
                 navbarClass: "animated fadeIn"
             })
-            if (window.scrollY > 150) {
+            if (window.scrollY > 380) {
                 this.setState({
-                    aboutMeAiden: "card animated slideInLeft col-lg-4",
-                    aboutMeKevin: "card animated flipInX col-lg-4",
-                    aboutMeVernie: "card animated slideInRight col-lg-4",
+                    aboutMeAiden: "card animated bounceInLeft col-lg-4",
+                    aboutMeKevin: "card animated bounceInUp col-lg-4",
+                    aboutMeVernie: "card animated bounceInDown col-lg-4",
                     card: {
-                        height: "200px",
-                        width: "200px",
+                        height: "400px",
+                        width: "75px",
                         visibility: "visible"
-                    }
+                    },
+                    page: "animated fadeOut"
                 })
             }
-            else if (window.scrollY < 150) {
+            else if (window.scrollY < 425) {
                 this.setState({
-                    aboutMeAiden: "card animated slideOutLeft col-lg-4",
-                    aboutMeKevin: "card animated flipOutX col-lg-4",
-                    aboutMeVernie: "card animated slideOutRight col-lg-4"
+                    aboutMeAiden: "card animated bounceOutLeft col-lg-4",
+                    aboutMeKevin: "card animated bounceOutDown col-lg-4",
+                    aboutMeVernie: "card animated bounceOutUp col-lg-4",
+                    page: "animated fadeIn"
                 })
             }
         }
@@ -88,13 +91,14 @@ export default class LandingPage extends React.Component {
 
     render() {
         return (
-            <div className="wrapper">
-                <div style={{
+            <div style={{ width: "100%" }} className="wrapper">
+                <div className={this.state.page} style={{
                     height: "100%",
                     width: "100%",
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
-                    backgroundImage: "url('/images/background.jpg')"
+                    backgroundImage: "url('/images/background.jpg')",
+                    marginBottom: "3em"
                 }}>
                     <div style={this.state.stickyNavbar} className={this.state.navbarClass}>
                         <i className="fas fa-bed" />&nbsp;Threader<sup>&nbsp;Z<sup>&nbsp;Z<sup>&nbsp;Z</sup></sup></sup>
@@ -126,43 +130,46 @@ export default class LandingPage extends React.Component {
                         }}>Meet the team!</div>
                         <i style={{
                             fontSize: "0.5em",
-                            padding: "0.75em 0 0.4em 0"
+                            padding: "0.75em 0 0.4em 0",
                         }} className={this.state.arrowClass}></i>
                     </div>
                 </div>
 
-                <div>MEET THE TEAM</div>
+                <div className="row container" style={{ margin: "0 auto", width: "100%" }}>
 
-<div className="row container">
-                <div className={this.state.aboutMeAiden} style={this.state.card}>
-                    <img className="card-img-top" src="/images/python_logo.jpg" alt="Profile" />
-                    <div className="card-body">
-                        <h5 className="card-title">Aiden</h5>
-                        <a href="https://github.com/kyblockstacking" className="btn btn-primary">Github Profile</a>
+                    <div className={this.state.aboutMeAiden} style={this.state.card}>
+                        <img className="card-img-top" src="/images/python_logo.jpg" alt="Profile" />
+                        <div className="card-body">
+                            <h5 className="card-title">Aiden</h5>
+                            <a href="https://github.com/ironaidan" className="btn btn-primary">Github Profile</a>
+                        </div>
                     </div>
+
+                    <br />
+
+                    <div className={this.state.aboutMeKevin} style={this.state.card}>
+                        <img className="card-img-top" src="/images/python_logo.jpg" alt="Profile" />
+                        <div className="card-body">
+                            <h5 className="card-title">Kevin</h5>
+                            <a href="https://github.com/kyblockstacking" className="btn btn-primary">Github Profile</a>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div className={this.state.aboutMeVernie} style={this.state.card}>
+                        <img className="card-img-top" src="/images/python_logo.jpg" alt="Profile" />
+                        <div className="card-body">
+                            <h5 className="card-title">Vernie</h5>
+                            <a href="https://github.com/vedelacruz" className="btn btn-primary">Github Profile</a>
+                        </div>
+                    </div>
+
                 </div>
 
                 <br />
-
-                <div className={this.state.aboutMeKevin} style={this.state.card}>
-                    <img className="card-img-top" src="/images/python_logo.jpg" alt="Profile" />
-                    <div className="card-body">
-                        <h5 className="card-title">Kevin</h5>
-                        <a href="https://github.com/kyblockstacking" className="btn btn-primary">Github Profile</a>
-                    </div>
-                </div>
-
                 <br />
-
-                <div className={this.state.aboutMeVernie} style={this.state.card}>
-                    <img className="card-img-top" src="/images/python_logo.jpg" alt="Profile" />
-                    <div className="card-body">
-                        <h5 className="card-title">Vernie</h5>
-                        <a href="https://github.com/kyblockstacking" className="btn btn-primary">Github Profile</a>
-                    </div>
-                </div>
-
-</div>
+                <br />
 
             </div>
         );
