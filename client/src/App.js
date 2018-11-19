@@ -68,105 +68,105 @@ class App extends React.Component {
       <Router>
 
 
-        <div style={{height: "100%", width: "100%" }}>
+        <div style={{ height: "100%", width: "100%" }}>
 
           <Switch>
-              <Route exact path="/test" component={LandingPage}></Route>
-
-            <Jumbotron />
-            <Navbar authenticated={this.state.authenticated} />
-            <Route
-              exact path="/"
-              render={
-                this.state.userData.user
-                  ? (props) => <Logout {...props} setLogout={this.setLogout} />
-                  : (props) => (
-                    <SignIn
-                      {...props}
-                      setLogin={this.setLogin}
-                      error={this.state.userData}
-                    />
-                  )
-              }
-            />
-
-            {/* TESTING COMPONENTS ON localhost/port/test */}
-            {/* <Route exact path="/test" component={Appointment} /> */}
-
-            <Switch>
-              <Route exact path="/" component={Forum} />
-              <Route
-                exact path="/forum/:category"
-                render={(props) => (
-                  <Topics {...props} authenticated={this.state.authenticated}
-                    userData={this.state.userData}
-                  />
-                )}
-              />
-              <Route exact path="/AboutUs" component={AboutUs} />
-              {this.state.authenticated ? (
-                <Route
-                  exact path="/DeveloperLounge"
-                  render={(props) => <DeveloperLounge {...props}
-                    userData={this.state.userData} />} />
-              ) : null}
-
-
-              {/* TEST HERE */}
-              <Route exact path="/mentorRequest/:id" render={(props) => (
-                <Appointment {...props} userData={this.state.userData} />
-              )} />
-              {this.state.authenticated ? (
-                <Route
-                  exact path="/email/inbox"
-                  render={(props) => (
-                    <Inbox {...props} userData={this.state.userData} />
-                  )}
-                />
-              ) : null}
-              {this.state.authenticated ? (
-                <Route
-                  exact path="/email/outbox"
-                  render={(props) => (
-                    <Outbox {...props} userData={this.state.userData} />
-                  )}
-                />
-              ) : null}
-              {/* END TEST */}
-
-              {/* <Layout exact path="/vern" title="Chat App BAby" /> */}
-              <Route exact path="/mentors/chatrooms/:id" component={Layout} />
-              <Route
-                exact path="/forum/category/thread=:id"
-                render={(props) => (
-                  <ThreadContent
-                    {...props}
-                    authenticated={this.state.authenticated}
-                    userData={this.state.userData}
-
-                  />
-                )}
-              />
-              <Route
-                exact path="/signup"
-                render={(props) => <Signup {...props} setLogin={this.setLogin} />}
-              />
-              <Route exact path="/api/profile/:user" component={Profile} />
-              <Route
-                exact path="/admin/categoryform"
-                component={AdminCategoryForm}
-              />
-              <Route
-                exact path="/emailsystem"
-                render={(props) => (
-                  <EmailMessage {...props} userData={this.state.userData} />
-                )}
-              />
-              <Route component={NotFound} />
-            </Switch>
-
-            <Footer />
+            <Route exact path="/" component={LandingPage}></Route>
           </Switch>
+
+          <Jumbotron />
+          <Navbar authenticated={this.state.authenticated} />
+          <Route
+            exact path="/home"
+            render={
+              this.state.userData.user
+                ? (props) => <Logout {...props} setLogout={this.setLogout} />
+                : (props) => (
+                  <SignIn
+                    {...props}
+                    setLogin={this.setLogin}
+                    error={this.state.userData}
+                  />
+                )
+            }
+          />
+
+          {/* TESTING COMPONENTS ON localhost/port/test */}
+          {/* <Route exact path="/test" component={Appointment} /> */}
+
+          <Switch>
+            <Route exact path="/home" component={Forum} />
+            <Route
+              exact path="/forum/:category"
+              render={(props) => (
+                <Topics {...props} authenticated={this.state.authenticated}
+                  userData={this.state.userData}
+                />
+              )}
+            />
+            <Route exact path="/AboutUs" component={AboutUs} />
+            {this.state.authenticated ? (
+              <Route
+                exact path="/DeveloperLounge"
+                render={(props) => <DeveloperLounge {...props}
+                  userData={this.state.userData} />} />
+            ) : null}
+
+
+            {/* TEST HERE */}
+            <Route exact path="/mentorRequest/:id" render={(props) => (
+              <Appointment {...props} userData={this.state.userData} />
+            )} />
+            {this.state.authenticated ? (
+              <Route
+                exact path="/email/inbox"
+                render={(props) => (
+                  <Inbox {...props} userData={this.state.userData} />
+                )}
+              />
+            ) : null}
+            {this.state.authenticated ? (
+              <Route
+                exact path="/email/outbox"
+                render={(props) => (
+                  <Outbox {...props} userData={this.state.userData} />
+                )}
+              />
+            ) : null}
+            {/* END TEST */}
+
+            {/* <Layout exact path="/vern" title="Chat App BAby" /> */}
+            <Route exact path="/mentors/chatrooms/:id" component={Layout} />
+            <Route
+              exact path="/forum/category/thread=:id"
+              render={(props) => (
+                <ThreadContent
+                  {...props}
+                  authenticated={this.state.authenticated}
+                  userData={this.state.userData}
+
+                />
+              )}
+            />
+            <Route
+              exact path="/signup"
+              render={(props) => <Signup {...props} setLogin={this.setLogin} />}
+            />
+            <Route exact path="/api/profile/:user" component={Profile} />
+            <Route
+              exact path="/admin/categoryform"
+              component={AdminCategoryForm}
+            />
+            <Route
+              exact path="/emailsystem"
+              render={(props) => (
+                <EmailMessage {...props} userData={this.state.userData} />
+              )}
+            />
+            <Route component={NotFound} />
+          </Switch>
+
+          <Footer />
         </div>
       </Router>
     );

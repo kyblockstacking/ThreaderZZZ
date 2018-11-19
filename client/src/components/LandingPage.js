@@ -1,4 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+import ContactUs from "./ContactUs"
 
 export default class LandingPage extends React.Component {
     state = {
@@ -21,7 +24,11 @@ export default class LandingPage extends React.Component {
             width: "75px",
             visibility: "hidden"
         },
-        page: ""
+        page: "",
+        aboutUsStyle: {
+            margin: "0 auto",
+            width: "100%"
+        }
     };
 
     componentDidMount() {
@@ -51,28 +58,33 @@ export default class LandingPage extends React.Component {
             })
             if (window.scrollY > 380) {
                 this.setState({
-                    aboutMeAiden: "card animated bounceInLeft col-lg-4",
-                    aboutMeKevin: "card animated bounceInUp col-lg-4",
-                    aboutMeVernie: "card animated bounceInDown col-lg-4",
+                    aboutMeAiden: "card animated zoomIn col-lg-4",
+                    aboutMeKevin: "card animated zoomIn col-lg-4",
+                    aboutMeVernie: "card animated zoomIn col-lg-4",
                     card: {
                         height: "400px",
                         width: "75px",
                         visibility: "visible"
                     },
-                    page: "animated fadeOut"
+                    page: "animated fadeOut",
+                    aboutUsStyle: {
+                        margin: "0 auto",
+                        width: "100%"
+                    }
                 })
             }
             else if (window.scrollY < 425) {
                 this.setState({
-                    aboutMeAiden: "card animated bounceOutLeft col-lg-4",
-                    aboutMeKevin: "card animated bounceOutDown col-lg-4",
-                    aboutMeVernie: "card animated bounceOutUp col-lg-4",
-                    page: "animated fadeIn"
+                    aboutMeAiden: "card animated zoomOut col-lg-4",
+                    aboutMeKevin: "card animated zoomOut col-lg-4",
+                    aboutMeVernie: "card animated zoomOut col-lg-4",
+                    page: ""
                 })
             }
         }
         else if (window.innerHeight * window.scrollY === 0) {
             this.setState({
+                navbarClass: "animated fadeOut",
                 stickyNavbar: {
                     color: "white",
                     fontSize: "1em",
@@ -82,8 +94,7 @@ export default class LandingPage extends React.Component {
                     top: "0",
                     width: "100%",
                     zIndex: "100"
-                },
-                navbarClass: "animated fadeOut",
+                }
             })
         }
     }
@@ -110,14 +121,14 @@ export default class LandingPage extends React.Component {
                             color: "white",
                             textAlign: "center",
                             margin: "0",
-                            padding: "20vh 0 0 0"
+                            padding: "1.25em 0 0 0"
                         }}>
                         <strong>PROJECT THREADER<sup>&nbsp;Z<sup>&nbsp;Z<sup>&nbsp;Z</sup></sup></sup></strong>
                         <br />
-                        <div style={{
-                            fontSize: "0.3em",
-                        }}>JOIN THE FASTEST GROWING ONLINE COMMUNITY FOR CODING
-                    </div>
+                        <Link
+                            to="/home"
+                            style={{ color: "teal", border: "1px solid yellow", borderRadius: "5px" }}
+                        >Enter The Forums</Link>
                         <div style={{
                             fontSize: "0.25em",
                             margin: "5% 0 0 0"
@@ -135,13 +146,13 @@ export default class LandingPage extends React.Component {
                     </div>
                 </div>
 
-                <div className="row container" style={{ margin: "0 auto", width: "100%" }}>
+                <div className="row container" style={this.state.aboutUsStyle}>
 
                     <div className={this.state.aboutMeAiden} style={this.state.card}>
                         <img className="card-img-top" src="/images/python_logo.jpg" alt="Profile" />
                         <div className="card-body">
                             <h5 className="card-title">Aiden</h5>
-                            <a href="https://github.com/ironaidan" className="btn btn-primary">Github Profile</a>
+                            <a href="https://github.com/ironaidan" target="_blank" className="btn btn-primary">Github Profile</a>
                         </div>
                     </div>
 
@@ -151,7 +162,7 @@ export default class LandingPage extends React.Component {
                         <img className="card-img-top" src="/images/python_logo.jpg" alt="Profile" />
                         <div className="card-body">
                             <h5 className="card-title">Kevin</h5>
-                            <a href="https://github.com/kyblockstacking" className="btn btn-primary">Github Profile</a>
+                            <a href="https://github.com/kyblockstacking" target="_blank" className="btn btn-primary">Github Profile</a>
                         </div>
                     </div>
 
@@ -161,15 +172,15 @@ export default class LandingPage extends React.Component {
                         <img className="card-img-top" src="/images/python_logo.jpg" alt="Profile" />
                         <div className="card-body">
                             <h5 className="card-title">Vernie</h5>
-                            <a href="https://github.com/vedelacruz" className="btn btn-primary">Github Profile</a>
+                            <a href="https://github.com/vedelacruz" target="_blank" className="btn btn-primary">Github Profile</a>
                         </div>
                     </div>
 
                 </div>
 
                 <br />
-                <br />
-                <br />
+
+                <ContactUs />
 
             </div>
         );
