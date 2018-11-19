@@ -26,6 +26,8 @@ import Inbox from './components/Inbox';
 import Outbox from './components/Outbox';
 import DeveloperLounge from './components/DeveloperLounge';
 
+import LandingPage from "./components/LandingPage";
+
 class App extends React.Component {
   state = {
     userData: {},
@@ -64,21 +66,28 @@ class App extends React.Component {
 
     return (
       <Router>
-        <div style={{ background: '#ededed' }}>
+
+
+        <div style={{ height: "100%", width: "100%" }}>
+
+          <Switch>
+            <Route exact path="/" component={LandingPage}></Route>
+          </Switch>
+
           <Jumbotron />
           <Navbar authenticated={this.state.authenticated} />
           <Route
-            exact path="/"
+            exact path="/home"
             render={
               this.state.userData.user
                 ? (props) => <Logout {...props} setLogout={this.setLogout} />
                 : (props) => (
-                    <SignIn
-                      {...props}
-                      setLogin={this.setLogin}
-                      error={this.state.userData}
-                    />
-                  )
+                  <SignIn
+                    {...props}
+                    setLogin={this.setLogin}
+                    error={this.state.userData}
+                  />
+                )
             }
           />
 
@@ -86,28 +95,28 @@ class App extends React.Component {
           {/* <Route exact path="/test" component={Appointment} /> */}
 
           <Switch>
-            <Route exact path="/" component={Forum} />
+            <Route exact path="/home" component={Forum} />
             <Route
               exact path="/forum/:category"
               render={(props) => (
-                <Topics {...props} authenticated={this.state.authenticated} 
-                userData={this.state.userData}
+                <Topics {...props} authenticated={this.state.authenticated}
+                  userData={this.state.userData}
                 />
               )}
             />
             <Route exact path="/AboutUs" component={AboutUs} />
             {this.state.authenticated ? (
-              <Route 
+              <Route
                 exact path="/DeveloperLounge"
-                render={(props) => <DeveloperLounge {...props} 
-                userData={this.state.userData} />} /> 
-              ) : null}
-            
+                render={(props) => <DeveloperLounge {...props}
+                  userData={this.state.userData} />} />
+            ) : null}
+
 
             {/* TEST HERE */}
             <Route exact path="/mentorRequest/:id" render={(props) => (
-                  <Appointment {...props} userData={this.state.userData} />
-                )} />
+              <Appointment {...props} userData={this.state.userData} />
+            )} />
             {this.state.authenticated ? (
               <Route
                 exact path="/email/inbox"
@@ -157,7 +166,6 @@ class App extends React.Component {
             <Route component={NotFound} />
           </Switch>
 
-          {/* <Route exact path="/forum/Javascript/thread=1" component={ReplyTextbox} /> */}
           <Footer />
         </div>
       </Router>
