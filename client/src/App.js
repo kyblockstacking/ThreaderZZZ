@@ -13,6 +13,7 @@ import NotFound from './components/404';
 import Profile from './components/Profile';
 import Layout from './components/Layout';
 import './App.css';
+import EmailSystem from './components/EmailSystem';
 // import ReplyTextbox from "./components/ReplyTextbox";
 // import CreateThread from "./components/CreateThread";
 import AboutUs from './components/AboutUs';
@@ -129,6 +130,15 @@ class App extends React.Component {
                 )}
               />
             ) : null}
+            {this.state.authenticated ? (
+              <Route
+                exact path="/generalemail"
+                render={(props) => (
+                  <EmailSystem {...props} userData={this.state.userData} />
+                )}
+              />
+            ) : null}
+            {/* END TEST */}
 
             <Route exact path="/mentors/chatrooms/:id" component={Layout} />
             <Route

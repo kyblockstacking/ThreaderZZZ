@@ -64,4 +64,18 @@ router.put('/email/read/:id', (req, res) => {
     });
 });
 
+router.delete('/delete/email/:id', (req, res) => {
+  console.log("paris");
+  db.Email.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(result => {
+    res.json(result);
+  }).catch(err => {
+    res.json(error);
+  })
+});
+
 module.exports = router;

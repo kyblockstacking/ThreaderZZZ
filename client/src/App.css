@@ -472,3 +472,6 @@ input,textarea{
   opacity: 1;
   transition: opacity 1000ms linear;
 }
+#emailRow:hover {
+  background-color:white;
+}

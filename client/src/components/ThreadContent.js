@@ -27,6 +27,7 @@ class ThreadContent extends React.Component {
                     body: data.data.threadSummary,
                     time: data.data.createdAt
                 })
+                console.dir(this.state);
             })
         });
     }
