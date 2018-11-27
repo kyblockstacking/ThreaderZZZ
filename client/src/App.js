@@ -27,6 +27,7 @@ import Outbox from './components/Outbox';
 import DeveloperLounge from './components/DeveloperLounge';
 
 import LandingPage from "./components/LandingPage";
+import ContactUs from "./components/ContactUs";
 
 class App extends React.Component {
   state = {
@@ -70,10 +71,6 @@ class App extends React.Component {
 
         <div style={{ height: "100%", width: "100%" }}>
 
-          <Switch>
-            <Route exact path="/" component={LandingPage}></Route>
-          </Switch>
-
           {/* <Jumbotron /> */}
           <Navbar authenticated={this.state.authenticated} />
           <Route
@@ -91,7 +88,11 @@ class App extends React.Component {
             }
           />
 
+          {/* TESTING COMPONENTS ON localhost/port/test */}
+          {/* <Route exact path="/test" component={Appointment} /> */}
+
           <Switch>
+            <Route exact path="/" component={LandingPage}></Route>
             <Route exact path="/home" component={Forum} />
             <Route
               exact path="/forum/:category"
@@ -110,6 +111,7 @@ class App extends React.Component {
             ) : null}
 
 
+            {/* TEST HERE */}
             <Route exact path="/mentorRequest/:id" render={(props) => (
               <Appointment {...props} userData={this.state.userData} />
             )} />
@@ -129,7 +131,9 @@ class App extends React.Component {
                 )}
               />
             ) : null}
+            {/* END TEST */}
 
+            {/* <Layout exact path="/vern" title="Chat App BAby" /> */}
             <Route exact path="/mentors/chatrooms/:id" component={Layout} />
             <Route
               exact path="/forum/category/thread=:id"
@@ -159,8 +163,7 @@ class App extends React.Component {
             />
             <Route component={NotFound} />
           </Switch>
-
-          <Footer />
+          <ContactUs />
         </div>
       </Router>
     );

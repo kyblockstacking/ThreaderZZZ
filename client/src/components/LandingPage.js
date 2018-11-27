@@ -66,7 +66,7 @@ export default class LandingPage extends React.Component {
                         width: "75px",
                         visibility: "visible"
                     },
-                    page: "animated fadeOut",
+                    page: "animated slideOutUp",
                     aboutUsStyle: {
                         margin: "0 auto",
                         width: "100%"
@@ -104,7 +104,7 @@ export default class LandingPage extends React.Component {
         return (
             <div style={{ width: "100%" }} className="wrapper">
                 <div className={this.state.page} style={{
-                    height: "100%",
+                    height: "100vh",
                     width: "100%",
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
@@ -179,8 +179,6 @@ export default class LandingPage extends React.Component {
                 </div>
 
                 <br />
-
-                <ContactUs />
 
             </div>
         );
