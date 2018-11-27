@@ -74,12 +74,12 @@ class App extends React.Component {
               this.state.userData.user
                 ? (props) => <Logout {...props} setLogout={this.setLogout} />
                 : (props) => (
-                    <SignIn
-                      {...props}
-                      setLogin={this.setLogin}
-                      error={this.state.userData}
-                    />
-                  )
+                  <SignIn
+                    {...props}
+                    setLogin={this.setLogin}
+                    error={this.state.userData}
+                  />
+                )
             }
           />
 
@@ -91,24 +91,24 @@ class App extends React.Component {
             <Route
               exact path="/forum/:category"
               render={(props) => (
-                <Topics {...props} authenticated={this.state.authenticated} 
-                userData={this.state.userData}
+                <Topics {...props} authenticated={this.state.authenticated}
+                  userData={this.state.userData}
                 />
               )}
             />
             <Route exact path="/AboutUs" component={AboutUs} />
             {this.state.authenticated ? (
-              <Route 
+              <Route
                 exact path="/DeveloperLounge"
-                render={(props) => <DeveloperLounge {...props} 
-                userData={this.state.userData} />} /> 
-              ) : null}
-            
+                render={(props) => <DeveloperLounge {...props}
+                  userData={this.state.userData} />} />
+            ) : null}
+
 
             {/* TEST HERE */}
             <Route exact path="/mentorRequest/:id" render={(props) => (
-                  <Appointment {...props} userData={this.state.userData} />
-                )} />
+              <Appointment {...props} userData={this.state.userData} />
+            )} />
             {this.state.authenticated ? (
               <Route
                 exact path="/email/inbox"
@@ -125,9 +125,16 @@ class App extends React.Component {
                 )}
               />
             ) : null}
+            {this.state.authenticated ? (
+              <Route
+                exact path="/generalemail"
+                render={(props) => (
+                  <EmailSystem {...props} userData={this.state.userData} />
+                )}
+              />
+            ) : null}
             {/* END TEST */}
 
-            {/* <Layout exact path="/vern" title="Chat App BAby" /> */}
             <Route exact path="/mentors/chatrooms/:id" component={Layout} />
             <Route
               exact path="/forum/category/thread=:id"
@@ -155,7 +162,6 @@ class App extends React.Component {
                 <EmailMessage {...props} userData={this.state.userData} />
               )}
             />
-            <Route exact path="/generalemail" component={EmailSystem} />
             <Route component={NotFound} />
           </Switch>
 

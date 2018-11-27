@@ -2,180 +2,141 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 
-class Inbox extends Component {
-  state = {
-    inbox: [],
-  };
-
-  componentDidMount() {
-    const { username } = this.props.userData;
-    axios
-      .get(`/emailin/${username}`)
-      .then((response) => {
-        this.setState({ inbox: response.data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  handleClick = (id, recipient) => {
-    axios
-      .put(`/email/read/${id}`)
-      .then(() => {
-        axios
-          .get(`/emailin/${recipient}`)
-          .then((response) => {
-            this.setState({ inbox: response.data });
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  render() {
-    const tableStyle = {
-        width: "100%"
+class EmailSystem extends Component {
+    state = {
+        inbox: [],
     };
-    const sideBar = {
-        height: "100vh",
-        backgroundColor: "black",
-        borderRadius: "15px 50px 30px"
-    }
-    const aLink = {
-        textAlign: "center",
-        display: "flex",
-        flexDirection: "column"
-    }
-    const { inbox } = this.state;
 
-    <div>
-        hey baby
-    </div>
-    return inbox.map((email, iterator) => {
-      return (
-        <div
-          key={iterator}
-          onClick={() => this.handleClick(email.id, email.recipient)}
-          style={{
-            border: '2px dashed #2e849e',
-            padding: '1em',
-            fontSize: '0.65em',
-            borderRadius: '5px',
-          }}
-          className="container"
-        >
-          <p style={{ marginTop: '1em' }}>
-            Sent by {email.User.userName} {moment(email.createdAt).fromNow()}
-          </p>
-          <hr />
-          {email.userRead === false ? (
-            <p style={{ fontWeight: 'bold', fontSize: '3em' }}>{email.title}</p>
-          ) : (
-            <p style={{ fontSize: '3em' }}>{email.title}</p>
-          )}
-          <br />
-          <p>{email.message}</p>
-          <a href={email.chatLink ? email.chatLink : null}>{email.chatLink ? email.chatLink : null}</a>
-        </div>
-      );
-    });
-  }
+    componentDidMount() {
+        this.retrieveEmail();
+    }
+
+    deleteEmail = (id) => {
+        axios
+            .delete(`/delete/email/${id}`)
+            .then(response => {
+                this.retrieveEmail();
+            })
+    }
+
+    retrieveEmail = () => {
+        const { username } = this.props.userData;
+        axios
+            .get(`/emailin/${username}`)
+            .then((response) => {
+                this.setState({ inbox: response.data });
+                console.log(this.state.inbox)
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
+    render() {
+        const tableStyle = {
+            width: "100%"
+        };
+        const sideBar = {
+            height: "100vh",
+            backgroundColor: "rgb(46, 132, 158)",
+            borderRadius: "15px 50px 30px"
+        }
+        const aLink = {
+            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            color: "white"
+        }
+        return (
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-lg-2" style={sideBar}>
+                        <a style={aLink} href="/emailsystem">Compose</a>
+                        <br />
+                        <a style={aLink} href="/email/inbox"><i className="fas fa-inbox">Inbox</i></a>
+                        <br />
+                        <a style={aLink} href="/email/outbox"><i className="far fa-share-square">Sent</i></a>
+                        <br />
+                        <a style={aLink} href="#">Spam</a>
+                        <br />
+                        <a style={aLink} href="#">Delete</a>
+                        <br />
+                        <a style={aLink} href="#">Trash</a>
+                        <br />
+                    </div>
+                    <div className="col-lg-10">
+                        <div className="row">
+                            <table style={tableStyle}>
+                                {this.state.inbox.map(item => {
+                                    return (
+                                        <div>
+                                            {item.userRead === false ?
+                                                <tr id="emailRow">
+                                                    <td>
+                                                        <input type="checkbox" />
+                                                    </td>
+                                                    <td style={{ fontWeight: 'bold' }}>
+                                                        {moment(item.createdAt).fromNow()}
+                                                    </td>
+
+                                                    <td style={{ fontWeight: 'bold' }}>
+                                                        {item.User.userName}
+                                                    </td>
+
+
+                                                    <td style={{ fontWeight: 'bold' }}>
+                                                        {item.title}
+                                                    </td>
+
+                                                    <td>
+                                                        <i id="emailRead" class="fa fa-envelope-open"></i>
+                                                    </td>
+                                                    <td>
+                                                        <button onClick={() => { this.deleteEmail(item.id) }}>
+                                                            <i class="fa fa-trash" alt="mark as read"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                :
+                                                <tr id="emailRow">
+                                                    <td>
+                                                        <input type="checkbox" />
+                                                    </td>
+                                                    <td>
+                                                        {moment(item.createdAt).fromNow()}
+                                                    </td>
+
+                                                    <td>
+                                                        {item.User.userName}
+                                                    </td>
+
+
+                                                    <td>
+                                                        {item.title}
+                                                    </td>
+
+                                                    <td>
+                                                        <i id="emailRead" class="fa fa-envelope-open"></i>
+                                                    </td>
+                                                    <td>
+                                                        <button onClick={() => { this.deleteEmail(item.id) }}>
+                                                            <i class="fa fa-trash" alt="mark as read"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </div>
+                                    )
+                                })
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        )
+    }
 }
 
-export default Inbox;
-
-
-
-// class EmailSystem extends Component {
-//     state = {
-//       inbox: [],
-//     };
-
-   
-
-//     render () {
-//         const tableStyle = {
-//             width: "100%"
-//         };
-//         const sideBar = {
-//             height: "100vh",
-//             backgroundColor: "black",
-//             borderRadius: "15px 50px 30px"
-//         }
-//         // const emailRow = {
-//         //     // backgroundColor: "white",
-//         //     &:hover {
-//         //         backgroundColor: "yellow"
-//         //     }
-//         // }
-//         const aLink = {
-//             textAlign: "center",
-//             display: "flex",
-//             flexDirection: "column"
-//         }
-//         return (
-//             <div className="container-fluid">
-//                 <div className="row">
-//                     <div className="col-lg-2" style={sideBar}>
-//                         <a style={aLink} href="#">inbox</a>
-//                         <br />
-//                         <a style={aLink} href="#">outbox</a>
-//                         <br />
-//                         <a style={aLink} href="#">delete</a>
-//                         <br />
-//                         <a style={aLink} href="#">trash</a>
-//                         <br />
-//                     </div>
-//                     <div className="col-lg-10">
-//                         <div className="row">
-//                             <table style={tableStyle}>
-//                                 <tr id="emailRow">
-//                                     <input type="checkbox" /> kjhlkhkljjh
-//                                 </tr>
-//                                 <tr id="emailRow">
-//                                     <input type="checkbox" /> kjhlkhkljjh
-//                                 </tr>
-//                                 <tr id="emailRow">
-//                                     <input type="checkbox" /> kjhlkhkljjh
-//                                 </tr>
-//                                 <tr id="emailRow">
-//                                     <input type="checkbox" /> kjhlkhkljjh
-//                                 </tr>
-//                                 <tr id="emailRow">
-//                                     <input type="checkbox" /> kjhlkhkljjh
-//                                 </tr>
-//                                 <tr id="emailRow">
-//                                     <input type="checkbox" /> kjhlkhkljjh
-//                                 </tr>
-//                                 <tr id="emailRow">
-//                                     <input type="checkbox" /> kjhlkhkljjh
-//                                 </tr>
-//                                 <tr id="emailRow">
-//                                     <input type="checkbox" /> kjhlkhkljjh
-//                                 </tr>
-//                                 <tr id="emailRow">
-//                                     <input type="checkbox" /> kjhlkhkljjh
-//                                 </tr>
-//                                 <tr id="emailRow">
-//                                     <input type="checkbox" /> kjhlkhkljjh
-//                                 </tr>
-//                                 <tr id="emailRow">
-//                                     <input type="checkbox" /> kjhlkhkljjh
-//                                 </tr>
-
-//                             </table>
-//                         </div>
-//                     </div>
-//                 </div>
-
-//             </div>
-//         )
-//     }
-// }
-
-// export default EmailSystem;
+export default EmailSystem;

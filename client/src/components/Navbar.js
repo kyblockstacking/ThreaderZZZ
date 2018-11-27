@@ -26,6 +26,9 @@ class NavBar extends React.Component {
 
                 {/* TESTING HERE */}
                 {this.props.authenticated ? 
+                    <div style={box}><Link style={{ color: "white" }} to="/generalemail"><i className="fas fa-envelope">&nbsp;</i>Email</Link></div>
+                : null}
+                {/* {this.props.authenticated ? 
                     <div style={box}><Link style={{ color: "white" }} to="/email/inbox"><i className="fas fa-inbox">&nbsp;</i>Inbox</Link></div>
                 : null}
                 {this.props.authenticated ? 
@@ -33,7 +36,7 @@ class NavBar extends React.Component {
                 : null}
                 {this.props.authenticated ? 
                     <div style={box}><Link style={{ color: "white" }} to="/emailsystem"><i className="fas fa-envelope">&nbsp;</i>Send Mail</Link></div>
-                : null}
+                : null} */}
                 {this.props.authenticated ? 
                     <div style={box}><Link style={{ color: "white" }} to="/DeveloperLounge"><i className="fas fa-pray">&nbsp;</i>Mentor</Link></div>
                 : null}
