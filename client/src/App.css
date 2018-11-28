@@ -472,6 +472,25 @@ input,textarea{
   opacity: 1;
   transition: opacity 1000ms linear;
 }
-#emailRow:hover {
-  background-color:white;
+
+.emailContent {
+  white-space: nowrap; 
+  width: 100%; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
+.emailRow {
+  border-style: solid;
+  border-width: 0px 1px 1px 1px;
+  border-color: #c2bfbf;
+}
+
+.emailRow:nth-child(1){
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
+}
+
+.emailRow:hover {
+  border-width: 2px 2px 2px 2px;
 }
