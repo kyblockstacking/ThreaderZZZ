@@ -93,7 +93,7 @@ class Appointment extends React.Component {
 
     render() {
         return (
-            <div style={{ margin: "10% 8em 1em 8em" }}>
+            <div style={{ margin: "10% 8em 1em 8em", minHeight: "100vh" }}>
                 <div style={{ padding: "1em 2.5em 1em 2.5em" }}>
                     <span style={{ fontSize: "0.75em", color: "lightgray", padding: "1em 0 1em 0" }}><i className="far fa-clipboard">&nbsp;</i>Posted By: <Link to={`/api/profile/${this.state.user}`}>{this.state.user}</Link> {moment(this.state.time).fromNow()}</span>
                     <div>

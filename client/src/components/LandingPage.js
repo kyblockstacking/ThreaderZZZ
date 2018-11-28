@@ -106,6 +106,7 @@ export default class LandingPage extends React.Component {
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
                 backgroundImage: "url('/images/background.jpg')",
+                minHeight: "100vh"
             }} className="wrapper">
                 <div className={this.state.page} style={{
                     height: "100vh",

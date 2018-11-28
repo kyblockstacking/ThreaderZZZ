@@ -89,7 +89,7 @@ class EmailSystem extends Component {
         }
 
         return (
-            <div className="container-fluid" style={{ marginTop: "10%" }}>
+            <div className="container-fluid" style={{ marginTop: "10%", minHeight: "100vh" }}>
                 <div className="row">
                     <div className="col-lg-2" style={sideBar}>
                         <br />
