@@ -29,7 +29,7 @@ class DeveloperLounge extends React.Component {
     render() {
         return (
 
-            <div>
+            <div style={{marginTop: "10%"}}>
                 <CreateAppointment userData={this.props.userData} renderMentorshipPost={this.renderMentorshipPost}/>
                 {this.state.classes.map((item, iterator) => {
                     return (

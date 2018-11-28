@@ -1,9 +1,9 @@
 
 INSERT INTO users (firstName, lastName, userName, password, upvote, downvote, email)
 VALUES
-("kevin", "do", "kaydo", "!2Qwqwer", 999, 0, "kdo@gmail.com"),
+("kevin", "do", "kaydo", "!2Qwqwer", 1001, 0, "kdo@gmail.com"),
 ("aidan", "guitar", "guitarman", "!2Qwqwer", 789, 456, "aguitar@gmail.com"),
-("chris", "army", "armomo", "!2Qwqwer", 897, 234, "carmy@gmail.com"),
+("chris", "army", "armomo", "!2Qwqwer", 1001, 234, "carmy@gmail.com"),
 ("pauline", "yoyo", "catgirl", "!2Qwqwer", 789, 413, "paulcat@gmail.com"),
 ("michael", "jackson", "thriller", "!2Qwqwer", 978, 123, "smoothcriminal@gmail.com"),
 ("threaderzzz bot", "threaderzzz bot", "threaderzzz bot", "!2Qwqwer", 10000, 0, "bot@threaderzzz.com");
