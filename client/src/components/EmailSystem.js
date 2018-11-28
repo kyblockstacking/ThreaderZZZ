@@ -32,105 +32,113 @@ class EmailSystem extends Component {
             });
     }
 
+    handleClick = (id, recipient) => {
+        axios
+            .put(`/email/read/${id}`)
+            .then(() => {
+                axios
+                    .get(`/emailin/${recipient}`)
+                    .then((response) => {
+                        this.setState({ inbox: response.data });
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
     render() {
-        const tableStyle = {
-            width: "100%"
-        };
         const sideBar = {
             height: "100vh",
             backgroundColor: "rgb(46, 132, 158)",
-            borderRadius: "15px 50px 30px"
+            borderRadius: "0px 30px 0px 0px"
         }
         const aLink = {
             textAlign: "center",
             display: "flex",
-            flexDirection: "column",
+            justifyContent: "center",
             color: "white"
         }
+        const emailIcon = {
+            fontSize: "22px"
+        }
+
         return (
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-lg-2" style={sideBar}>
-                        <a style={aLink} href="/emailsystem">Compose</a>
                         <br />
-                        <a style={aLink} href="/email/inbox"><i className="fas fa-inbox">Inbox</i></a>
+                        <row style={aLink}>
+                            <i class="fas fa-pen" style={emailIcon}>&nbsp;</i><a style={aLink} href="/emailsystem">Compose</a>
+                        </row>
                         <br />
-                        <a style={aLink} href="/email/outbox"><i className="far fa-share-square">Sent</i></a>
+                        <row style={aLink}>
+                            <i className="fas fa-inbox" style={emailIcon}>&nbsp;</i> <a style={aLink} href="/email/inbox">Inbox</a>
+                        </row>
                         <br />
-                        <a style={aLink} href="#">Spam</a>
+                        <row style={aLink}>
+                            <i className="far fa-share-square" style={emailIcon}>&nbsp;</i><a style={aLink} href="/email/outbox">Sent</a>
+                        </row>
                         <br />
-                        <a style={aLink} href="#">Delete</a>
+                        <row style={aLink}>
+                            <i class="fas fa-exclamation-circle" style={emailIcon}>&nbsp;</i><a style={aLink} href="#">Spam</a>
+                        </row>
                         <br />
-                        <a style={aLink} href="#">Trash</a>
+                        <row style={aLink}>
+                            <i class="fas fa-backspace" style={emailIcon}>&nbsp;</i><a style={aLink} href="#">Delete</a>
+                        </row>
+                        <br />
+                        <row style={aLink}>
+                            <i class="fas fa-trash" style={emailIcon}>&nbsp;</i><a style={aLink} href="#">Trash</a>
+                        </row>
                         <br />
                     </div>
-                    <div className="col-lg-10">
-                        <div className="row">
-                            <table style={tableStyle}>
-                                {this.state.inbox.map(item => {
-                                    return (
-                                        <div>
-                                            {item.userRead === false ?
-                                                <tr id="emailRow">
-                                                    <td>
-                                                        <input type="checkbox" />
-                                                    </td>
-                                                    <td style={{ fontWeight: 'bold' }}>
-                                                        {moment(item.createdAt).fromNow()}
-                                                    </td>
-
-                                                    <td style={{ fontWeight: 'bold' }}>
-                                                        {item.User.userName}
-                                                    </td>
-
-
-                                                    <td style={{ fontWeight: 'bold' }}>
-                                                        {item.title}
-                                                    </td>
-
-                                                    <td>
-                                                        <i id="emailRead" class="fa fa-envelope-open"></i>
-                                                    </td>
-                                                    <td>
-                                                        <button onClick={() => { this.deleteEmail(item.id) }}>
-                                                            <i class="fa fa-trash" alt="mark as read"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                :
-                                                <tr id="emailRow">
-                                                    <td>
-                                                        <input type="checkbox" />
-                                                    </td>
-                                                    <td>
-                                                        {moment(item.createdAt).fromNow()}
-                                                    </td>
-
-                                                    <td>
-                                                        {item.User.userName}
-                                                    </td>
-
-
-                                                    <td>
-                                                        {item.title}
-                                                    </td>
-
-                                                    <td>
-                                                        <i id="emailRead" class="fa fa-envelope-open"></i>
-                                                    </td>
-                                                    <td>
-                                                        <button onClick={() => { this.deleteEmail(item.id) }}>
-                                                            <i class="fa fa-trash" alt="mark as read"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            }
+                    <div className="col-lg-10 mainEmail">
+                        {this.state.inbox.map(item => {
+                            return (
+                                <div>
+                                    {item.userRead === false ?
+                                        <div className="row emailRow" onClick={() => this.handleClick(item.id, item.recipient)}>
+                                            <div className="col-lg-1">
+                                                <input type="checkbox" />
+                                            </div>
+                                            <div className="col-lg-2" style={{ fontWeight: 'bold' }}>
+                                                {item.User.userName}
+                                            </div>
+                                            <div className="col-lg-7 emailContent" style={{ fontWeight: 'bold' }}>
+                                                {item.title}
+                                                : &nbsp;
+                                                {item.message}
+                                            </div>
+                                            <div className="col-lg-2" style={{ fontWeight: 'bold' }}>
+                                                {moment(item.createdAt).calendar()}
+                                            </div>
                                         </div>
-                                    )
-                                })
-                                }
-                            </table>
-                        </div>
+                                        :
+                                        <div className="row emailRow" onClick={() => this.handleClick(item.id, item.recipient)}>
+                                            <div className="col-lg-1">
+                                                <input type="checkbox" />
+                                            </div>
+                                            <div className="col-lg-2">
+                                                {item.User.userName}
+                                            </div>
+                                            <div className="col-lg-7 emailContent">
+                                                {item.title}
+                                                : &nbsp;
+                                                {item.message}
+                                            </div>
+                                            <div className="col-lg-2">
+                                                {moment(item.createdAt).calendar()}
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            )
+                        })
+                        }
                     </div>
                 </div>
 

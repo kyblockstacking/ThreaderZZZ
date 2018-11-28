@@ -62,7 +62,7 @@ router.post('/api/signup', (req, res) => {
   }
 });
 
-router.get('/logout', function(req, res) {
+router.get('/logout', function (req, res) {
   loggedIn = false;
   res.clearCookie('token');
   req.session.destroy();
@@ -78,7 +78,7 @@ router.post('/login', (req, res) => {
   })
     .then((user) => {
       loggedIn = true;
-      
+
       req.session.user = {
         firstName: user.firstName,
         username: user.userName,
@@ -89,7 +89,7 @@ router.post('/login', (req, res) => {
         upvote: user.upvote,
         downvote: user.downvote,
       };
-      
+
       if (user.upvote - user.downvote > 1000) {
         req.session.user.admin = true;
         db.User.update({ admin: true }, { where: { id: user.id } }).then(
@@ -129,8 +129,12 @@ router.get('/auth', (req, res) => {
       upvote: req.session.user.upvote,
       downvote: req.session.user.downvote,
     });
-  } else if (req.headers.cookie.indexOf('token=') !== -1) {
-    const cookie = req.headers.cookie.match(/(?<=token=)[^ ;]*/)[0];
+  }
+  // else if (req.headers.cookie.indexOf('token=') !== -1) {
+  // changed else if statement to remove 'cannot find index of'
+  else if (req.headers.cookie) {
+    if (req.headers.cookie.match(/(?<=token=)[^ ;]*/) !== null) {
+      const cookie = req.headers.cookie.match(/(?<=token=)[^ ;]*/)[0];
     db.User.findOne({
       where: {
         token: cookie,
@@ -157,6 +161,10 @@ router.get('/auth', (req, res) => {
       .catch((err) => {
         res.json(err);
       });
+    } else{
+      res.end();
+    }
+    
   } else {
     res.end();
   }
