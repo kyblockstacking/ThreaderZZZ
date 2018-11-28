@@ -8,7 +8,8 @@ let style = {
         backgroundSize: "cover",
         width: "100%",
         height: "400px",
-        fontFamily: "Oswald"
+        fontFamily: "Oswald",
+        paddingTop: "5%"
     },
     h4: {
         marginBottom: "0"

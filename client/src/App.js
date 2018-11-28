@@ -6,7 +6,6 @@ import Jumbotron from './components/Jumbotron';
 import Navbar from './components/Navbar';
 import Forum from './components/Forum';
 import ThreadContent from './components/ThreadContent';
-import Footer from './components/Footer';
 import SignIn from './components/SignIn';
 import Logout from './components/Logout';
 import NotFound from './components/404';
@@ -14,8 +13,6 @@ import Profile from './components/Profile';
 import Layout from './components/Layout';
 import './App.css';
 import EmailSystem from './components/EmailSystem';
-// import ReplyTextbox from "./components/ReplyTextbox";
-// import CreateThread from "./components/CreateThread";
 import AboutUs from './components/AboutUs';
 import Topics from './components/Topics';
 import AdminCategoryForm from './components/AdminCategoryForm';
@@ -29,6 +26,7 @@ import DeveloperLounge from './components/DeveloperLounge';
 
 import LandingPage from "./components/LandingPage";
 import ContactUs from "./components/ContactUs";
+
 
 class App extends React.Component {
   state = {

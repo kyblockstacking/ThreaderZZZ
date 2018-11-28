@@ -136,7 +136,7 @@ class Signup extends Component {
     } = this.state;
 
     return (
-      <div className="container">
+      <div className="container" style={{marginTop: "10%"}}>
         <form>
           <div className="form-group">
             <input

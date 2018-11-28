@@ -4,7 +4,7 @@ export default class ContactUs extends React.Component {
 
     render() {
         return (
-            <div className="container-fluid" style={{ textAlign: "center", backgroundColor: "#29292A", color: "white" }}>
+            <div className="container-fluid" style={{ textAlign: "center", backgroundColor: "#29292A", color: "white"}}>
 
 
                 <div className="row" style={{ padding: "1.5em 0 1.5em 0" }}>
