@@ -107,7 +107,7 @@ export default class LandingPage extends React.Component {
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
                     backgroundImage: "url('/images/background.jpg')",
-                    marginBottom: "3em"
+                    marginBottom: "0"
                 }}>
                     {/* <div style={this.state.stickyNavbar} className={this.state.navbarClass}>
                         <i className="fas fa-bed" />&nbsp;Threader<sup>&nbsp;Z<sup>&nbsp;Z<sup>&nbsp;Z</sup></sup></sup>
