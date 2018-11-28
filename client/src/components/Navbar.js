@@ -19,8 +19,12 @@ class NavBar extends React.Component {
             <div>
                 <div style={box}>
                     <div>
-                        <Link style={{ color: "white" }} to="/"><i className="fas fa-home">&nbsp;&nbsp;</i>Home</Link>
+                        <Link style={{ color: "white" }} to="/home"><i className="fas fa-home">&nbsp;&nbsp;</i>Home</Link>
                         &nbsp;|&nbsp;
+
+                        <Link style={{ color: "white" }} to="/">About Us</Link>
+                        &nbsp;|&nbsp;
+
 
                                             {
                             this.props.authenticated ?
@@ -35,8 +39,8 @@ class NavBar extends React.Component {
                         }
 
                         <span className="dropdown show">
-                            <a className="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <Link style={{ color: "white" }} to="/home" onUpdate={() => this.scroll()}>Forums</Link>
+                            <a className="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ color: "white" }}>
+                                <span>Forums</span>
                             </a>
 
                             <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
