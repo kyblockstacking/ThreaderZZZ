@@ -67,7 +67,8 @@ export default class LandingPage extends React.Component {
                     page: "animated fadeOut",
                     aboutUsStyle: {
                         margin: "0 auto",
-                        width: "100%"
+                        width: "100%",
+                        opacity: "0.8"
                     }
                 })
             }
@@ -100,13 +101,15 @@ export default class LandingPage extends React.Component {
 
     render() {
         return (
-            <div style={{ width: "100%" }} className="wrapper">
+            <div style={{
+                width: "100%",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+                backgroundImage: "url('/images/background.jpg')",
+            }} className="wrapper">
                 <div className={this.state.page} style={{
                     height: "100vh",
                     width: "100%",
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                    backgroundImage: "url('/images/background.jpg')",
                     marginBottom: "0"
                 }}>
                     {/* <div style={this.state.stickyNavbar} className={this.state.navbarClass}>
@@ -125,7 +128,7 @@ export default class LandingPage extends React.Component {
                         <br />
                         <Link
                             to="/home"
-                            style={{ color: "teal", border: "1px solid yellow", borderRadius: "5px" }}
+                            style={{ color: "white", border: "1px solid yellow", borderRadius: "5px" }}
                         >Enter The Forums</Link>
                         <div style={{
                             fontSize: "0.25em",
@@ -144,7 +147,7 @@ export default class LandingPage extends React.Component {
                     </div>
                 </div>
 
-                <div className="row container" style={this.state.aboutUsStyle}>
+                <div className="row container-fluid" style={this.state.aboutUsStyle}>
 
                     <div className={this.state.aboutMeAiden} style={this.state.card}>
                         <img className="card-img-top" src="/images/python_logo.jpg" alt="Profile" />
