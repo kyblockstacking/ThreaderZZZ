@@ -45,7 +45,7 @@ class Inbox extends Component {
           key={iterator}
           onClick={() => this.handleClick(email.id, email.recipient)}
           style={{
-            border: '2px dashed #2e849e',
+            border: '2px dashed teal',
             padding: '1em',
             fontSize: '0.65em',
             borderRadius: '5px',

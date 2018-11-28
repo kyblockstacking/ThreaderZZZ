@@ -54,7 +54,7 @@ class Topic extends React.Component {
 
         return (
             <div>
-                <div style={{ borderRadius: "10px", padding: '5px', background: '#2e849e', color: 'white', width: "60%", marginRight: "auto", marginLeft: "auto", marginBottom: "1em", textAlign: "center", marginTop: "10%" }}><span style={{ cursor: "default" }}>{this.state.category}</span></div>
+                <div style={{ borderRadius: "10px", padding: '5px', background: 'teal', color: 'white', width: "60%", marginRight: "auto", marginLeft: "auto", marginBottom: "1em", textAlign: "center", marginTop: "10%" }}><span style={{ cursor: "default" }}>{this.state.category}</span></div>
                 {this.props.authenticated ? <CreateThread categoryId={this.props.match.params.category} userData={this.props.userData} updateThreadsArray={this.updateThreadsArray} /> : null}
 
                 {this.state.threadsArray.map(items => {
@@ -69,7 +69,7 @@ class Topic extends React.Component {
                             marginBottom: "1em",
                             marginLeft: "auto",
                             marginRight: "auto",
-                            border: "2px solid #2e849e",
+                            border: "2px solid teal",
                             padding: "1em"
                         }} key={items.id}>
                             <span style={{ fontSize: "0.75em", color: "lightgray" }}><i className="far fa-clipboard">&nbsp;</i>Posted By: <Link to={`/api/profile/${items.User.userName}`}>{items.User.userName}</Link> {moment(items.createdAt).fromNow()}</span>

@@ -12,7 +12,7 @@ const submittedMessage = {
         bottom: 'auto',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
-        color: "#2e849e"
+        color: "teal"
     }
 };
 
@@ -154,7 +154,7 @@ class Appointment extends React.Component {
                             marginBottom: "1em",
                             marginLeft: "auto",
                             marginRight: "auto",
-                            border: "2px solid #2e849e",
+                            border: "2px solid teal",
                             padding: "1em"
                         }}>
                             <span style={{ fontSize: "0.75em", color: "gray" }}>Posted by: <Link to={`/api/profile/${item.User.userName}`}>{item.User.userName}</Link> {moment(item.createdAt).fromNow()}</span>
@@ -177,7 +177,7 @@ class Appointment extends React.Component {
                     <hr></hr>
                     <span
                         style={{
-                            border: "2px solid #2e849e",
+                            border: "2px solid teal",
                             float: "right",
                             borderRadius: "5px",
                             fontSize: "0.85em",
@@ -201,7 +201,7 @@ class Appointment extends React.Component {
                     <hr></hr>
                     <span
                         style={{
-                            border: "2px solid #2e849e",
+                            border: "2px solid teal",
                             float: "right",
                             borderRadius: "5px",
                             fontSize: "0.85em",

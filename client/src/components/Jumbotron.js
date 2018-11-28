@@ -4,7 +4,7 @@ import "./blink.css";
 let jumbotronStyle = {
     textAlign: "center",
     background: "#262626",
-    color: "#2e849e",
+    color: "teal",
     paddingTop: "1%",
     height: "150px",
     width: "100%",

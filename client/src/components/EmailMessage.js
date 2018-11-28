@@ -11,7 +11,7 @@ const submittedMessage = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    color: "#2e849e"
+    color: "teal"
   }
 };
 
@@ -97,7 +97,7 @@ class EmailMessage extends Component {
           <button
             type="submit"
             className="btn btn-primary mb-5"
-            style={{ backgroundColor: '#2e849e' }}
+            style={{ backgroundColor: 'teal' }}
             onClick={() => {
               this.setState({
                 ShowEmailModal: true
@@ -121,7 +121,7 @@ class EmailMessage extends Component {
           <hr></hr>
           <span
             style={{
-              border: "2px solid #2e849e",
+              border: "2px solid teal",
               float: "right",
               borderRadius: "5px",
               fontSize: "0.85em",
