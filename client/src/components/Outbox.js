@@ -26,7 +26,7 @@ class Outbox extends Component {
         <div
           key={iterator}
           style={{
-            border: '2px dashed #2e849e',
+            border: '2px dashed teal',
             padding: '1em',
             fontSize: '0.65em',
             borderRadius: '5px',

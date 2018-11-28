@@ -45,7 +45,7 @@ class DeveloperLounge extends React.Component {
                             marginBottom: "1em",
                             marginLeft: "auto",
                             marginRight: "auto",
-                            border: "2px solid #2e849e",
+                            border: "2px solid teal",
                             padding: "1em"
                         }}>
                             <span style={{ fontSize: "0.75em", color: "lightgray" }}><i className="far fa-clipboard">&nbsp;</i>Posted By: <Link to={`/api/profile/${item.User.userName}`}>{item.User.userName}</Link> at {moment(item.createdAt).fromNow()}</span>

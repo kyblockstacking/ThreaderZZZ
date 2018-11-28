@@ -13,7 +13,7 @@ const submittedMessage = {
         bottom: 'auto',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
-        color: "#2e849e"
+        color: "teal"
     }
 };
 
@@ -84,7 +84,7 @@ class Editor extends Component {
                         </ReactQuill>
                         <div className="container">
                             <div style={{ marginTop: "0.5em", float: "right" }}>
-                                <button type="submit" style={{ color: "white", background: "#2e849e", borderRadius: "10px", padding: "0.5em" }} onClick={this.handleSubmit} disabled={!this.props.authenticated}>Reply</button>
+                                <button type="submit" style={{ color: "white", background: "teal", borderRadius: "10px", padding: "0.5em" }} onClick={this.handleSubmit} disabled={!this.props.authenticated}>Reply</button>
                             </div>
                         </div>
 
@@ -101,7 +101,7 @@ class Editor extends Component {
                             <hr></hr>
                             <span
                                 style={{
-                                    border: "2px solid #2e849e",
+                                    border: "2px solid teal",
                                     float: "right",
                                     borderRadius: "5px",
                                     fontSize: "0.85em",

@@ -51,7 +51,7 @@ class Profile extends Component {
           <Link to="/emailsystem">
             <button
               className="btn btn-primary"
-              style={{ backgroundColor: '#2e849e' }}
+              style={{ backgroundColor: 'teal' }}
             >
               Message {userName}
             </button>

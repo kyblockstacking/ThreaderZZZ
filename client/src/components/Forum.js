@@ -13,7 +13,7 @@ let style = {
     borderTopRightRadius: '10px',
     borderTopLeftRadius: '10px',
     padding: '15px',
-    background: '#2e849e',
+    background: 'teal',
     color: 'white',
   },
 };
@@ -81,7 +81,7 @@ class forum extends React.Component {
           </div>
           <div
             style={{
-              background: '#2e849e',
+              background: 'teal',
               padding: '15px',
               borderBottomRightRadius: '10px',
               borderBottomLeftRadius: '10px',

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 let style = {
   Component: {
-    border: '2px solid #2e849e',
+    border: '2px solid teal',
     background: '#dedede',
     width: '90%',
     margin: 'auto',
@@ -15,7 +15,7 @@ let style = {
   },
   button: {
     float: 'right',
-    background: '#2e849e',
+    background: 'teal',
     color: 'white',
     padding: '5px 20px 5px 20px',
     borderRadius: '10px',

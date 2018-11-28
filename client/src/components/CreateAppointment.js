@@ -13,7 +13,7 @@ const submittedMessage = {
         bottom: 'auto',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
-        color: "#2e849e"
+        color: "teal"
     }
 };
 
@@ -98,10 +98,10 @@ class CreateAppointment extends Component {
         }
         return (
             <div>
-                <div style={{ borderRadius: "10px", padding: '5px', background: '#2e849e', color: 'white', width: "60%", marginRight: "auto", marginLeft: "auto", marginBottom: "1em", textAlign: "center" }}><i className="fas fa-chalkboard-teacher">&nbsp;&nbsp;</i>Developer Classes</div>
+                <div style={{ borderRadius: "10px", padding: '5px', background: 'teal', color: 'white', width: "60%", marginRight: "auto", marginLeft: "auto", marginBottom: "1em", textAlign: "center" }}><i className="fas fa-chalkboard-teacher">&nbsp;&nbsp;</i>Developer Classes</div>
                 <form>
                     <div className="text-editor" style={{ marginBottom: "1em", marginLeft: "43%" }}>
-                        <span style={{ background: "white", color: "#2e849e", padding: "6px 30px 6px 30px", borderRadius: "10px", cursor: "pointer", border: "2px solid #2e849e" }} onClick={this.handleOpenModal}>Request Mentorship</span>
+                        <span style={{ background: "white", color: "teal", padding: "6px 30px 6px 30px", borderRadius: "10px", cursor: "pointer", border: "2px solid teal" }} onClick={this.handleOpenModal}>Request Mentorship</span>
                         <Modal
                             isOpen={this.state.showModal}
                             contentLabel="Minimal Modal Example">
@@ -124,7 +124,7 @@ class CreateAppointment extends Component {
                                 onChange={this.handleChange}>
                             </ReactQuill>
                             <div>
-                                <button style={{ background: "#2e849e", color: "white", borderRadius: "10px", width: "60%", marginLeft: "20%", marginTop: "5%", position: "relative" }} type="submit" onClick={this.handleSubmit} disabled={disableButton}>Request</button>
+                                <button style={{ background: "teal", color: "white", borderRadius: "10px", width: "60%", marginLeft: "20%", marginTop: "5%", position: "relative" }} type="submit" onClick={this.handleSubmit} disabled={disableButton}>Request</button>
                             </div>
                         </Modal>
 
@@ -140,7 +140,7 @@ class CreateAppointment extends Component {
                             <hr></hr>
                             <span
                                 style={{
-                                    border: "2px solid #2e849e",
+                                    border: "2px solid teal",
                                     float: "right",
                                     borderRadius: "5px",
                                     fontSize: "0.85em",
