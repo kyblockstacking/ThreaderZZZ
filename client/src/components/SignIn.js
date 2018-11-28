@@ -8,7 +8,7 @@ let style = {
     background: '#c0c5ce',
     width: '90%',
     margin: 'auto',
-    marginTop: '1em',
+    marginTop: '10%',
     marginBottom: '1em',
     padding: '20px',
     borderRadius: '10px',
@@ -77,7 +77,7 @@ class SignIn extends React.Component {
           this.props.setLogin(response.data);
         } else {
           this.setState({
-            error: "Username or password did not match",
+            error: "Invalid username or password",
           })
         }
       })

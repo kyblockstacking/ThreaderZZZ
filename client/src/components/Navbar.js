@@ -2,45 +2,56 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 let box = {
-    background: "#2e849e",
     color: "white",
-    margin: "10px",
-    padding: "0px 5px 0px 100px",
-    borderRadius: "8px",
-    display: "inline-block"
+    fontSize: "1em",
+    padding: "2%",
+    background: "teal",
+    position: "fixed",
+    top: "0",
+    width: "100%",
+    zIndex: "100",
+    opacity: "0.8"
 }
 class NavBar extends React.Component {
-    state = {};
-
-    scroll = () => {
-        window.scrollTo({ top: 400, behavior: "smooth" })
-    };
 
     render() {
         return (
             <div>
-                <div style={box}><Link style={{ color: "white" }} to="/"><i className="fas fa-home">&nbsp;&nbsp;</i>Home</Link></div>
-                {/* <div style={box}><Link style={{ color: "white" }} to="/DeveloperLounge"><i class="fas fa-chalkboard-teacher">&nbsp;&nbsp;</i>Class</Link></div> */}
-                <div style={box}><Link onClick={() => this.scroll()} style={{ color: "white" }} to="/" onUpdate={() => this.scroll()}><i className="far fa-comments">&nbsp;&nbsp;</i>Forums</Link></div>
-                <div style={box}><Link style={{ color: "white", cursor: "help" }} to="/AboutUs"><i className="fas fa-info-circle">&nbsp;&nbsp;</i>About Us</Link></div>
+                <div style={box}>
+                    <div>
+                        <Link style={{ color: "white" }} to="/"><i className="fas fa-home">&nbsp;&nbsp;</i>Home</Link>
+                        &nbsp;|&nbsp;
 
-                {/* TESTING HERE */}
-                {this.props.authenticated ? 
-                    <div style={box}><Link style={{ color: "white" }} to="/generalemail"><i className="fas fa-envelope">&nbsp;</i>Email</Link></div>
-                : null}
-                {/* {this.props.authenticated ? 
-                    <div style={box}><Link style={{ color: "white" }} to="/email/inbox"><i className="fas fa-inbox">&nbsp;</i>Inbox</Link></div>
-                : null}
-                {this.props.authenticated ? 
-                    <div style={box}><Link style={{ color: "white" }} to="/email/outbox"><i className="far fa-share-square">&nbsp;</i>Outbox</Link></div>  
-                : null}
-                {this.props.authenticated ? 
-                    <div style={box}><Link style={{ color: "white" }} to="/emailsystem"><i className="fas fa-envelope">&nbsp;</i>Send Mail</Link></div>
-                : null} */}
-                {this.props.authenticated ? 
-                    <div style={box}><Link style={{ color: "white" }} to="/DeveloperLounge"><i className="fas fa-pray">&nbsp;</i>Mentor</Link></div>
-                : null}
-            </div>
+                                            {
+                            this.props.authenticated ?
+                                <Link style={{ color: "white" }} to="/generalemail"><i className="fas fa-envelope">&nbsp;</i>Email<span>&nbsp;|&nbsp;</span></Link>
+                                : null
+                        }
+
+                        {
+                            this.props.authenticated ?
+                                <Link style={{ color: "white" }} to="/DeveloperLounge"><i className="fas fa-pray">&nbsp;</i>Mentor<span>&nbsp;|&nbsp;</span></Link>
+                                : null
+                        }
+
+                        <span className="dropdown show">
+                            <a className="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <Link style={{ color: "white" }} to="/home" onUpdate={() => this.scroll()}>Forums</Link>
+                            </a>
+
+                            <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <Link className="dropdown-item" to="/forum/1">Javascript</Link>
+                                <Link className="dropdown-item" to="/forum/2">PHP</Link>
+                                <Link className="dropdown-item" to="/forum/3">Python</Link>
+                            </div>
+                        </span>
+
+                        <Link style={{ color: "white", cursor: "help", float: "right" }} to="/signup"><i className="fas fa-user-plus">&nbsp;&nbsp;</i>Sign Up</Link>
+
+                    </div>
+
+                </div>
+            </div >
         )
     }
 }

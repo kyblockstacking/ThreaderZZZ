@@ -54,7 +54,7 @@ class Topic extends React.Component {
 
         return (
             <div>
-                <div style={{ borderRadius: "10px", padding: '5px', background: '#2e849e', color: 'white', width: "60%", marginRight: "auto", marginLeft: "auto", marginBottom: "1em", textAlign: "center" }}><span style={{ cursor: "default" }}>{this.state.category}</span></div>
+                <div style={{ borderRadius: "10px", padding: '5px', background: '#2e849e', color: 'white', width: "60%", marginRight: "auto", marginLeft: "auto", marginBottom: "1em", textAlign: "center", marginTop: "10%" }}><span style={{ cursor: "default" }}>{this.state.category}</span></div>
                 {this.props.authenticated ? <CreateThread categoryId={this.props.match.params.category} userData={this.props.userData} updateThreadsArray={this.updateThreadsArray} /> : null}
 
                 {this.state.threadsArray.map(items => {

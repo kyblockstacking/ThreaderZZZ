@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import ContactUs from "./ContactUs"
-
 export default class LandingPage extends React.Component {
     state = {
         stickyNavbar: {
@@ -66,7 +64,7 @@ export default class LandingPage extends React.Component {
                         width: "75px",
                         visibility: "visible"
                     },
-                    page: "animated slideOutUp",
+                    page: "animated fadeOut",
                     aboutUsStyle: {
                         margin: "0 auto",
                         width: "100%"
@@ -111,9 +109,9 @@ export default class LandingPage extends React.Component {
                     backgroundImage: "url('/images/background.jpg')",
                     marginBottom: "3em"
                 }}>
-                    <div style={this.state.stickyNavbar} className={this.state.navbarClass}>
+                    {/* <div style={this.state.stickyNavbar} className={this.state.navbarClass}>
                         <i className="fas fa-bed" />&nbsp;Threader<sup>&nbsp;Z<sup>&nbsp;Z<sup>&nbsp;Z</sup></sup></sup>
-                    </div>
+                    </div> */}
 
                     <div
                         style={{
@@ -121,7 +119,7 @@ export default class LandingPage extends React.Component {
                             color: "white",
                             textAlign: "center",
                             margin: "0",
-                            padding: "1.25em 0 0 0"
+                            padding: "1.8em 0 0 0"
                         }}>
                         <strong>PROJECT THREADER<sup>&nbsp;Z<sup>&nbsp;Z<sup>&nbsp;Z</sup></sup></sup></strong>
                         <br />

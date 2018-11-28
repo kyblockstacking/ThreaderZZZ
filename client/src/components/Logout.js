@@ -7,7 +7,7 @@ let style = {
     background: '#dedede',
     width: '90%',
     margin: 'auto',
-    marginTop: '1em',
+    marginTop: '10%',
     marginBottom: '1em',
     padding: '20px',
     borderRadius: '10px',
