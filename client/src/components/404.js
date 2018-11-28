@@ -9,7 +9,8 @@ let style = {
         width: "100%",
         height: "400px",
         fontFamily: "Oswald",
-        paddingTop: "5%"
+        paddingTop: "5%",
+        minHeight: "100vh"
     },
     h4: {
         marginBottom: "0"

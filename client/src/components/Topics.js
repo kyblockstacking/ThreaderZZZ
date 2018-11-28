@@ -18,10 +18,10 @@ class Topic extends React.Component {
         axios.get(`/api/${this.props.match.params.category}`).then(res => {
             console.log(res.data);
             let category = "";
-            if (res.data[0].Category.name){
+            if (res.data[0].Category.name) {
                 category = res.data[0].Category.name
             }
-            this.setState({ 
+            this.setState({
                 threadsArray: res.data,
                 category: category
             });
@@ -53,7 +53,7 @@ class Topic extends React.Component {
         // }
 
         return (
-            <div>
+            <div style={{ minHeight: "100vh" }}>
                 <div style={{ borderRadius: "10px", padding: '5px', background: 'teal', color: 'white', width: "60%", marginRight: "auto", marginLeft: "auto", marginBottom: "1em", textAlign: "center", marginTop: "10%" }}><span style={{ cursor: "default" }}>{this.state.category}</span></div>
                 {this.props.authenticated ? <CreateThread categoryId={this.props.match.params.category} userData={this.props.userData} updateThreadsArray={this.updateThreadsArray} /> : null}
 

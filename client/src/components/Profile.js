@@ -27,7 +27,7 @@ class Profile extends Component {
     } = this.state;
 
     return (
-      <div className="container" style={{marginTop: "10%"}}>
+      <div className="container" style={{marginTop: "10%", minHeight: "100vh"}}>
         <div className="card m-5">
           <div className="card-header">Profile</div>
           <ul className="list-group list-group-flush">
