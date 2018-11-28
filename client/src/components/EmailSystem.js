@@ -1,10 +1,31 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import Modal from 'react-modal';
+
+const submittedMessage = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        color: "#2e849e",
+        height: "70%",
+        width: "80%"
+    }
+};
 
 class EmailSystem extends Component {
     state = {
         inbox: [],
+        ShowEmailModal: true,
+        emailDate: "Sent on 11/30/18",
+        emailSender: "From: Kaydo",
+        emailTitle: "Title: Anonymous Functions",
+        emailBody: "What are they? Why do we need to learn about them and who is Clark Nielson?"
+
     };
 
     componentDidMount() {
@@ -53,8 +74,9 @@ class EmailSystem extends Component {
     render() {
         const sideBar = {
             height: "100vh",
-            backgroundColor: "rgb(46, 132, 158)",
-            borderRadius: "0px 30px 0px 0px"
+            backgroundColor: "teal",
+            borderRadius: "0px 30px 0px 0px",
+            opacity: ".8"
         }
         const aLink = {
             textAlign: "center",
@@ -67,7 +89,7 @@ class EmailSystem extends Component {
         }
 
         return (
-            <div className="container-fluid">
+            <div className="container-fluid" style={{ marginTop: "10%" }}>
                 <div className="row">
                     <div className="col-lg-2" style={sideBar}>
                         <br />
@@ -96,6 +118,67 @@ class EmailSystem extends Component {
                         </row>
                         <br />
                     </div>
+                    <Modal
+                        isOpen={this.state.ShowEmailModal}
+                        style={submittedMessage}>
+                        <div className="container-fluid">
+                            <div
+                                className="row"
+                                style={{
+                                    border: "2px solid #2e849e",
+                                    float: "right",
+                                    borderRadius: "5px",
+                                    fontSize: "0.85em",
+                                    padding: "0.25em 0.5em 0.25em 0.5em",
+                                    cursor: "pointer"
+                                }}
+                                onClick={() => {
+                                    this.setState({ ShowEmailModal: false })
+                                }}>
+                                X
+                            </div>
+                            <div className="row"
+                                style={{
+                                    fontSize: "1.25em",
+                                    cursor: "default",
+                                    padding: "0 1.5em 0 1.5em"
+                                }}
+                            >
+                                {this.state.emailDate}
+                                <br />
+                                {this.state.emailSender}
+                                <br />
+                                {this.state.emailTitle}
+                                <br />
+                                {this.state.emailBody}
+                                <br />
+                                {this.state.emailSender}
+                                <br />
+                                {this.state.emailTitle}
+                                <br />
+                                {this.state.emailBody}
+                                <br />
+                                {this.state.emailSender}
+                                <br />
+                                {this.state.emailTitle}
+                                <br />
+                                {this.state.emailBody}
+                                <br />
+                                {this.state.emailSender}
+                                <br />
+                                {this.state.emailTitle}
+                                <br />
+                                {this.state.emailBody}
+                                <br />
+                                {this.state.emailSender}
+                                <br />
+                                {this.state.emailTitle}
+                                <br />
+                                {this.state.emailBody}
+                            </div>
+                        </div>
+
+                    </Modal>
                     <div className="col-lg-10 mainEmail">
                         {this.state.inbox.map(item => {
                             return (

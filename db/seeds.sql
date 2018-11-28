@@ -16,24 +16,24 @@ VALUES
 
 INSERT INTO threads (CategoryId, threadName, UserId, createdAt, updatedAt, threadSummary)
 VALUES 
-(1, "anonymous functions", 1, "2018-11-04 01:21:26", "2018-11-04 01:21:26", "Hi guys, I am in a bootcamp and don't know what this is. My boot camp is at UCLA extension and my professor assigned us homework in relation to this topic. I am still trying to wrap my mind around this concept. Unfortunately, my other classmates are as lost as I am. We're all pretty new to coding. Please help me. Much appreciated."),
-(1, "callback functions", 2, "2018-11-04 01:21:26", "2018-11-04 01:21:26", "Hi guys, I am in a bootcamp and don't know what this is. Please help me. Much appreciated."),
-(1, "closure", 2, "2018-11-04 01:21:26", "2018-11-04 01:21:26", "Hi guys, I am in a bootcamp and don't know what this is. Please help me. Much appreciated."),
-(1, "functional programming", 1, "2018-11-04 01:21:26", "2018-11-04 01:21:26", "Hi guys, I am in a bootcamp and don't know what this is. Please help me. Much appreciated."),
-(2, "define php", 3, "2018-11-04 01:21:26", "2018-11-04 01:21:26", "Hi guys, I am in a bootcamp and don't know what this is. Please help me. Much appreciated."),
-(2, "why do we still use php", 1, "2018-11-04 01:21:26", "2018-11-04 01:21:26", "Hi guys, I am in a bootcamp and don't know what this is. Please help me. Much appreciated."),
-(3, "why makes python easy to use", 3, "2018-11-04 01:21:26", "2018-11-04 01:21:26", "Hi guys, I am in a bootcamp and don't know what this is. Please help me. Much appreciated.");
+(1, "What are anonymous functions?", 1, "2018-11-04 01:21:26", "2018-11-04 01:21:26", "Hi guys, I am in a bootcamp and don't know what this is. My boot camp is at UCLA extension and my professor assigned us homework in relation to this topic. I am still trying to wrap my mind around this concept. Unfortunately, my other classmates are as lost as I am. We're all pretty new to coding. Please help me. Much appreciated."),
+(1, "How do callback functions help with asynchronous code?", 2, "2018-11-04 01:21:26", "2018-11-04 01:21:26", "I've heard that callbacks can solve asynch problems. I am new to coding and have a basic understanding of asynchronous code. Can someone please show me an example that might help me understand how these two concepts relate?"),
+(1, "How does closure work in Javascript?", 2, "2018-11-04 01:21:26", "2018-11-04 01:21:26", "Can someone please explain to me how closures work? I watched a course on YouTube, but I think it confused me a bit more. Does anyeone have an example that might help me easily comprehend it better?"),
+(1, "What is functional programming?", 1, "2018-11-04 01:21:26", "2018-11-04 01:21:26", "I am watching Understanding the Weird Parts Javascript on Udemy and am pretty lost on this concept. Can someone help me achieve a basic understanding of functional programming and its benefit?"),
+(2, "Is it worth learning PHP in this day and age? ", 4, "2018-11-04 01:21:26", "2018-11-04 01:21:26", "I've been learning PHP for about three days now. I know that technology changes rapidly, and I just found out that there are other server-side languages that are more trendy than PHP. I feel like I learned a lot in these three days about PHP and would hate for it to go to waste. Should I continue to learn PHP, or switch to something else?"),
+(2, "What disadvantages does PHP have over Python and Node.js?", 5, "2018-11-04 01:21:26", "2018-11-04 01:21:26", "I just started learning web development on CodeAcademy. When it comes to server-side programming, what disadvantages does PHP have over others such as Python and Node.js"),
+(3, "What makes Python easy to learn and use?", 4, "2018-11-04 01:21:26", "2018-11-04 01:21:26", "I am about to embark on a journey to become a Web Developer. There's so much to learn our there, and I've been hearing a lot that I should learn Python because it's simple. I am not sure why though.");
 
 INSERT INTO comments (ThreadId, replies, upvotes, downvotes, createdAt, updatedAt, UserId)
 VALUES 
-(1, "do they ask interview questions about anonymous functions?", 1000, 1222, "2018-11-04 01:21:26", "2018-11-04 01:21:26", 1),
-(1, "i still do not understand anonymous functions", 230, 500, "2018-11-04 01:21:26", "2018-11-04 01:21:26", 1),
-(1, "what are anonymous functions",100,  200, "2018-11-04 01:21:26", "2018-11-04 01:21:26", 1),
-(2, "what are callback functions?", 150, 75, "2018-11-04 01:21:26", "2018-11-04 01:21:26", 1),
-(2, "why do we need call back functions?", 100, 50, "2018-11-04 01:21:26", "2018-11-04 01:21:26", 1),
-(2, "is there anything similar to call back functions?", 25, 10, "2018-11-04 01:21:26", "2018-11-04 01:21:26", 1),
-(6, "because some companies want to", 25, 10, "2018-11-04 01:21:26", "2018-11-04 01:21:26", 1),
-(7, "because of its easy to understand syntax", 30, 10, "2018-11-04 01:21:26", "2018-11-04 01:21:26", 1);
+(1, "Anonymous functions are functions with no name identifier. The name is optional, but because you're probably using it just once, the name isn't important.", 1200, 1001, "2018-11-04 01:21:26", "2018-11-04 01:21:26", 2),
+(1, "Thanks guitarman! I think I understand it a lot better now.", 5, 0, "2018-11-04 01:21:26", "2018-11-04 01:21:26", 1),
+(1, "Don't mention it, padawan.", 540,  23, "2018-11-04 01:21:26", "2018-11-04 01:21:26", 2),
+(2, "Callbacks are helpful for asych code because for example, you might want to execute a block of code only after something like an API call, which is asynchronous, is made. Like, if you're using Yelp's API and don't use callbacks, your function might run before getting the information from Yelp.", 150, 75, "2018-11-04 01:21:26", "2018-11-04 01:21:26", 3),
+(2, "Thanks for explaining it with a simple example, armomo!", 10, 3, "2018-11-04 01:21:26", "2018-11-04 01:21:26", 4),
+(2, "What is synchronous code?", 0, 55, "2018-11-04 01:21:26", "2018-11-04 01:21:26", 5),
+(6, "Node and Python are very popular. I believe Node is popular because you get to utilize javascript as server side programming. You don't have to learn a new language, per se, so people getting started into things like web development have an easier time making that transition to learning back end stuff. ", 99, 10, "2018-11-04 01:21:26", "2018-11-04 01:21:26", 1),
+(7, "Because of its easy to understand syntax, which makes it easier to learn. Its code is also shorter than C++. ", 30, 10, "2018-11-04 01:21:26", "2018-11-04 01:21:26", 1);
 
 INSERT INTO votealreadies (upvoteBtn, neutralBtns, downvoteBtns, CommentId, UserId)
 VALUES
