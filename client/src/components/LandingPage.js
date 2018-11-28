@@ -104,7 +104,7 @@ export default class LandingPage extends React.Component {
         return (
             <div style={{ width: "100%" }} className="wrapper">
                 <div className={this.state.page} style={{
-                    height: "100%",
+                    height: "100vh",
                     width: "100%",
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
