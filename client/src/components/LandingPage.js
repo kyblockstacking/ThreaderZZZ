@@ -14,9 +14,9 @@ export default class LandingPage extends React.Component {
         },
         navbarClass: "",
         arrowClass: "fas fa-chevron-down fadeInDown infinite animated",
-        aboutMeAiden: "card col-lg-4",
-        aboutMeKevin: "card col-lg-4",
-        aboutMeVernie: "card col-lg-4",
+        aboutMeAiden: "card col-lg-4 col-md-4 col-sm-12 col-xs-12",
+        aboutMeKevin: "card col-lg-4 col-md-4 col-sm-12 col-xs-12",
+        aboutMeVernie: "card col-lg-4 col-md-4 col-sm-12 col-xs-12",
         card: {
             height: "100%",
             width: "75px",
@@ -56,9 +56,9 @@ export default class LandingPage extends React.Component {
             })
             if (window.scrollY > 380) {
                 this.setState({
-                    aboutMeAiden: "card animated zoomIn col-lg-4",
-                    aboutMeKevin: "card animated zoomIn col-lg-4",
-                    aboutMeVernie: "card animated zoomIn col-lg-4",
+                    aboutMeAiden: "card animated zoomIn col-lg-4 col-md-4 col-sm-12 col-xs-12",
+                    aboutMeKevin: "card animated zoomIn col-lg-4 col-md-4 col-sm-12 col-xs-12",
+                    aboutMeVernie: "card animated zoomIn col-lg-4 col-md-4 col-sm-12 col-xs-12",
                     card: {
                         height: "400px",
                         width: "75px",
@@ -73,9 +73,9 @@ export default class LandingPage extends React.Component {
             }
             else if (window.scrollY < 425) {
                 this.setState({
-                    aboutMeAiden: "card animated zoomOut col-lg-4",
-                    aboutMeKevin: "card animated zoomOut col-lg-4",
-                    aboutMeVernie: "card animated zoomOut col-lg-4",
+                    aboutMeAiden: "card animated zoomOut col-lg-4 col-md-4 col-sm-12 col-xs-12",
+                    aboutMeKevin: "card animated zoomOut col-lg-4 col-md-4 col-sm-12 col-xs-12",
+                    aboutMeVernie: "card animated zoomOut col-lg-4 col-md-4 col-sm-12 col-xs-12",
                     page: ""
                 })
             }
@@ -107,7 +107,7 @@ export default class LandingPage extends React.Component {
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
                     backgroundImage: "url('/images/background.jpg')",
-                    marginBottom: "3em"
+                    marginBottom: "0"
                 }}>
                     {/* <div style={this.state.stickyNavbar} className={this.state.navbarClass}>
                         <i className="fas fa-bed" />&nbsp;Threader<sup>&nbsp;Z<sup>&nbsp;Z<sup>&nbsp;Z</sup></sup></sup>

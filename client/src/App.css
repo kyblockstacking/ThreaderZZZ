@@ -484,6 +484,8 @@ input,textarea{
   border-style: solid;
   border-width: 0px 1px 1px 1px;
   border-color: #c2bfbf;
+  margin-left: 1%;
+  margin-right: 1%;
 }
 
 .emailRow:nth-child(1){
@@ -493,4 +495,9 @@ input,textarea{
 
 .emailRow:hover {
   border-width: 2px 2px 2px 2px;
+}
+
+#emailModal {
+  height: 70%;
+  width: 80%;
 }

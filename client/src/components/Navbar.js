@@ -24,13 +24,13 @@ class NavBar extends React.Component {
 
                                             {
                             this.props.authenticated ?
-                                <Link style={{ color: "white" }} to="/generalemail"><i className="fas fa-envelope">&nbsp;</i>Email<span>&nbsp;|&nbsp;</span></Link>
+                                <span><Link style={{ color: "white" }} to="/generalemail"><i className="fas fa-envelope">&nbsp;</i>Email</Link><span>&nbsp;|&nbsp;</span></span>
                                 : null
                         }
 
                         {
                             this.props.authenticated ?
-                                <Link style={{ color: "white" }} to="/DeveloperLounge"><i className="fas fa-pray">&nbsp;</i>Mentor<span>&nbsp;|&nbsp;</span></Link>
+                                <span><Link style={{ color: "white" }} to="/DeveloperLounge"><i className="fas fa-pray">&nbsp;</i>Mentor</Link><span>&nbsp;|&nbsp;</span></span>
                                 : null
                         }
 
@@ -40,9 +40,9 @@ class NavBar extends React.Component {
                             </a>
 
                             <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <Link className="dropdown-item" to="/forum/1">Javascript</Link>
-                                <Link className="dropdown-item" to="/forum/2">PHP</Link>
-                                <Link className="dropdown-item" to="/forum/3">Python</Link>
+                                <a className="dropdown-item" href="/forum/1">Javascript</a>
+                                <a className="dropdown-item" href="/forum/2">PHP</a>
+                                <a className="dropdown-item" href="/forum/3">Python</a>
                             </div>
                         </span>
 

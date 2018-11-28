@@ -58,7 +58,7 @@ class EmailMessage extends Component {
   render() {
     const { recipient, title, message } = this.state;
     return (
-      <div className="container">
+      <div className="container" style={{marginTop: "10%"}}>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label htmlFor="recipient">To:</label>
