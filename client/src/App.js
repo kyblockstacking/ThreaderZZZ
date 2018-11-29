@@ -13,6 +13,7 @@ import Profile from './components/Profile';
 import Layout from './components/Layout';
 import './App.css';
 import EmailSystem from './components/EmailSystem';
+import EmailSystemOutbox from './components/EmailSystemOutbox';
 import AboutUs from './components/AboutUs';
 import Topics from './components/Topics';
 import AdminCategoryForm from './components/AdminCategoryForm';
@@ -135,6 +136,14 @@ class App extends React.Component {
                 exact path="/generalemail"
                 render={(props) => (
                   <EmailSystem {...props} userData={this.state.userData} />
+                )}
+              />
+            ) : null}
+            {this.state.authenticated ? (
+              <Route
+                exact path="/generalemailoutbox"
+                render={(props) => (
+                  <EmailSystemOutbox {...props} userData={this.state.userData} />
                 )}
               />
             ) : null}

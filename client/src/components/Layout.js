@@ -66,7 +66,7 @@ export default class Layout extends Component {
 	render() {
 		const { socket, user } = this.state
 		return (
-			<div className="container">
+			<div className="container" style={{marginTop: "10%", minHeight: "100vh"}}>
 				{
 					!user ?	
 					<LoginForm socket={socket} setUser={this.setUser} />

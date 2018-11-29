@@ -505,3 +505,7 @@ input,textarea{
 .ReactModal__Content{
   margin-top: 5%;
 }
+
+.allOutbox:nth-child(1) {
+  margin-top: 10%;
+}

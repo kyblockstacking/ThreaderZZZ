@@ -31,7 +31,7 @@ class Outbox extends Component {
             fontSize: '0.65em',
             borderRadius: '5px',
           }}
-          className="container"
+          className="container allOutbox"
         >
           <p style={{ marginTop: '1em' }}>
             Sent to {email.recipient} {moment(email.createdAt).fromNow()}

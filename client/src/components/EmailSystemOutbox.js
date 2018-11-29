@@ -17,7 +17,7 @@ const submittedMessage = {
     }
 };
 
-class EmailSystem extends Component {
+class EmailSystemOutbox extends Component {
     state = {
         inbox: [],
         ShowEmailModal: false,
@@ -41,9 +41,9 @@ class EmailSystem extends Component {
     }
 
     retrieveEmail = () => {
-        const { username } = this.props.userData;
+        const { id } = this.props.userData;
         axios
-            .get(`/emailin/${username}`)
+            .get(`/emailout/${id}`)
             .then((response) => {
                 this.setState({ inbox: response.data });
                 console.log(this.state.inbox)
@@ -54,11 +54,12 @@ class EmailSystem extends Component {
     }
 
     handleClick = (id, recipient, username, title, message, time) => {
+        const { id2 } = this.props.userData;
         axios
             .put(`/email/read/${id}`)
             .then(() => {
                 axios
-                    .get(`/emailin/${recipient}`)
+                    .get(`/emailout/${id2}`)
                     .then((response) => {
                       
                         this.setState({ 
@@ -105,7 +106,7 @@ class EmailSystem extends Component {
                         </row>
                         <br />
                         <row style={aLink}>
-                            <i className="fas fa-inbox" style={emailIcon}>&nbsp;</i> <a style={aLink} href="/email/inbox">Inbox</a>
+                            <i className="fas fa-inbox" style={emailIcon}>&nbsp;</i> <a style={aLink} href="/generalemail">Inbox</a>
                         </row>
                         <br />
                         <row style={aLink}>
@@ -183,7 +184,7 @@ class EmailSystem extends Component {
                                                 <input type="checkbox" />
                                             </div>
                                             <div className="col-lg-2">
-                                                {item.User.userName}
+                                                {item.recipient}
                                             </div>
                                             <div className="col-lg-7 emailContent">
                                                 {item.title}
@@ -207,4 +208,4 @@ class EmailSystem extends Component {
     }
 }
 
-export default EmailSystem;
+export default EmailSystemOutbox;
