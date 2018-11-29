@@ -17,7 +17,10 @@ export default class LandingPage extends React.Component {
         aboutMeAiden: "card col-lg-4",
         aboutMeKevin: "card col-lg-4",
         aboutMeVernie: "card col-lg-4",
-        page: ""
+        page: "",
+        cards: {
+            visibility: "hidden"
+        }
     };
 
     componentDidMount() {
@@ -47,17 +50,20 @@ export default class LandingPage extends React.Component {
             })
             if (window.scrollY > 380) {
                 this.setState({
-                    aboutMeAiden: " animated zoomIn col-lg-4",
-                    aboutMeKevin: " animated zoomIn col-lg-4",
-                    aboutMeVernie: " animated zoomIn col-lg-4",
-                    page: "animated fadeOut"
+                    aboutMeAiden: "animated slow bounceInLeft col-lg-4",
+                    aboutMeKevin: "animated flipInY col-lg-4",
+                    aboutMeVernie: "animated slow bounceInDown col-lg-4",
+                    page: "animated fadeOut",
+                    cards: {
+                        visibility: "visible"
+                    }
                 })
             }
             else if (window.scrollY < 425) {
                 this.setState({
-                    aboutMeAiden: " animated zoomOut col-lg-4",
-                    aboutMeKevin: " animated zoomOut col-lg-4",
-                    aboutMeVernie: " animated zoomOut col-lg-4",
+                    aboutMeAiden: "animated slow bounceOutLeft col-lg-4",
+                    aboutMeKevin: "animated fadeOut col-lg-4",
+                    aboutMeVernie: "animated slow slideOutDown col-lg-4",
                     page: ""
                 })
             }
@@ -129,9 +135,9 @@ export default class LandingPage extends React.Component {
                     </div>
                 </div>
 
-                <div class="row" style={{ fontFamily: "Oswald, sans-serif" }}>
-                    <div class={this.state.aboutMeAiden} align="center">
-                        <div class="card marginAdjustment" style={{ width: "18rem", marginBottom: "20%"}}>
+                <div class="row container-fluid">
+                    <div class={this.state.aboutMeAiden} align="center" style={this.state.cards}>
+                        <div class="card marginAdjustment" style={{ width: "18rem", marginBottom: "20%" }}>
                             <img class="card-img-top" src="/images/aidan2.jpg" alt="Card image cap" />
                             <div class="card-body">
                                 <h5 class="card-title">Aidan</h5>
@@ -139,8 +145,8 @@ export default class LandingPage extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div class={this.state.aboutMeKevin} align="center">
-                        <div class="card marginAdjustment" style={{ width: "18rem", marginBottom: "20%"}}>
+                    <div class={this.state.aboutMeKevin} align="center" style={this.state.cards}>
+                        <div class="card marginAdjustment" style={{ width: "18rem", marginBottom: "20%" }}>
                             <img class="card-img-top" src="/images/kevin2.jpg" alt="Card image cap" />
                             <div class="card-body">
                                 <h5 class="card-title">Kevin</h5>
@@ -148,8 +154,8 @@ export default class LandingPage extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div class={this.state.aboutMeVernie} align="center">
-                        <div class="card marginAdjustment" style={{ width: "18rem", marginBottom: "20%"}}>
+                    <div class={this.state.aboutMeVernie} align="center" style={this.state.cards}>
+                        <div class="card marginAdjustment" style={{ width: "18rem", marginBottom: "20%" }}>
                             <img class="card-img-top" src="/images/vernie2.jpg" alt="Card image cap" />
                             <div class="card-body">
                                 <h5 class="card-title">Vernie</h5>
