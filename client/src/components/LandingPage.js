@@ -14,19 +14,10 @@ export default class LandingPage extends React.Component {
         },
         navbarClass: "",
         arrowClass: "fas fa-chevron-down fadeInDown infinite animated",
-        aboutMeAiden: "card col-lg-4 col-md-4 col-sm-12 col-xs-12",
-        aboutMeKevin: "card col-lg-4 col-md-4 col-sm-12 col-xs-12",
-        aboutMeVernie: "card col-lg-4 col-md-4 col-sm-12 col-xs-12",
-        card: {
-            height: "100%",
-            width: "75px",
-            visibility: "hidden"
-        },
-        page: "",
-        aboutUsStyle: {
-            margin: "0 auto",
-            width: "100%"
-        }
+        aboutMeAiden: "card col-lg-4",
+        aboutMeKevin: "card col-lg-4",
+        aboutMeVernie: "card col-lg-4",
+        page: ""
     };
 
     componentDidMount() {
@@ -56,27 +47,17 @@ export default class LandingPage extends React.Component {
             })
             if (window.scrollY > 380) {
                 this.setState({
-                    aboutMeAiden: "card animated zoomIn col-lg-4 col-md-4 col-sm-12 col-xs-12",
-                    aboutMeKevin: "card animated zoomIn col-lg-4 col-md-4 col-sm-12 col-xs-12",
-                    aboutMeVernie: "card animated zoomIn col-lg-4 col-md-4 col-sm-12 col-xs-12",
-                    card: {
-                        height: "400px",
-                        width: "75px",
-                        visibility: "visible"
-                    },
-                    page: "animated fadeOut",
-                    aboutUsStyle: {
-                        margin: "0 auto",
-                        width: "100%",
-                        opacity: "0.8"
-                    }
+                    aboutMeAiden: " animated zoomIn col-lg-4",
+                    aboutMeKevin: " animated zoomIn col-lg-4",
+                    aboutMeVernie: " animated zoomIn col-lg-4",
+                    page: "animated fadeOut"
                 })
             }
             else if (window.scrollY < 425) {
                 this.setState({
-                    aboutMeAiden: "card animated zoomOut col-lg-4 col-md-4 col-sm-12 col-xs-12",
-                    aboutMeKevin: "card animated zoomOut col-lg-4 col-md-4 col-sm-12 col-xs-12",
-                    aboutMeVernie: "card animated zoomOut col-lg-4 col-md-4 col-sm-12 col-xs-12",
+                    aboutMeAiden: " animated zoomOut col-lg-4",
+                    aboutMeKevin: " animated zoomOut col-lg-4",
+                    aboutMeVernie: " animated zoomOut col-lg-4",
                     page: ""
                 })
             }
@@ -148,39 +129,35 @@ export default class LandingPage extends React.Component {
                     </div>
                 </div>
 
-                <div className="row container-fluid" style={this.state.aboutUsStyle}>
-
-                    <div className={this.state.aboutMeAiden} style={this.state.card}>
-                        <img className="card-img-top" src="/images/python_logo.jpg" alt="Profile" />
-                        <div className="card-body">
-                            <h5 className="card-title">Aiden</h5>
-                            <a href="https://github.com/ironaidan" target="_blank" className="btn btn-primary">Github Profile</a>
+                <div class="row" style={{ fontFamily: "Oswald, sans-serif" }}>
+                    <div class={this.state.aboutMeAiden} align="center">
+                        <div class="card marginAdjustment" style={{ width: "18rem", marginBottom: "20%"}}>
+                            <img class="card-img-top" src="/images/aidan2.jpg" alt="Card image cap" />
+                            <div class="card-body">
+                                <h5 class="card-title">Aidan</h5>
+                                <a href="/servicesTwo" class="btn btn-primary">GitHub profile</a>
+                            </div>
                         </div>
                     </div>
-
-                    <br />
-
-                    <div className={this.state.aboutMeKevin} style={this.state.card}>
-                        <img className="card-img-top" src="/images/python_logo.jpg" alt="Profile" />
-                        <div className="card-body">
-                            <h5 className="card-title">Kevin</h5>
-                            <a href="https://github.com/kyblockstacking" target="_blank" className="btn btn-primary">Github Profile</a>
+                    <div class={this.state.aboutMeKevin} align="center">
+                        <div class="card marginAdjustment" style={{ width: "18rem", marginBottom: "20%"}}>
+                            <img class="card-img-top" src="/images/kevin2.jpg" alt="Card image cap" />
+                            <div class="card-body">
+                                <h5 class="card-title">Kevin</h5>
+                                <a href="/servicesTwo" class="btn btn-primary">GitHub profile</a>
+                            </div>
                         </div>
                     </div>
-
-                    <br />
-
-                    <div className={this.state.aboutMeVernie} style={this.state.card}>
-                        <img className="card-img-top" src="/images/python_logo.jpg" alt="Profile" />
-                        <div className="card-body">
-                            <h5 className="card-title">Vernie</h5>
-                            <a href="https://github.com/vedelacruz" target="_blank" className="btn btn-primary">Github Profile</a>
+                    <div class={this.state.aboutMeVernie} align="center">
+                        <div class="card marginAdjustment" style={{ width: "18rem", marginBottom: "20%"}}>
+                            <img class="card-img-top" src="/images/vernie2.jpg" alt="Card image cap" />
+                            <div class="card-body">
+                                <h5 class="card-title">Vernie</h5>
+                                <a href="/servicesTwo" class="btn btn-primary">GitHub profile</a>
+                            </div>
                         </div>
                     </div>
-
                 </div>
-
-                <br />
 
             </div>
         );
