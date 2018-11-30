@@ -30,6 +30,7 @@ class Outbox extends Component {
             padding: '1em',
             fontSize: '0.65em',
             borderRadius: '5px',
+            marginTop: "10%"
           }}
           className="container allOutbox"
         >

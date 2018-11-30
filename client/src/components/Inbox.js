@@ -41,6 +41,7 @@ class Inbox extends Component {
     const { inbox } = this.state;
     return inbox.map((email, iterator) => {
       return (
+        <div className="testkevin">
         <div
           key={iterator}
           onClick={() => this.handleClick(email.id, email.recipient)}
@@ -49,6 +50,7 @@ class Inbox extends Component {
             padding: '1em',
             fontSize: '0.65em',
             borderRadius: '5px',
+            marginTop: "10%"
           }}
           className="container"
         >
@@ -64,6 +66,7 @@ class Inbox extends Component {
           <br />
           <p>{email.message}</p>
           <a href={email.chatLink ? email.chatLink : null}>{email.chatLink ? email.chatLink : null}</a>
+        </div>
         </div>
       );
     });

@@ -119,7 +119,7 @@ class App extends React.Component {
               <Route
                 exact path="/email/inbox"
                 render={(props) => (
-                  <Inbox {...props} userData={this.state.userData} />
+                  <Inbox {...props} userData={this.state.userData}/>
                 )}
               />
             ) : null}
