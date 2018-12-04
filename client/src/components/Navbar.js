@@ -19,10 +19,10 @@ class NavBar extends React.Component {
             <div>
                 <div style={box}>
                     <div>
-                        <Link style={{ color: "white" }} to="/home"><i className="fas fa-home">&nbsp;&nbsp;</i>Home</Link>
+                        <Link style={{ color: "white" }} to="/home"><i className="fas fa-home">&nbsp;</i>Home</Link>
                         &nbsp;|&nbsp;
 
-                        <Link style={{ color: "white" }} to="/">About Us</Link>
+                        <Link style={{ color: "white" }} to="/"><i className="fas fa-question-circle">&nbsp;</i>About Us</Link>
                         &nbsp;|&nbsp;
 
 
@@ -40,7 +40,7 @@ class NavBar extends React.Component {
 
                         <span className="dropdown show">
                             <a className="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ color: "white" }}>
-                                <span>Forums</span>
+                                <i class="fas fa-chalkboard-teacher">&nbsp;</i><span>Forums</span>
                             </a>
 
                             <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">

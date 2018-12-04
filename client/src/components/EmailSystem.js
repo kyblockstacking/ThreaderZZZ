@@ -21,11 +21,11 @@ class EmailSystem extends Component {
     state = {
         inbox: [],
         ShowEmailModal: false,
-        emailDate: "Sent on 11/30/18",
-        emailSender: "From: Kaydo",
-        emailTitle: "Title: Anonymous Functions",
-        emailBody: "What are they? Why do we need to learn about them and who is Clark Nielson?"
-
+        emailDate: "",
+        emailSender: "",
+        emailTitle: "",
+        emailBody: "",
+        chat: ""
     };
 
     componentDidMount() {
@@ -53,7 +53,9 @@ class EmailSystem extends Component {
             });
     }
 
-    handleClick = (id, recipient, username, title, message, time) => {
+    handleClick = (id, recipient, username, title, message, time, chatLink) => {
+        console.log(id);
+        console.log(username);
         axios
             .put(`/email/read/${id}`)
             .then(() => {
@@ -63,10 +65,11 @@ class EmailSystem extends Component {
                       
                         this.setState({ 
                             inbox: response.data, 
-                            emailDate: moment(time).calendar(),  
-                            emailSender: username, 
-                            emailTitle: title, 
-                            emailBody: message,    
+                            emailDate: "Sent: " + moment(time).calendar(),  
+                            emailSender: "From: " + username, 
+                            emailTitle: "Subject: " + title, 
+                            emailBody: message,
+                            chat: chatLink,    
                             ShowEmailModal: true });
                     })
                     .catch((error) => {
@@ -105,11 +108,11 @@ class EmailSystem extends Component {
                         </row>
                         <br />
                         <row style={aLink}>
-                            <i className="fas fa-inbox" style={emailIcon}>&nbsp;</i> <a style={aLink} href="/email/inbox">Inbox</a>
+                            <i className="fas fa-inbox" style={emailIcon}>&nbsp;</i> <a style={aLink} href="/generalemail">Inbox</a>
                         </row>
                         <br />
                         <row style={aLink}>
-                            <i className="far fa-share-square" style={emailIcon}>&nbsp;</i><a style={aLink} href="/email/outbox">Sent</a>
+                            <i className="far fa-share-square" style={emailIcon}>&nbsp;</i><a style={aLink} href="/generalemailoutbox">Sent</a>
                         </row>
                         <br />
                         <row style={aLink}>
@@ -152,6 +155,10 @@ class EmailSystem extends Component {
                                 {this.state.emailTitle}
                                 <br />
                                 {this.state.emailBody}
+                                <br />
+                                <a href={this.state.chat ? this.state.chat : null}>
+                                    {this.state.chat ? this.state.chat : null}
+                                </a>
                             </div>
                         </div>
 
@@ -161,7 +168,7 @@ class EmailSystem extends Component {
                             return (
                                 <div>
                                     {item.userRead === false ?
-                                        <div className="row emailRow" onClick={() => this.handleClick(item.id, item.recipient, item.User.username, item.title, item.message, item.createdAt)}>
+                                        <div className="row emailRow" onClick={() => this.handleClick(item.id, item.recipient, item.User.userName, item.title, item.message, item.createdAt)}>
                                             <div className="col-lg-1">
                                                 <input type="checkbox" />
                                             </div>
@@ -178,7 +185,8 @@ class EmailSystem extends Component {
                                             </div>
                                         </div>
                                         :
-                                        <div className="row emailRow" onClick={() => this.handleClick(item.id, item.recipient, item.User.username, item.title, item.message, item.createdAt)}>
+                                        <div className="row emailRow" onClick={() => this.handleClick(item.id, item.recipient, item.User.userName, item.title, item.message, item.createdAt, item.chatLink
+                                        )}>
                                             <div className="col-lg-1">
                                                 <input type="checkbox" />
                                             </div>

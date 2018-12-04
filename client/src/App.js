@@ -21,8 +21,6 @@ import EmailMessage from './components/EmailMessage';
 
 // TEST COMPONENTS
 import Appointment from './components/Appointment';
-import Inbox from './components/Inbox';
-import Outbox from './components/Outbox';
 import DeveloperLounge from './components/DeveloperLounge';
 
 import LandingPage from "./components/LandingPage";
@@ -115,22 +113,6 @@ class App extends React.Component {
             <Route exact path="/mentorRequest/:id" render={(props) => (
               <Appointment {...props} userData={this.state.userData} />
             )} />
-            {this.state.authenticated ? (
-              <Route
-                exact path="/email/inbox"
-                render={(props) => (
-                  <Inbox {...props} userData={this.state.userData}/>
-                )}
-              />
-            ) : null}
-            {this.state.authenticated ? (
-              <Route
-                exact path="/email/outbox"
-                render={(props) => (
-                  <Outbox {...props} userData={this.state.userData} />
-                )}
-              />
-            ) : null}
             {this.state.authenticated ? (
               <Route
                 exact path="/generalemail"
