@@ -92,6 +92,12 @@ class EmailSystemOutbox extends Component {
             justifyContent: "center",
             color: "white"
         }
+        const currentLink = {
+            textAlign: "center",
+            display: "flex",
+            justifyContent: "center",
+            color: "yellow"
+        }
         const emailIcon = {
             fontSize: "22px"
         }
@@ -110,7 +116,7 @@ class EmailSystemOutbox extends Component {
                         </row>
                         <br />
                         <row style={aLink}>
-                            <i className="far fa-share-square" style={emailIcon}>&nbsp;</i><a style={aLink} href="/generalemailoutbox">Sent</a>
+                            <i className="far fa-share-square" style={emailIcon}>&nbsp;</i><a style={currentLink} href="/generalemailoutbox">Sent</a>
                         </row>
                         <br />
                         <row style={aLink}>

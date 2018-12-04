@@ -94,6 +94,12 @@ class EmailSystem extends Component {
             justifyContent: "center",
             color: "white"
         }
+        const currentLink = {
+            textAlign: "center",
+            display: "flex",
+            justifyContent: "center",
+            color: "yellow"
+        }
         const emailIcon = {
             fontSize: "22px"
         }
@@ -108,7 +114,7 @@ class EmailSystem extends Component {
                         </row>
                         <br />
                         <row style={aLink}>
-                            <i className="fas fa-inbox" style={emailIcon}>&nbsp;</i> <a style={aLink} href="/generalemail">Inbox</a>
+                            <i className="fas fa-inbox" style={emailIcon}>&nbsp;</i> <a style={currentLink} href="/generalemail">Inbox</a>
                         </row>
                         <br />
                         <row style={aLink}>
