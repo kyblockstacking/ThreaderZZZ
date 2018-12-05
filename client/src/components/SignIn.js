@@ -14,12 +14,10 @@ let style = {
     borderRadius: '10px',
   },
   SignIn: {
-    float: 'right',
     color: 'teal',
     cursor: 'default',
   },
   button: {
-    float: 'right',
     background: 'teal',
     color: 'white',
     padding: '5px 20px 5px 20px',
@@ -27,24 +25,21 @@ let style = {
     cursor: 'pointer',
   },
   inputBox: {
-    float: 'right',
     borderRadius: '5px',
     fontStyle: 'italic',
   },
   forgotPassword: {
-    float: 'right',
     fontSize: '10pt',
     cursor: 'pointer',
   },
   register: {
-    float: 'right',
     fontSize: '10pt',
     cursor: 'pointer',
     marginRight: '3%',
   },
   banner: {
     height: '9em',
-    width: '72%',
+    width: '100%',
     float: 'left',
     borderRadius: '10px',
     border: '2px solid black',
@@ -55,7 +50,7 @@ class SignIn extends React.Component {
   state = {
     userName: '',
     password: '',
-    error: null,
+    error: '',
   };
 
   handleChange = (event) => {
@@ -64,7 +59,7 @@ class SignIn extends React.Component {
   };
 
   forgotPassword = () => {
-    alert('haha, what a loser');
+
   };
 
   handleSubmit = (event) => {
@@ -89,51 +84,54 @@ class SignIn extends React.Component {
   render() {
     const { userName, password } = this.state;
     return (
-      <div style={style.Component} className="SignInContainer">
-        <img style={style.banner} src="/images/banner.jpg" alt="" />
-        <form>
-          <div style={style.SignIn}>
-            Username &nbsp;
-            <input
-              style={style.inputBox}
-              placeholder=" Username"
-              name="userName"
-              value={userName}
-              onChange={this.handleChange}
-            />
+      <div style={style.Component} className="SignInContainer container">
+        <div className="row" style={{textAlign: "center"}}>
+          <div className="col-lg-8 col-md-6" align="center">
+            <img style={style.banner} src="/images/banner.jpg" alt="" />
           </div>
-          <br />
-          <br />
-          <div style={style.SignIn}>
-            Password &nbsp;
-            <input
-              type="password"
-              style={style.inputBox}
-              placeholder=" Password"
-              name="password"
-              value={password}
-              onChange={this.handleChange}
-            />
+          <div className="col-lg-4 col-md-6">
+            <form style={{display: "inline-block"}} id="signInForm">
+              <div style={style.SignIn}>
+                Username: &nbsp;
+                <input
+                  style={style.inputBox}
+                  placeholder=" Username"
+                  name="userName"
+                  value={userName}
+                  onChange={this.handleChange}
+                />
+              </div>
+              <br />
+              <div style={style.SignIn}>
+                Password: &nbsp;
+                <input
+                  type="password"
+                  style={style.inputBox}
+                  placeholder=" Password"
+                  name="password"
+                  value={password}
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div>{this.state.error}</div>
+              <a onClick={() => this.forgotPassword()} style={style.forgotPassword}>
+                Forgot Password?
+              </a>
+              <strong>
+                <Link style={style.register} to="/signup">Register</Link>
+              </strong>
+              <br />
+              <button
+                type="submit"
+                style={style.button}
+                onClick={this.handleSubmit}
+              >
+                Login
+              </button>
+              <br />
+            </form>
           </div>
-          <div>{this.state.error}</div>
-          <br />
-          <br />
-          <a onClick={() => this.forgotPassword()} style={style.forgotPassword}>
-            Forgot Password?
-          </a>
-          <strong>
-            <Link style={style.register} to="/signup">Register</Link>
-          </strong>
-          <br />
-          <button
-            type="submit"
-            style={style.button}
-            onClick={this.handleSubmit}
-          >
-            Login
-          </button>
-          <br />
-        </form>
+        </div>
       </div>
     );
   }

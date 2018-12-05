@@ -10,11 +10,9 @@ let style = {
     marginTop: '10%',
     marginBottom: '1em',
     padding: '20px',
-    borderRadius: '10px',
-    height: '190px',
+    borderRadius: '10px'
   },
   button: {
-    float: 'right',
     background: 'teal',
     color: 'white',
     padding: '5px 20px 5px 20px',
@@ -23,7 +21,7 @@ let style = {
   },
   banner: {
     height: '9em',
-    width: '72%',
+    width: '100%',
     float: 'left',
     borderRadius: '10px',
     border: '2px solid black',
@@ -57,20 +55,27 @@ class SignIn extends React.Component {
 
   render() {
     return (
-      <div style={style.Component} className="SignInContainer">
-        <img style={style.banner} src="/images/banner.jpg" alt="" />
-        <form>
-          <div style={style.SignIn}>
-            {`Welcome ${this.state.userData.firstName}`}
+      <div style={style.Component} className="SignInContainer container">
+        <div className="row" style={{ textAlign: "center" }}>
+          <div className="col-lg-8 col-md-8" align="center">
+            <img style={style.banner} src="/images/banner.jpg" alt="" />
           </div>
-          <button
-            type="submit"
-            style={style.button}
-            onClick={this.handleSubmit}
-          >
-            Logout
-          </button>
-        </form>
+          <div className="col-lg-4 col-md-4">
+            <form style={{ display: "inline-block" }} id="signInForm">
+              <div style={style.SignIn}>
+                {`Welcome ${this.state.userData.firstName}`}
+              </div>
+              <button
+                type="submit"
+                style={style.button}
+                onClick={this.handleSubmit}
+              >
+                Logout
+              </button>
+            </form>
+          </div>
+        </div>
+
       </div>
     );
   }

@@ -22,8 +22,7 @@ class NavBar extends React.Component {
                         <Link style={{ color: "white" }} to="/home"><i className="fas fa-home">&nbsp;</i>Home</Link>
                         &nbsp;|&nbsp;
 
-                        <Link style={{ color: "white" }} to="/"><i className="fas fa-question-circle">&nbsp;</i>About Us</Link>
-                        &nbsp;|&nbsp;
+                        
 
 
                                             {
@@ -49,6 +48,9 @@ class NavBar extends React.Component {
                                 <a className="dropdown-item" href="/forum/3">Python</a>
                             </div>
                         </span>
+                        &nbsp;|&nbsp;
+                        <Link style={{ color: "white" }} to="/"><i className="fas fa-question-circle">&nbsp;</i>About Us</Link>
+                        
 
                         <Link style={{ color: "white", cursor: "help", float: "right" }} to="/signup"><i className="fas fa-user-plus">&nbsp;&nbsp;</i>Sign Up</Link>
 
