@@ -282,7 +282,9 @@ input,textarea{
 .thread-container{
   flex-grow:1;
   overflow-y:scroll;
-  position:relative
+  position:relative;
+  overflow:scroll;
+  height:50vh;
 }
 
 .thread-container::-webkit-scrollbar-track{
@@ -515,4 +517,3 @@ input,textarea{
     margin-top: 10px;
   }
 }
-
