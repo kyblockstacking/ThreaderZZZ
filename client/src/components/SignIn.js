@@ -113,7 +113,7 @@ class SignIn extends React.Component {
                   onChange={this.handleChange}
                 />
               </div>
-              <div>{this.state.error}</div>
+              <div style={{height: "15px", color: "red"}}>{this.state.error}</div>
               <a onClick={() => this.forgotPassword()} style={style.forgotPassword}>
                 Forgot Password?
               </a>
