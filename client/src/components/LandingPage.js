@@ -141,7 +141,7 @@ export default class LandingPage extends React.Component {
                             <img class="card-img-top" src="/images/aidan2.jpg" alt="Card image cap" />
                             <div class="card-body">
                                 <h5 class="card-title">Aidan</h5>
-                                <a href="/servicesTwo" class="btn btn-primary">GitHub profile</a>
+                                <a href="https://github.com/ironaidan" target="_blank" class="btn btn-primary">GitHub profile</a>
                             </div>
                         </div>
                     </div>
@@ -150,7 +150,7 @@ export default class LandingPage extends React.Component {
                             <img class="card-img-top" src="/images/kevin2.jpg" alt="Card image cap" />
                             <div class="card-body">
                                 <h5 class="card-title">Kevin</h5>
-                                <a href="/servicesTwo" class="btn btn-primary">GitHub profile</a>
+                                <a href="https://github.com/kyblockstacking" target="_blank" class="btn btn-primary">GitHub profile</a>
                             </div>
                         </div>
                     </div>
@@ -159,7 +159,7 @@ export default class LandingPage extends React.Component {
                             <img class="card-img-top" src="/images/vernie2.jpg" alt="Card image cap" />
                             <div class="card-body">
                                 <h5 class="card-title">Vernie</h5>
-                                <a href="/servicesTwo" class="btn btn-primary">GitHub profile</a>
+                                <a href="https://github.com/vedelacruz" target="_blank" class="btn btn-primary">GitHub profile</a>
                             </div>
                         </div>
                     </div>
