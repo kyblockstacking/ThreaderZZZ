@@ -27,7 +27,6 @@ class ThreadContent extends React.Component {
                     body: data.data.threadSummary,
                     time: data.data.createdAt
                 })
-                console.dir(this.state);
             })
         });
     }
@@ -47,27 +46,89 @@ class ThreadContent extends React.Component {
     }
 
     upVote = (item) => {
+        let info = {
+            commentId: item.id,
+            userId: this.props.userData.id
+        }
         let upVoteData = {
             id: item.id,
             newUpVoteCount: item.upvotes + 1,
             userId: item.UserId,
             upvote: item.User.upvote
         }
-        axios.put("/api/upvote", upVoteData).then(res => {
-            this.getContent();
+        axios.put('/checkvote', info).then(res => {
+            if (res.data === null) {
+                axios.post('/createvote', info).then(res => {
+                    axios.put("/api/upvote", upVoteData).then(res => {
+                        this.getContent();
+                    })
+                })
+            }
+            else if (res.data.downvoteBtns === true) {
+                axios.put('/neutralizevote', info).then(res => {
+                    axios.put("/api/upvote", upVoteData).then(res => {
+                        this.getContent();
+                    })
+                })
+            }
+            else if (res.data.upvoteBtn === true) {
+            }
+            else {
+                axios.put('/increasevote', info).then(res => {
+                    axios.put("/api/upvote", upVoteData).then(res => {
+                        this.getContent();
+                    })
+                })
+            }
         })
+
+
     }
 
     downVote = (item) => {
-        console.log("almost here", item);
+        let info = {
+            commentId: item.id,
+            userId: this.props.userData.id
+        }
+
         let downVoteData = {
             id: item.id,
             newDownVoteCount: item.downvotes + 1,
             userId: item.UserId,
             downvote: item.User.downvote
         }
-        axios.put("/api/downvote", downVoteData).then(res => {
-            this.getContent();
+
+        axios.put('/checkvote', info).then(res => {
+            if (res.data === null) {
+                axios.post('/createvote2', info).then(res => {
+                    axios.put("/api/downvote", downVoteData).then(res => {
+                        console.log("0")
+
+                        this.getContent();
+                    })
+                })
+            }
+            else if (res.data.upvoteBtn === true) {
+                axios.put('/neutralizevote', info).then(res => {
+                    axios.put("/api/downvote", downVoteData).then(res => {
+                        console.log("1")
+
+                        this.getContent();
+                    })
+                })
+            }
+            else if (res.data.downvoteBtns === true) {
+                console.log("2")
+
+            }
+            else {
+                console.log("3")
+                axios.put('/decreasevote', info).then(res => {
+                    axios.put("/api/downvote", downVoteData).then(res => {
+                        this.getContent();
+                    })
+                })
+            }
         })
     }
 
@@ -81,7 +142,6 @@ class ThreadContent extends React.Component {
             return (item.id);
         })
         let thread = filteredArr.map(item => {
-            console.log(item);
             return (
                 <div key={item.id}>
 

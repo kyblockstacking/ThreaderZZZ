@@ -20,6 +20,10 @@ module.exports = function (sequelize, DataTypes) {
             timestamps: false
         });
 
+    // VoteAlready.associate = function (models) {
+    //     User.hasMany(models.Threads);
+    // };
+
     return VoteAlready;
 
 };
