@@ -3,7 +3,7 @@
         <a href= "https://threaderzzz.herokuapp.com/">Threaderzzz</a>
     </h1>
         <br>
-    Demostration Logins:
+    <h1>Demostration Logins</h1>
     <br>
     <strong>Regular User (limited access)</strong>
     <br>
