@@ -7,7 +7,7 @@
     <br>
     As Mentor (user with 1000+ points has full access) - Username: "kaydo" Password: "!2Qwqwer"
     <br>
-    As Regular User (limited access) - Username: "guitarman" Password: "!2Qwqwer"
+    As Regular User (limited access) - Username: "Tester" Password: "Tester123!"
     <h1>Table of Content</h1>
         <a href="#info">Mission</a>
     <br>
