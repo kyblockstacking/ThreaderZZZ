@@ -12,7 +12,7 @@
     Password: Tester123!
     <br>
     <br>
-    Mentor (user with 1000+ points has mentor privileges)
+    <strong>Mentor (user with 1000+ points has mentor privileges)</strong>
     <br>
     Username: kaydo 
     <br>
