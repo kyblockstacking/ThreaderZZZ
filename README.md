@@ -3,11 +3,11 @@
         <a href= "https://threaderzzz.herokuapp.com/">Threaderzzz</a>
     </h1>
         <br>
-    Login:
+    Demostration Logins:
     <br>
-    As Mentor (user with 1000+ points has full access) - Username: "kaydo" Password: "!2Qwqwer"
+    Regular User (limited access) - Username: "Tester" Password: "Tester123!"
     <br>
-    As Regular User (limited access) - Username: "Tester" Password: "Tester123!"
+    Mentor (user with 1000+ points has mentor privileges) - Username: "kaydo" Password: "!2Qwqwer"
     <h1>Table of Content</h1>
         <a href="#info">Mission</a>
     <br>
