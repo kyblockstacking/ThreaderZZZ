@@ -7,10 +7,17 @@
     <br>
     <strong>Regular User (limited access)</strong>
     <br>
-    Username: Tester 
+    Username: Tester
+    <br>
     Password: Tester123!
     <br>
-    Mentor (user with 1000+ points has mentor privileges) - Username: "kaydo" Password: "!2Qwqwer"
+    <br>
+    Mentor (user with 1000+ points has mentor privileges)
+    <br>
+    Username: kaydo 
+    <br>
+    Password: !2Qwqwer
+    <br>
     <h1>Table of Content</h1>
         <a href="#info">Mission</a>
     <br>
