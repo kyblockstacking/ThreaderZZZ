@@ -5,7 +5,10 @@
         <br>
     Demostration Logins:
     <br>
-    Regular User (limited access) - Username: "Tester" Password: "Tester123!"
+    <strong>Regular User (limited access)</strong>
+    <br>
+    Username: Tester 
+    Password: Tester123!
     <br>
     Mentor (user with 1000+ points has mentor privileges) - Username: "kaydo" Password: "!2Qwqwer"
     <h1>Table of Content</h1>
