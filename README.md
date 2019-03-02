@@ -2,7 +2,7 @@
     <h1>
         <a href= "https://threaderzzz.herokuapp.com/">Threaderzzz</a>
     </h1>
-    <h6>A platform for programming discussions, questions and real-time mentorship</h6>
+    <h6>A platform for programming discussions, questions and real-time mentorship.</h6>
         <br>
     <h1>Demostration Logins</h1>
     <br>
